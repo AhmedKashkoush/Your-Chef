@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:your_chief/Core/Bindings/Auth/auth_bindings.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/View/Screens/Auth/auth_screen.dart';
 
@@ -8,6 +9,7 @@ class AppRoutes {
     GetPage(
       name: AppRouteNames.auth,
       page: () => const AuthScreen(),
+      binding: AuthBindings(),
     ),
     GetPage(
       name: AppRouteNames.registerVerify,

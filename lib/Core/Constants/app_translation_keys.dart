@@ -9,4 +9,5 @@ class AppTranslationKeys {
   static const String lname = 'lname';
   static const String phone = 'phone';
   static const String confirmPass = 'confirm_pass';
+  static const String pleaseWait = 'please_wait';
 }

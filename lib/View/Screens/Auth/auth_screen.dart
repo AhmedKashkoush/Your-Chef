@@ -4,17 +4,15 @@ import 'package:your_chief/Core/Constants/app_images.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/View/Responsiveness/orientation_widget.dart';
 import 'package:your_chief/View/Screens/Auth/login_view.dart';
+import 'package:your_chief/View/Screens/Auth/register_view.dart';
+import 'package:your_chief/View/Widgets/title_widget.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final String title = AppTranslationKeys.yourChief.tr;
-    final List<Widget> pages = [
-      LoginView(),
-      SizedBox.shrink(),
-    ];
+    final List<Widget> pages = [LoginView(), RegisterView()];
 
     final List<Tab> tabs = [
       Tab(
@@ -28,12 +26,10 @@ class AuthScreen extends StatelessWidget {
       length: 2,
       child: OrientationWidget(
         portrait: AuthScreenPortrait(
-          title: title,
           pages: pages,
           tabs: tabs,
         ),
         landscape: AuthScreenLandscape(
-          title: title,
           pages: pages,
           tabs: tabs,
         ),
@@ -43,11 +39,9 @@ class AuthScreen extends StatelessWidget {
 }
 
 class AuthScreenPortrait extends StatelessWidget {
-  final String title;
   final List<Widget> pages;
   final List<Tab> tabs;
-  const AuthScreenPortrait(
-      {Key? key, required this.title, required this.pages, required this.tabs})
+  const AuthScreenPortrait({Key? key, required this.pages, required this.tabs})
       : super(key: key);
 
   @override
@@ -57,11 +51,7 @@ class AuthScreenPortrait extends StatelessWidget {
         padding: const EdgeInsets.only(left: 18, right: 18, top: 90),
         child: Column(
           children: [
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline5,
-            ),
+            const TitleWidget(),
             const SizedBox(
               height: 40,
             ),
@@ -96,11 +86,9 @@ class AuthScreenPortrait extends StatelessWidget {
 }
 
 class AuthScreenLandscape extends StatelessWidget {
-  final String title;
   final List<Widget> pages;
   final List<Tab> tabs;
-  const AuthScreenLandscape(
-      {Key? key, required this.title, required this.pages, required this.tabs})
+  const AuthScreenLandscape({Key? key, required this.pages, required this.tabs})
       : super(key: key);
 
   @override
@@ -125,10 +113,7 @@ class AuthScreenLandscape extends StatelessWidget {
                         const SizedBox(
                           width: 40,
                         ),
-                        Text(
-                          title,
-                          style: Theme.of(context).textTheme.headline5,
-                        ),
+                        const TitleWidget(),
                       ],
                     ),
                   ),
@@ -140,11 +125,7 @@ class AuthScreenLandscape extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 90, horizontal: 80),
                   child: Column(
                     children: [
-                      Text(
-                        title,
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headline5,
-                      ),
+                      const TitleWidget(),
                       const SizedBox(
                         height: 40,
                       ),

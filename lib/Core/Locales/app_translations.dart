@@ -15,6 +15,7 @@ class AppTranslations extends Translations {
           AppTranslationKeys.lname: 'Last name',
           AppTranslationKeys.phone: 'Phone',
           AppTranslationKeys.confirmPass: 'Confirm password',
+          AppTranslationKeys.pleaseWait: 'Please wait...',
         },
         'ar': {
           AppTranslationKeys.yourChief: 'طباخك',
@@ -27,6 +28,7 @@ class AppTranslations extends Translations {
           AppTranslationKeys.lname: 'الاسم الأخير',
           AppTranslationKeys.phone: 'الهاتف',
           AppTranslationKeys.confirmPass: 'تأكيد كلمة المرور',
+          AppTranslationKeys.pleaseWait: 'الرجاء الانتظار...',
         },
       };
 }

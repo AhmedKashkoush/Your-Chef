@@ -62,6 +62,8 @@ class CustomOutlinedFormField extends StatelessWidget {
           fontWeight: FontWeight.normal,
           letterSpacing: 0,
         ),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
         suffixIconColor: Theme.of(context).primaryColor,
         prefixIconColor: Theme.of(context).primaryColor,
         enabledBorder: OutlineInputBorder(
