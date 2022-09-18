@@ -16,6 +16,21 @@ class RegisterController extends GetxController {
   bool _isConfirmHidden = true;
   bool get isPasswordHidden => _isPasswordHidden;
   bool get isConfirmHidden => _isConfirmHidden;
+
+  Map<String, dynamic> _args = {};
+  Map<String, dynamic> get args => _args;
+
+  @override
+  void dispose() {
+    fnameController.dispose();
+    lnameController.dispose();
+    phoneController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmController.dispose();
+    super.dispose();
+  }
+
   void togglePasswordVisiblity() {
     _isPasswordHidden = !_isPasswordHidden;
     update();
@@ -26,12 +41,44 @@ class RegisterController extends GetxController {
     update();
   }
 
-  String? emailValidator(String? email) {
-    if (!EmailValidator.validate(email!)) return _validation.notValidEmail;
+  String? nameValidator(String? name) {
+    if (name!.isEmpty) return _validation.required?.tr;
+    if (name.length < 3) return _validation.name?.tr;
     return null;
   }
 
-  void validate() {
-    if (!formKey.currentState!.validate()) return;
+  String? phoneValidator(String? phone) {
+    if (phone!.isEmpty) return _validation.required?.tr;
+    return null;
+  }
+
+  String? emailValidator(String? email) {
+    if (email!.isEmpty) return _validation.required?.tr;
+    if (!EmailValidator.validate(email)) return _validation.notValidEmail?.tr;
+    return null;
+  }
+
+  String? paswordValidator(String? password) {
+    if (password!.isEmpty) return _validation.required?.tr;
+    if (password.length < 8) return _validation.passwordLength?.tr;
+    //if (!_passValidator.validate(password)) return _validation.notValidPassword;
+    return null;
+  }
+
+  String? confirmValidator(String? confirm) {
+    if (confirm!.isEmpty) return _validation.required?.tr;
+    if (confirm != passwordController.text) return _validation.confirm?.tr;
+    return null;
+  }
+
+  bool validate() {
+    bool isValid = formKey.currentState!.validate();
+    if (isValid) {
+      args['name'] = '${fnameController.text} ${lnameController.text}';
+      args['phone'] = '${phoneController.text}';
+      args['email'] = '${emailController.text}';
+      args['password'] = '${passwordController.text}';
+    }
+    return isValid;
   }
 }

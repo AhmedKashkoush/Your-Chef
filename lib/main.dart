@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Your Chief',
+      title: 'Your Chef',
       debugShowCheckedModeBanner: false,
       theme: AppThemes.lightTheme,
       themeMode: AppThemes.themeMode,

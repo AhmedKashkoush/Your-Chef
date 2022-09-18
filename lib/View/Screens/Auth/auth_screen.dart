@@ -22,155 +22,168 @@ class AuthScreen extends StatelessWidget {
         text: AppTranslationKeys.register.tr,
       ),
     ];
-    return DefaultTabController(
-      length: 2,
-      child: OrientationWidget(
-        portrait: AuthScreenPortrait(
-          pages: pages,
-          tabs: tabs,
-        ),
-        landscape: AuthScreenLandscape(
-          pages: pages,
-          tabs: tabs,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {
+              String languageCode = 'en';
+              if (Get.locale != Locale('ar')) languageCode = 'ar';
+              Get.updateLocale(Locale(languageCode));
+            },
+            icon: Text(Get.locale!.languageCode),
+          )
+        ],
+      ),
+      body: DefaultTabController(
+        length: 2,
+        child: OrientationWidget(
+          portrait: _AuthScreenPortrait(
+            pages: pages,
+            tabs: tabs,
+          ),
+          landscape: _AuthScreenLandscape(
+            pages: pages,
+            tabs: tabs,
+          ),
         ),
       ),
     );
   }
 }
 
-class AuthScreenPortrait extends StatelessWidget {
+class _AuthScreenPortrait extends StatelessWidget {
   final List<Widget> pages;
   final List<Tab> tabs;
-  const AuthScreenPortrait({Key? key, required this.pages, required this.tabs})
+  const _AuthScreenPortrait({Key? key, required this.pages, required this.tabs})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(left: 18, right: 18, top: 90),
-        child: Column(
-          children: [
-            const TitleWidget(),
-            const SizedBox(
-              height: 40,
-            ),
-            Image.asset(
-              AppImages.yourChief,
-              width: 124,
-              height: 124,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              height: kToolbarHeight,
-              child: TabBar(
-                indicatorColor: Theme.of(context).colorScheme.secondary,
-                indicatorWeight: 4,
-                padding: const EdgeInsets.symmetric(horizontal: 44),
-                tabs: tabs,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              child: TabBarView(children: pages),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class AuthScreenLandscape extends StatelessWidget {
-  final List<Widget> pages;
-  final List<Tab> tabs;
-  const AuthScreenLandscape({Key? key, required this.pages, required this.tabs})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Row(
+    return Padding(
+      padding: const EdgeInsets.only(left: 18, right: 18, top: 90),
+      child: Column(
         children: [
+          const TitleWidget(),
+          const SizedBox(
+            height: 40,
+          ),
+          Image.asset(
+            AppImages.yourChief,
+            width: 124,
+            height: 124,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          SizedBox(
+            height: kToolbarHeight,
+            child: TabBar(
+              indicatorColor: Theme.of(context).colorScheme.secondary,
+              indicatorWeight: 4,
+              padding: const EdgeInsets.symmetric(horizontal: 44),
+              tabs: tabs,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
           Expanded(
-            flex: 2,
-            child: LayoutBuilder(builder: (context, constraints) {
-              if (constraints.maxHeight < 280) {
-                return FittedBox(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 60, horizontal: 30),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          AppImages.yourChief,
-                        ),
-                        const SizedBox(
-                          width: 40,
-                        ),
-                        const TitleWidget(),
-                      ],
-                    ),
-                  ),
-                );
-              }
+            child: TabBarView(children: pages),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _AuthScreenLandscape extends StatelessWidget {
+  final List<Widget> pages;
+  final List<Tab> tabs;
+  const _AuthScreenLandscape(
+      {Key? key, required this.pages, required this.tabs})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 2,
+          child: LayoutBuilder(builder: (context, constraints) {
+            if (constraints.maxHeight < 280) {
               return FittedBox(
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 90, horizontal: 80),
-                  child: Column(
+                      const EdgeInsets.symmetric(vertical: 60, horizontal: 30),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      const TitleWidget(),
-                      const SizedBox(
-                        height: 40,
-                      ),
                       Image.asset(
                         AppImages.yourChief,
-                        width: 144,
-                        height: 144,
                       ),
+                      const SizedBox(
+                        width: 40,
+                      ),
+                      const TitleWidget(),
                     ],
                   ),
                 ),
               );
-            }),
-          ),
-          Expanded(
-            flex: 3,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 26),
-                  child: SizedBox(
-                    height: kToolbarHeight,
-                    child: TabBar(
-                      indicatorColor: Theme.of(context).colorScheme.secondary,
-                      indicatorWeight: 4,
-                      padding: const EdgeInsets.symmetric(horizontal: 44),
-                      tabs: tabs,
+            }
+            return FittedBox(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 90, horizontal: 80),
+                child: Column(
+                  children: [
+                    const TitleWidget(),
+                    const SizedBox(
+                      height: 40,
                     ),
+                    Image.asset(
+                      AppImages.yourChief,
+                      width: 144,
+                      height: 144,
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }),
+        ),
+        Expanded(
+          flex: 3,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 26),
+                child: SizedBox(
+                  height: kToolbarHeight,
+                  child: TabBar(
+                    indicatorColor: Theme.of(context).colorScheme.secondary,
+                    indicatorWeight: 4,
+                    padding: const EdgeInsets.symmetric(horizontal: 44),
+                    tabs: tabs,
                   ),
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      right: 18,
-                      left: 18,
-                      top: 22,
-                    ),
-                    child: TabBarView(children: pages),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    right: 18,
+                    left: 18,
+                    top: 22,
                   ),
+                  child: TabBarView(children: pages),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

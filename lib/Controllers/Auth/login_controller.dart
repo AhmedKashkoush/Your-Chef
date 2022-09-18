@@ -10,13 +10,37 @@ class LoginController extends GetxController {
   final Validation _validation = Validation();
   bool _isPasswordHidden = true;
   bool get isPasswordHidden => _isPasswordHidden;
+  bool _canLogin = false;
+  bool get canLogin => _canLogin;
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   void togglePasswordVisiblity() {
     _isPasswordHidden = !_isPasswordHidden;
     update();
   }
 
+  void onFieldChanged(String s) {
+    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+      if (_canLogin) {
+        _canLogin = false;
+        update();
+      }
+      return;
+    }
+    if (!_canLogin) {
+      _canLogin = true;
+      update();
+    }
+  }
+
   String? emailValidator(String? email) {
-    if (!EmailValidator.validate(email!)) return _validation.notValidEmail;
+    if (!EmailValidator.validate(email!)) return _validation.notValidEmail?.tr;
     return null;
   }
 

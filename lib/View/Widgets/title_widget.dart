@@ -8,7 +8,7 @@ class TitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      AppTranslationKeys.yourChief.tr,
+      AppTranslationKeys.appTitle.tr,
       textAlign: TextAlign.center,
       style: Theme.of(context).textTheme.headline5?.copyWith(
             fontFamily: 'BlackLadder',

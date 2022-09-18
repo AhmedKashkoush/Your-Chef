@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_chief/Controllers/Auth/register_controller.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
+import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/View/Widgets/custom_outlined_form_field.dart';
 import 'package:your_chief/View/Widgets/primary_button.dart';
 
@@ -26,6 +27,7 @@ class RegisterView extends StatelessWidget {
                       child: CustomOutlinedFormField(
                         label: AppTranslationKeys.fname.tr,
                         controller: controller.fnameController,
+                        validator: controller.nameValidator,
                       ),
                     ),
                     const SizedBox(
@@ -35,6 +37,7 @@ class RegisterView extends StatelessWidget {
                       child: CustomOutlinedFormField(
                         label: AppTranslationKeys.lname.tr,
                         controller: controller.lnameController,
+                        validator: controller.nameValidator,
                       ),
                     ),
                   ],
@@ -46,6 +49,7 @@ class RegisterView extends StatelessWidget {
                   label: AppTranslationKeys.phone.tr,
                   prefix: Icon(Icons.call_outlined),
                   controller: controller.phoneController,
+                  validator: controller.phoneValidator,
                   keyboardType: TextInputType.phone,
                 ),
                 const SizedBox(
@@ -74,6 +78,7 @@ class RegisterView extends StatelessWidget {
                     },
                   ),
                   controller: controller.passwordController,
+                  validator: controller.paswordValidator,
                 ),
                 const SizedBox(
                   height: 10,
@@ -91,13 +96,20 @@ class RegisterView extends StatelessWidget {
                     },
                   ),
                   controller: controller.confirmController,
+                  validator: controller.confirmValidator,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 PrimaryButton(
-                  onPressed: () async {
-                    controller.validate();
+                  onPressed: () {
+                    bool isValid = controller.validate();
+                    if (isValid) {
+                      Get.offNamed(
+                        AppRouteNames.registerVerify,
+                        arguments: controller.args,
+                      );
+                    }
                   },
                   text: AppTranslationKeys.register.tr,
                 ),
