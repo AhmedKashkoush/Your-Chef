@@ -5,14 +5,22 @@ import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/View/Screens/Auth/auth_screen.dart';
 import 'package:your_chief/View/Screens/Auth/verify_account_screen.dart';
 import 'package:your_chief/View/Screens/Error/page_not_found_screen.dart';
+import 'package:your_chief/View/Screens/OnBoarding/onboarding_screen.dart';
 
 class AppRoutes {
-  static const String initialRoute = AppRouteNames.auth;
+  static const String initialRoute = AppRouteNames.onBoarding;
   static final List<GetPage> pages = [
+    GetPage(
+      name: AppRouteNames.onBoarding,
+      page: () => const OnBoardingScreen(),
+      //binding: AuthBindings(),
+    ),
     GetPage(
       name: AppRouteNames.auth,
       page: () => const AuthScreen(),
       binding: AuthBindings(),
+      transition: Transition.downToUp,
+      curve: Curves.fastLinearToSlowEaseIn,
     ),
     GetPage(
       name: AppRouteNames.addProfilePhoto,

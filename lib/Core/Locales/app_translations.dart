@@ -5,6 +5,11 @@ class AppTranslations extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en': {
+          //onboadring screen
+          AppTranslationKeys.next: 'Next',
+          AppTranslationKeys.back: 'Back',
+          AppTranslationKeys.skip: 'Skip',
+          AppTranslationKeys.getStarted: 'Get Started',
           //auth screen
           AppTranslationKeys.appTitle: 'Your Chef',
           AppTranslationKeys.email: 'Email',
@@ -40,6 +45,11 @@ class AppTranslations extends Translations {
           AppTranslationKeys.pageNotFound: 'Page not found',
         },
         'ar': {
+          //onboadring screen
+          AppTranslationKeys.next: 'التالي',
+          AppTranslationKeys.back: 'رجوع',
+          AppTranslationKeys.skip: 'تخطي',
+          AppTranslationKeys.getStarted: 'البدء',
           //auth screen
           AppTranslationKeys.appTitle: 'طباخك',
           AppTranslationKeys.email: 'البريد الالكتروني',

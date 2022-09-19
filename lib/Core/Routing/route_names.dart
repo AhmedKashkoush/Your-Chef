@@ -1,4 +1,5 @@
 class AppRouteNames {
+  static const String onBoarding = '/onBoarding';
   static const String auth = '/auth';
   static const String addProfilePhoto = '/addProfilePhoto';
   static const String registerVerify = '/registerVerify';

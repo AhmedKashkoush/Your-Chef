@@ -81,7 +81,7 @@ class _AuthScreenPortrait extends StatelessWidget {
           SizedBox(
             height: kToolbarHeight,
             child: TabBar(
-              indicatorColor: Theme.of(context).colorScheme.secondary,
+              indicatorColor: Theme.of(context).tabBarTheme.labelColor,
               indicatorWeight: 4,
               padding: const EdgeInsets.symmetric(horizontal: 44),
               tabs: tabs,
@@ -163,7 +163,7 @@ class _AuthScreenLandscape extends StatelessWidget {
                 child: SizedBox(
                   height: kToolbarHeight,
                   child: TabBar(
-                    indicatorColor: Theme.of(context).colorScheme.secondary,
+                    indicatorColor: Theme.of(context).tabBarTheme.labelColor,
                     indicatorWeight: 4,
                     padding: const EdgeInsets.symmetric(horizontal: 44),
                     tabs: tabs,

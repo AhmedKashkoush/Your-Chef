@@ -46,6 +46,8 @@ dependencies:
   path: ^1.8.0
   sqflite: ^2.0.2+1
   badges: ^2.0.3
+  introduction_screen: ^3.0.2
+  rive: ^0.9.1
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +64,7 @@ flutter_icons:
 
 flutter_native_splash:
   color: "#ffffff"
+  color_dark: "#313030"
   image: assets/images/Your Chef Splash.png
   android: true
   ios: true
@@ -89,6 +92,7 @@ flutter:
   assets:
     - assets/images/
     - assets/svgs/
+    - assets/animations/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

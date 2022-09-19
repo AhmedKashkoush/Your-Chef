@@ -1,4 +1,10 @@
 class AppTranslationKeys {
+  //onboadring
+  static const String next = 'next';
+  static const String back = 'back';
+  static const String skip = 'skip';
+  static const String getStarted = 'get_started';
+  //auth
   static const String appTitle = 'your_chef';
   static const String email = 'email';
   static const String password = 'password';

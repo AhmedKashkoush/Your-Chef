@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       title: 'Your Chef',
       debugShowCheckedModeBanner: false,
       theme: AppThemes.lightTheme,
+      darkTheme: AppThemes.darkTheme,
       themeMode: AppThemes.themeMode,
       getPages: AppRoutes.pages,
       initialRoute: AppRoutes.initialRoute,
