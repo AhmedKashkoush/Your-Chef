@@ -16,11 +16,25 @@ class AppTranslationKeys {
   static const String phone = 'phone';
   static const String confirmPass = 'confirm_pass';
   static const String pleaseWait = 'please_wait';
+  //photo
+  static const String photoAlert = 'photo_alert';
+  static const String uploadAPhoto = 'upload_a_photo';
+  static const String skipThisStep = 'skip_this_step';
+  static const String uploadAnotherPhoto = 'upload_another_photo';
+  static const String continue_ = 'continue';
+  static const String camera = 'camera';
+  static const String gallery = 'gallery';
+  //verification
   static const String verifyYourAccount = 'verify_your_account';
   static const String verifyAccountWarning = 'verify_account_warning';
   static const String verify = 'verify';
   static const String haveNotReceiveCode = 'have_not_receive_code';
   static const String resend = 'resend';
+
+  //verification complete
+  static const String congratulations = 'congratulations';
+  static const String congratulatingMessage = 'congratulating_message';
+  static const String goToLoginPage = 'go_to_login_page';
 
   //validation
   static const String requiredField = 'required_field';

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_chief/Core/Validation/validation.dart';
 
+import '../../Core/Routing/route_names.dart';
+
 class RegisterController extends GetxController {
   final TextEditingController fnameController = TextEditingController();
   final TextEditingController lnameController = TextEditingController();
@@ -71,14 +73,17 @@ class RegisterController extends GetxController {
     return null;
   }
 
-  bool validate() {
+  void validate() {
     bool isValid = formKey.currentState!.validate();
     if (isValid) {
       args['name'] = '${fnameController.text} ${lnameController.text}';
       args['phone'] = '${phoneController.text}';
       args['email'] = '${emailController.text}';
       args['password'] = '${passwordController.text}';
+      Get.offNamed(
+        AppRouteNames.addProfilePhoto,
+        arguments: args,
+      );
     }
-    return isValid;
   }
 }

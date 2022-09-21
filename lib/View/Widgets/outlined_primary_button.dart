@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class PrimaryButton extends StatelessWidget {
+class OutlinedPrimaryButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final VoidCallback? onLongPress;
   final String text;
   final ButtonStyle? style;
   final TextStyle? textStyle;
-  const PrimaryButton({
+  const OutlinedPrimaryButton({
     Key? key,
     this.onPressed,
     required this.text,
@@ -17,13 +17,14 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return OutlinedButton(
       onPressed: onPressed,
       onLongPress: onLongPress,
       style: style ??
-          ElevatedButton.styleFrom(
+          OutlinedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 12),
             primary: Theme.of(context).primaryColor,
+            side: BorderSide(color: Theme.of(context).primaryColor),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(14),
             ),
@@ -31,8 +32,8 @@ class PrimaryButton extends StatelessWidget {
       child: Text(
         text,
         style: textStyle ??
-            const TextStyle(
-              color: Colors.white,
+            TextStyle(
+              color: Theme.of(context).primaryColor,
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),

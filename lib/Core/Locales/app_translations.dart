@@ -22,6 +22,15 @@ class AppTranslations extends Translations {
           AppTranslationKeys.phone: 'Phone',
           AppTranslationKeys.confirmPass: 'Confirm password',
           AppTranslationKeys.pleaseWait: 'Please wait...',
+          //add profile photo screen
+          AppTranslationKeys.photoAlert:
+              "If you want you can add a photo to your account, skip this step if you don't",
+          AppTranslationKeys.uploadAPhoto: 'Upload A Photo',
+          AppTranslationKeys.skipThisStep: 'Skip This Step',
+          AppTranslationKeys.uploadAnotherPhoto: 'Upload Another Photo',
+          AppTranslationKeys.continue_: 'Continue',
+          AppTranslationKeys.camera: 'Camera',
+          AppTranslationKeys.gallery: 'Gallery',
           //verify account screen
           AppTranslationKeys.verifyYourAccount: 'Verify Your Account',
           AppTranslationKeys.verifyAccountWarning:
@@ -30,6 +39,11 @@ class AppTranslations extends Translations {
           AppTranslationKeys.haveNotReceiveCode:
               "If you haven't receive any code tap",
           AppTranslationKeys.resend: 'Resend',
+          //verification complete screen
+          AppTranslationKeys.congratulations: 'Congratulations',
+          AppTranslationKeys.congratulatingMessage:
+              'You are now our customer, go to login page to complete authentication process',
+          AppTranslationKeys.goToLoginPage: 'Go To Login Page',
           //validation
           AppTranslationKeys.requiredField: 'Required Field',
           AppTranslationKeys.nameLength: 'Name must be at least 3 characters',
@@ -62,6 +76,15 @@ class AppTranslations extends Translations {
           AppTranslationKeys.phone: 'الهاتف',
           AppTranslationKeys.confirmPass: 'تأكيد كلمة المرور',
           AppTranslationKeys.pleaseWait: 'الرجاء الانتظار...',
+          //add profile photo screen
+          AppTranslationKeys.photoAlert:
+              "اذا كنت تريد يمكنك اضافة صورة الى حسابك, ان كنت لا ترغب فيه ذلك تخط تلك الخطوة",
+          AppTranslationKeys.uploadAPhoto: 'رفع صورة',
+          AppTranslationKeys.skipThisStep: 'تخطى هذه الخطوة',
+          AppTranslationKeys.uploadAnotherPhoto: 'رفع صورة اخرى',
+          AppTranslationKeys.continue_: 'استمر',
+          AppTranslationKeys.camera: 'الكاميرا',
+          AppTranslationKeys.gallery: 'المعرض',
           //verify account screen
           AppTranslationKeys.verifyYourAccount: 'تأكيد حسابك',
           AppTranslationKeys.verifyAccountWarning:
@@ -69,6 +92,11 @@ class AppTranslations extends Translations {
           AppTranslationKeys.verify: 'تأكيد',
           AppTranslationKeys.haveNotReceiveCode: "ان لم تستلم اي كود اضغط",
           AppTranslationKeys.resend: 'اعادة الارسال',
+          //verification complete screen
+          AppTranslationKeys.congratulations: 'تهانينا',
+          AppTranslationKeys.congratulatingMessage:
+              'انت الان عميل لدينا, توجه الى صفحة تسجيل الدخول لاتمام عملية المصادقة',
+          AppTranslationKeys.goToLoginPage: 'الذهاب لصفحة تسجيل الدخول',
           //validation
           AppTranslationKeys.requiredField: 'حقل مطلوب',
           AppTranslationKeys.nameLength:

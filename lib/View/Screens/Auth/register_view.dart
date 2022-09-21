@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_chief/Controllers/Auth/register_controller.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
-import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/View/Widgets/custom_outlined_form_field.dart';
 import 'package:your_chief/View/Widgets/primary_button.dart';
 
@@ -73,9 +72,7 @@ class RegisterView extends StatelessWidget {
                     icon: controller.isPasswordHidden
                         ? Icon(Icons.visibility)
                         : Icon(Icons.visibility_off),
-                    onPressed: () {
-                      controller.togglePasswordVisiblity();
-                    },
+                    onPressed: controller.togglePasswordVisiblity,
                   ),
                   controller: controller.passwordController,
                   validator: controller.paswordValidator,
@@ -91,9 +88,7 @@ class RegisterView extends StatelessWidget {
                     icon: controller.isConfirmHidden
                         ? Icon(Icons.visibility)
                         : Icon(Icons.visibility_off),
-                    onPressed: () {
-                      controller.toggleConfirmVisiblity();
-                    },
+                    onPressed: controller.toggleConfirmVisiblity,
                   ),
                   controller: controller.confirmController,
                   validator: controller.confirmValidator,
@@ -102,15 +97,7 @@ class RegisterView extends StatelessWidget {
                   height: 20,
                 ),
                 PrimaryButton(
-                  onPressed: () {
-                    bool isValid = controller.validate();
-                    if (isValid) {
-                      Get.offNamed(
-                        AppRouteNames.registerVerify,
-                        arguments: controller.args,
-                      );
-                    }
-                  },
+                  onPressed: controller.validate,
                   text: AppTranslationKeys.register.tr,
                 ),
               ],
