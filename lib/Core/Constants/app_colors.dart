@@ -14,4 +14,7 @@ class AppColors {
   static const double photoSectionAvatarOpacity = 0.53;
   static const Color photoSectionCamera = Color(0xFFBCBABA);
   static const double photoSectionCameraOpacity = 0.8;
+
+  static const Color badgeColor = Color(0xFFF32E2E);
+  static const Color appBarIconColors = Color(0xFF999999);
 }

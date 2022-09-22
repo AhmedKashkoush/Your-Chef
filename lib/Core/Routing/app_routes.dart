@@ -8,9 +8,11 @@ import 'package:your_chief/View/Screens/Auth/add_profile_photo_screen.dart';
 import 'package:your_chief/View/Screens/Auth/auth_screen.dart';
 import 'package:your_chief/View/Screens/Auth/verify_account_screen.dart';
 import 'package:your_chief/View/Screens/Error/page_not_found_screen.dart';
+import 'package:your_chief/View/Screens/Home/main_screen.dart';
 import 'package:your_chief/View/Screens/OnBoarding/onboarding_screen.dart';
 
 import '../../View/Screens/Auth/account_verified_screen.dart';
+import '../Bindings/Home/main_screen_binding.dart';
 
 class AppRoutes {
   static const String initialRoute = AppRouteNames.onBoarding;
@@ -58,7 +60,10 @@ class AppRoutes {
     ),
     GetPage(
       name: AppRouteNames.home,
-      page: () => const AuthScreen(),
+      page: () => const MainScreen(),
+      binding: MainScreenBinding(),
+      transition: Transition.fade,
+      curve: Curves.slowMiddle,
     ),
     GetPage(
       name: AppRouteNames.error,

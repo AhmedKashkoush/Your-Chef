@@ -66,7 +66,7 @@ class _AuthScreenPortrait extends StatelessWidget {
       padding: const EdgeInsets.only(left: 18, right: 18, top: 90),
       child: Column(
         children: [
-          const TitleWidget(),
+          const TitleWidget(fontSize: 36),
           const SizedBox(
             height: 40,
           ),
@@ -139,7 +139,7 @@ class _AuthScreenLandscape extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 90, horizontal: 80),
                 child: Column(
                   children: [
-                    const TitleWidget(),
+                    const TitleWidget(fontSize: 36),
                     const SizedBox(
                       height: 40,
                     ),

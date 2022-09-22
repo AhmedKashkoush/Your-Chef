@@ -62,5 +62,6 @@ class LoginController extends GetxController {
     await Future.delayed(const Duration(seconds: 3));
     Get.back();
     if (!formKey.currentState!.validate()) return;
+    Get.offNamed(AppRouteNames.home);
   }
 }
