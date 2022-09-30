@@ -1,6 +1,8 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:your_chief/Controllers/Home/main_screen_controller.dart';
 import 'package:your_chief/Core/Constants/app_colors.dart';
 import 'package:your_chief/Core/Constants/app_images.dart';
 import 'package:your_chief/View/Widgets/custom_main_bottom_bar.dart';
@@ -14,102 +16,123 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: SafeArea(
-        child: Drawer(
-          shape: RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadiusDirectional.horizontal(end: Radius.circular(24))),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            DrawerHeader(
-              //decoration: BoxDecoration(color: AppColors.primary,),
-              child: SizedBox(
-                height: 450,
-                child: Center(
-                  child: Image.asset(
-                    AppImages.yourChief,
-                    height: 200,
-                  ),
-                ),
+    return GetBuilder<MainScreenController>(builder: (controller) {
+      return Scaffold(
+        key: controller.homeKey,
+        drawer: SafeArea(
+          child: Drawer(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusDirectional.horizontal(
+                end: Radius.circular(24),
               ),
             ),
-          ]),
-        ),
-      ),
-      body: NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return [
-            SliverAppBar(
-              title: const TitleWidget(),
-              centerTitle: true,
-              leading: IconButton(
-                icon: Badge(
-                  child: Icon(Icons.filter_list_outlined),
-                  position: BadgePosition.topEnd(top: 0, end: -2),
-                  animationType: BadgeAnimationType.scale,
-                  badgeColor: AppColors.badgeColor,
-                ),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-              ),
-              foregroundColor: AppColors.appBarIconColors,
-              snap: true,
-              floating: true,
-              pinned: true,
-              actions: [
-                IconButton(
-                  icon: Badge(
-                    child: Icon(Ionicons.notifications_outline),
-                    position: BadgePosition.topEnd(end: -6),
-                    animationType: BadgeAnimationType.scale,
-                    padding: const EdgeInsets.all(6),
-                    badgeContent: const Text(
-                      '1',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 10,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  DrawerHeader(
+                    //decoration: BoxDecoration(color: AppColors.primary,),
+                    child: SizedBox(
+                      height: 450,
+                      child: Center(
+                        child: Image.asset(
+                          AppImages.yourChief,
+                          height: 200,
+                        ),
                       ),
                     ),
+                  ),
+                ]),
+          ),
+        ),
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                title: const TitleWidget(),
+                centerTitle: true,
+                leading: IconButton(
+                  icon: Badge(
+                    child: Icon(Icons.filter_list_outlined),
+                    position: BadgePosition.topEnd(top: 0, end: -2),
+                    animationType: BadgeAnimationType.scale,
                     badgeColor: AppColors.badgeColor,
                   ),
-                  onPressed: () {},
+                  onPressed: controller.openDrawer,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10.0,
-                    horizontal: 12,
+                foregroundColor: AppColors.appBarIconColors,
+                snap: true,
+                floating: true,
+                pinned: true,
+                actions: [
+                  IconButton(
+                    icon: Badge(
+                      child: Icon(Ionicons.notifications_outline),
+                      position: BadgePosition.topEnd(end: -6),
+                      animationType: BadgeAnimationType.scale,
+                      padding: const EdgeInsets.all(6),
+                      badgeContent: const Text(
+                        '1',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10,
+                        ),
+                      ),
+                      badgeColor: AppColors.badgeColor,
+                    ),
+                    onPressed: () {},
                   ),
-                  child: const CustomProfileAvatar(
-                    name: 'Ahmed Kashkoush',
-                    color: AppColors.primary,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10.0,
+                      horizontal: 12,
+                    ),
+                    child: CustomProfileAvatar(
+                      name: controller.currentUser!.name,
+                      color: AppColors.primary,
+                    ),
+                  ),
+                ],
+                bottom: PreferredSize(
+                  preferredSize: Size.fromHeight(kToolbarHeight),
+                  child: const CustomSearchBar(
+                    hint: 'Search',
+                    hintStyle: const TextStyle(
+                      color: AppColors.appBarIconColors,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    prefix: Icon(
+                      Ionicons.search_outline,
+                      color: AppColors.appBarIconColors,
+                    ),
                   ),
                 ),
-              ],
-              bottom: PreferredSize(
-                preferredSize: Size.fromHeight(kToolbarHeight),
-                child: const CustomSearchBar(
-                  hint: 'Search',
-                  hintStyle: const TextStyle(
-                    color: AppColors.appBarIconColors,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  prefix: Icon(
-                    Ionicons.search_outline,
-                    color: AppColors.appBarIconColors,
-                  ),
-                ),
+                backgroundColor: Colors.transparent,
+                elevation: 0,
               ),
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-            ),
-          ];
-        },
-        body: const SizedBox(),
-      ),
-      bottomNavigationBar: const CustomMainBottomBar(selectedIndex: 0),
-    );
+              // PreferredSize(
+              //   preferredSize: Size.fromHeight(kToolbarHeight),
+              //   child: const CustomSearchBar(
+              //     hint: 'Search',
+              //     hintStyle: const TextStyle(
+              //       color: AppColors.appBarIconColors,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //     prefix: Icon(
+              //       Ionicons.search_outline,
+              //       color: AppColors.appBarIconColors,
+              //     ),
+              //   ),
+              // ),
+            ];
+          },
+          body: controller.pages[controller.currentPage],
+        ),
+        bottomNavigationBar: CustomMainBottomBar(
+          selectedIndex: controller.currentPage,
+          onTap: controller.changePage,
+        ),
+      );
+    });
   }
 }

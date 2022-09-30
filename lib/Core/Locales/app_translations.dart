@@ -78,7 +78,7 @@ class AppTranslations extends Translations {
           AppTranslationKeys.pleaseWait: 'الرجاء الانتظار...',
           //add profile photo screen
           AppTranslationKeys.photoAlert:
-              "اذا كنت تريد يمكنك اضافة صورة الى حسابك, ان كنت لا ترغب فيه ذلك تخط تلك الخطوة",
+              "اذا كنت تريد يمكنك اضافة صورة الى حسابك, ان كنت لا ترغب في ذلك تخط تلك الخطوة",
           AppTranslationKeys.uploadAPhoto: 'رفع صورة',
           AppTranslationKeys.skipThisStep: 'تخطى هذه الخطوة',
           AppTranslationKeys.uploadAnotherPhoto: 'رفع صورة اخرى',

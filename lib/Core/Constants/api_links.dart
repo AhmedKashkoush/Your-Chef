@@ -1,1 +1,10 @@
-class ApiLinks {}
+class ApiLinks {
+  static const String base = 'http://192.168.1.6:8000/api/v1';
+  static const String login = '$base/users/login';
+  static const String register = '$base/users/register';
+  static const String uploadProfilePhoto = '$base/users/profile-photo/upload';
+  static const String deleteProfilePhoto = '$base/users/profile-photo/delete';
+  static const String allProfilePhotos = '$base/users/profile-photo/all';
+  static const String sendOtp = '$base/users/send-code';
+  static const String verifyOtp = '$base/users/verify';
+}

@@ -1,8 +1,10 @@
 import 'package:email_validator/email_validator.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/Core/Validation/validation.dart';
+import 'package:your_chief/Model/Repositories/Repositories/auth_repository.dart';
+import 'package:your_chief/Model/Web%20Services/auth_api.dart';
 
 import '../../Core/Constants/app_translation_keys.dart';
 import '../../View/Widgets/pizza_loading.dart';
@@ -16,6 +18,10 @@ class LoginController extends GetxController {
   bool get isPasswordHidden => _isPasswordHidden;
   bool _canLogin = false;
   bool get canLogin => _canLogin;
+
+  bool _isLoading = false;
+
+  final AuthRepository _loginApi = AuthRepository(AuthApi());
 
   @override
   void dispose() {
@@ -44,7 +50,8 @@ class LoginController extends GetxController {
   }
 
   String? emailValidator(String? email) {
-    if (!EmailValidator.validate(email!)) return _validation.notValidEmail?.tr;
+    if (!EmailValidator.validate(email!.trim()))
+      return _validation.notValidEmail?.tr;
     return null;
   }
 
@@ -53,15 +60,30 @@ class LoginController extends GetxController {
   }
 
   void validate() async {
-    Get.defaultDialog(
-      title: AppTranslationKeys.pleaseWait.tr,
-      content: const PizzaLoading(),
-      barrierDismissible: false,
-      onWillPop: () async => Future.value(false),
-    );
-    await Future.delayed(const Duration(seconds: 3));
-    Get.back();
+    if (_isLoading) return;
     if (!formKey.currentState!.validate()) return;
-    Get.offNamed(AppRouteNames.home);
+    if (!_isLoading)
+      Get.defaultDialog(
+        title: AppTranslationKeys.pleaseWait.tr,
+        content: const PizzaLoading(),
+        barrierDismissible: false,
+        onWillPop: () async => Future.value(false),
+      );
+    _isLoading = true;
+    dynamic _data = await _loginApi.login(
+      emailController.text.trim(),
+      passwordController.text.trim(),
+    );
+    Get.back();
+    _isLoading = false;
+
+    if (_data != null)
+      Get.offNamed(AppRouteNames.home);
+    else
+      Get.snackbar(
+        'Error',
+        'Something went wrong',
+        snackPosition: SnackPosition.BOTTOM,
+      );
   }
 }

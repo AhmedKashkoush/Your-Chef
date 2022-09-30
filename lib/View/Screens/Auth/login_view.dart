@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Controllers/Auth/login_controller.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/View/Widgets/custom_outlined_form_field.dart';
 import 'package:your_chief/View/Widgets/primary_button.dart';
+import 'package:your_chief/View/Widgets/social_auth_button.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -60,6 +62,54 @@ class LoginView extends StatelessWidget {
                 PrimaryButton(
                   onPressed: !controller.canLogin ? null : controller.validate,
                   text: AppTranslationKeys.login.tr,
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                SocialAuthButton(
+                  text: 'Login with Google',
+                  icon: const Icon(
+                    Ionicons.logo_google,
+                    color: Colors.redAccent,
+                  ),
+                  onPressed: () {},
+                  textStyle: TextStyle(
+                    color: Colors.redAccent,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    primary: Colors.redAccent,
+                    side: BorderSide(color: Colors.redAccent),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                SocialAuthButton(
+                  text: 'Login with Facebook',
+                  icon: const Icon(
+                    Ionicons.logo_facebook,
+                    color: Colors.blueAccent,
+                  ),
+                  onPressed: () {},
+                  textStyle: TextStyle(
+                    color: Colors.blueAccent,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    primary: Colors.blueAccent,
+                    side: BorderSide(color: Colors.blueAccent),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                  ),
                 ),
               ],
             ),

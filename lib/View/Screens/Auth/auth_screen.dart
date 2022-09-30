@@ -23,20 +23,20 @@ class AuthScreen extends StatelessWidget {
       ),
     ];
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          IconButton(
-            onPressed: () {
-              String languageCode = 'en';
-              if (Get.locale != Locale('ar')) languageCode = 'ar';
-              Get.updateLocale(Locale(languageCode));
-            },
-            icon: Text(Get.locale!.languageCode),
-          )
-        ],
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   actions: [
+      //     IconButton(
+      //       onPressed: () {
+      //         String languageCode = 'en';
+      //         if (Get.locale != Locale('ar')) languageCode = 'ar';
+      //         Get.updateLocale(Locale(languageCode));
+      //       },
+      //       icon: Text(Get.locale!.languageCode),
+      //     )
+      //   ],
+      // ),
       body: DefaultTabController(
         length: 2,
         child: OrientationWidget(
