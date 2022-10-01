@@ -90,6 +90,14 @@ class MainScreen extends StatelessWidget {
                     child: CustomProfileAvatar(
                       name: controller.currentUser!.name,
                       color: AppColors.primary,
+                      // image: AssetImage(
+                      //   controller.currentUser!.image!,
+                      // ),
+                      // image: CachedNetworkImageProvider(
+                      //   "http://192.168.1.6:8000/${controller.currentUser!.image!}",
+                      //   headers: ApiHeaders.authHeaders,
+                      //   //cacheKey: controller.currentUser!.image!,
+                      // ),
                     ),
                   ),
                 ],

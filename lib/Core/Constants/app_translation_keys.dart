@@ -16,6 +16,11 @@ class AppTranslationKeys {
   static const String phone = 'phone';
   static const String confirmPass = 'confirm_pass';
   static const String pleaseWait = 'please_wait';
+  static const String or = 'or';
+  static const String loginGoogle = 'login_google';
+  static const String loginFacebook = 'login_facebook';
+  static const String registerGoogle = 'register_google';
+  static const String registerFacebook = 'register_facebook';
   //photo
   static const String photoAlert = 'photo_alert';
   static const String uploadAPhoto = 'upload_a_photo';
@@ -36,6 +41,10 @@ class AppTranslationKeys {
   static const String congratulatingMessage = 'congratulating_message';
   static const String goToLoginPage = 'go_to_login_page';
 
+  //home
+  static const String search = 'search';
+  static const String home = 'home';
+
   //validation
   static const String requiredField = 'required_field';
   static const String nameLength = 'name_length';
@@ -45,6 +54,10 @@ class AppTranslationKeys {
   static const String validPassword = 'valid_password';
   static const String confirmPasswordValidation = 'confirm_password_validation';
 
+  //messages
+  static const String loginedSuccessfully = 'logined_successfully';
+
   //errors
   static const String pageNotFound = 'page_not_found';
+  static const String somethingWentWrong = 'something_went_wrong';
 }

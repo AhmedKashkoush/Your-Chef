@@ -106,11 +106,11 @@ class AddProfilePhotoScreen extends StatelessWidget {
             controller.photo == null
                 ? OutlinedPrimaryButton(
                     text: AppTranslationKeys.skipThisStep.tr,
-                    onPressed: controller.skipStep,
+                    onPressed: () => controller.skipStep(context),
                   )
                 : PrimaryButton(
                     text: AppTranslationKeys.continue_.tr,
-                    onPressed: controller.skipStep,
+                    onPressed: () => controller.skipStep(context),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       primary: Colors.green.shade400,

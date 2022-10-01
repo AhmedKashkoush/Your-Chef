@@ -7,11 +7,18 @@ import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Core/Constants/app_colors.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
+import 'package:your_chief/Core/Utils/api_messages.dart';
+import 'package:your_chief/Core/Utils/utils.dart';
+import 'package:your_chief/Model/Repositories/Repositories/auth_repository.dart';
+import 'package:your_chief/Model/Web%20Services/auth_api.dart';
 
 class AddProfilePhotoController extends GetxController {
   late dynamic args;
   File? photo;
   final ImagePicker _picker = ImagePicker();
+  final AuthRepository _photoApi = AuthRepository(AuthApi());
+
+  bool _isLoading = false;
   @override
   void onInit() {
     args = Get.arguments;
@@ -68,10 +75,38 @@ class AddProfilePhotoController extends GetxController {
     update();
   }
 
-  void skipStep() {
+  void skipStep(BuildContext context) async {
     if (photo != null) {
       args['photo'] = photo;
-    }
-    Get.offNamed(AppRouteNames.registerVerify, arguments: args);
+      if (!_isLoading)
+        Utils.showLoadingDialog(AppTranslationKeys.pleaseWait.tr);
+      _isLoading = true;
+      dynamic _data = await _photoApi.uploadPhoto(
+        args['email'].trim(),
+        photo!,
+      );
+      Get.back();
+      _isLoading = false;
+
+      if (_data != null) {
+        if (_data is ApiMessages) {
+          Utils.showSnackBarMessage(
+            _data.message,
+            context,
+            messageType: MessageType.error,
+            borderRadius: 15,
+          );
+        } else
+          Get.offNamed(AppRouteNames.registerVerify, arguments: args);
+      } else {
+        Utils.showSnackBarMessage(
+          AppTranslationKeys.somethingWentWrong.tr,
+          context,
+          messageType: MessageType.error,
+          borderRadius: 15,
+        );
+      }
+    } else
+      Get.offNamed(AppRouteNames.registerVerify, arguments: args);
   }
 }

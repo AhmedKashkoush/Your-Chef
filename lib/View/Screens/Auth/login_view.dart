@@ -60,19 +60,46 @@ class LoginView extends StatelessWidget {
                   height: 30,
                 ),
                 PrimaryButton(
-                  onPressed: !controller.canLogin ? null : controller.validate,
+                  onPressed: !controller.canLogin
+                      ? null
+                      : () => controller.validate(context),
                   text: AppTranslationKeys.login.tr,
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 15,
+                ),
+                Row(
+                  children: [
+                    const Expanded(
+                      child: Divider(
+                        endIndent: 12,
+                        thickness: 1,
+                      ),
+                    ),
+                    Text(
+                      AppTranslationKeys.or.tr,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Expanded(
+                      child: Divider(
+                        indent: 12,
+                        thickness: 1,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
                 ),
                 SocialAuthButton(
-                  text: 'Login with Google',
+                  text: AppTranslationKeys.loginGoogle.tr,
                   icon: const Icon(
                     Ionicons.logo_google,
                     color: Colors.redAccent,
                   ),
-                  onPressed: () {},
+                  onPressed: controller.loginWithGoogle,
                   textStyle: TextStyle(
                     color: Colors.redAccent,
                     fontSize: 20,
@@ -91,12 +118,12 @@ class LoginView extends StatelessWidget {
                   height: 8,
                 ),
                 SocialAuthButton(
-                  text: 'Login with Facebook',
+                  text: AppTranslationKeys.loginFacebook.tr,
                   icon: const Icon(
                     Ionicons.logo_facebook,
                     color: Colors.blueAccent,
                   ),
-                  onPressed: () {},
+                  onPressed: controller.loginWithFacebook,
                   textStyle: TextStyle(
                     color: Colors.blueAccent,
                     fontSize: 20,

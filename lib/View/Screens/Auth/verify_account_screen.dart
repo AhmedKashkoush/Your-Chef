@@ -85,7 +85,9 @@ class _VerifyAccountScreenPortrait extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 26),
               child: PrimaryButton(
                 text: AppTranslationKeys.verify.tr,
-                onPressed: !controller.canVerify ? null : controller.verify,
+                onPressed: !controller.canVerify
+                    ? null
+                    : () => controller.verify(context),
               ),
             ),
             const SizedBox(
@@ -104,9 +106,12 @@ class _VerifyAccountScreenPortrait extends StatelessWidget {
                   TextSpan(text: ' '),
                   TextSpan(
                     text: AppTranslationKeys.resend.tr,
-                    style: Theme.of(context).textTheme.bodyText1,
+                    style: !controller.canSendOtp
+                        ? null
+                        : Theme.of(context).textTheme.bodyText1,
                     recognizer: TapGestureRecognizer()
-                      ..onTap = controller.sendOtp,
+                      ..onTap =
+                          !controller.canSendOtp ? null : controller.sendOtp,
                   ),
                 ],
               ),
@@ -205,8 +210,9 @@ class _VerifyAccountScreenLandscape extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 26),
                     child: PrimaryButton(
                       text: AppTranslationKeys.verify.tr,
-                      onPressed:
-                          !controller.canVerify ? null : controller.verify,
+                      onPressed: !controller.canVerify
+                          ? null
+                          : () => controller.verify(context),
                     ),
                   ),
                   const Expanded(
@@ -225,9 +231,13 @@ class _VerifyAccountScreenLandscape extends StatelessWidget {
                         TextSpan(text: ' '),
                         TextSpan(
                           text: AppTranslationKeys.resend.tr,
-                          style: Theme.of(context).textTheme.bodyText1,
+                          style: !controller.canSendOtp
+                              ? null
+                              : Theme.of(context).textTheme.bodyText1,
                           recognizer: TapGestureRecognizer()
-                            ..onTap = controller.sendOtp,
+                            ..onTap = !controller.canSendOtp
+                                ? null
+                                : controller.sendOtp,
                         ),
                       ],
                     ),

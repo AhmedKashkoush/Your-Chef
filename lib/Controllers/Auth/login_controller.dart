@@ -2,12 +2,13 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
+import 'package:your_chief/Core/Utils/api_messages.dart';
+import 'package:your_chief/Core/Utils/utils.dart';
 import 'package:your_chief/Core/Validation/validation.dart';
 import 'package:your_chief/Model/Repositories/Repositories/auth_repository.dart';
 import 'package:your_chief/Model/Web%20Services/auth_api.dart';
 
 import '../../Core/Constants/app_translation_keys.dart';
-import '../../View/Widgets/pizza_loading.dart';
 
 class LoginController extends GetxController {
   final TextEditingController emailController = TextEditingController();
@@ -59,16 +60,10 @@ class LoginController extends GetxController {
     Get.toNamed(AppRouteNames.error);
   }
 
-  void validate() async {
+  void validate(BuildContext context) async {
     if (_isLoading) return;
     if (!formKey.currentState!.validate()) return;
-    if (!_isLoading)
-      Get.defaultDialog(
-        title: AppTranslationKeys.pleaseWait.tr,
-        content: const PizzaLoading(),
-        barrierDismissible: false,
-        onWillPop: () async => Future.value(false),
-      );
+    if (!_isLoading) Utils.showLoadingDialog(AppTranslationKeys.pleaseWait.tr);
     _isLoading = true;
     dynamic _data = await _loginApi.login(
       emailController.text.trim(),
@@ -77,13 +72,53 @@ class LoginController extends GetxController {
     Get.back();
     _isLoading = false;
 
-    if (_data != null)
-      Get.offNamed(AppRouteNames.home);
-    else
-      Get.snackbar(
-        'Error',
-        'Something went wrong',
-        snackPosition: SnackPosition.BOTTOM,
+    if (_data != null) {
+      if (_data is ApiMessages) {
+        Utils.showSnackBarMessage(
+          _data.message,
+          context,
+          messageType: MessageType.error,
+          borderRadius: 15,
+          action: _data.message == 'This user is not verified'
+              ? SnackBarAction(
+                  label: 'Verify User',
+                  onPressed: _goToVerificationPage,
+                  textColor: Colors.black87,
+                )
+              : null,
+        );
+      } else {
+        Utils.showSnackBarMessage(
+          AppTranslationKeys.loginedSuccessfully.tr,
+          context,
+          messageType: MessageType.success,
+          borderRadius: 15,
+        );
+        Get.offNamed(AppRouteNames.home);
+      }
+    } else {
+      Utils.showSnackBarMessage(
+        AppTranslationKeys.somethingWentWrong.tr,
+        context,
+        messageType: MessageType.error,
+        borderRadius: 15,
       );
+    }
+    // Get.snackbar(
+    //   'Error',
+    //   'Something went wrong',
+    //   snackPosition: SnackPosition.BOTTOM,
+    // );
+  }
+
+  void loginWithGoogle() {}
+
+  void loginWithFacebook() {}
+
+  void _goToVerificationPage() {
+    final Map<String, dynamic> args = {
+      'email': emailController.text.trim(),
+    };
+    Get.offNamed(AppRouteNames.registerVerify, arguments: args);
   }
 }

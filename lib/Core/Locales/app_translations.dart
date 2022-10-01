@@ -22,6 +22,11 @@ class AppTranslations extends Translations {
           AppTranslationKeys.phone: 'Phone',
           AppTranslationKeys.confirmPass: 'Confirm password',
           AppTranslationKeys.pleaseWait: 'Please wait...',
+          AppTranslationKeys.or: 'Or',
+          AppTranslationKeys.loginGoogle: 'Login with Google',
+          AppTranslationKeys.loginFacebook: 'Login with Facebook',
+          AppTranslationKeys.registerGoogle: 'Register with Google',
+          AppTranslationKeys.registerFacebook: 'Register with Facebook',
           //add profile photo screen
           AppTranslationKeys.photoAlert:
               "If you want you can add a photo to your account, skip this step if you don't",
@@ -55,8 +60,11 @@ class AppTranslations extends Translations {
               'Password must contain A-Z,a-z,0-9 and symbols',
           AppTranslationKeys.confirmPasswordValidation:
               'Write the same password to confirm',
+          //messages
+          AppTranslationKeys.loginedSuccessfully: 'Logined Successfully',
           //errors
           AppTranslationKeys.pageNotFound: 'Page not found',
+          AppTranslationKeys.somethingWentWrong: 'Something went wrong',
         },
         'ar': {
           //onboadring screen
@@ -76,6 +84,11 @@ class AppTranslations extends Translations {
           AppTranslationKeys.phone: 'الهاتف',
           AppTranslationKeys.confirmPass: 'تأكيد كلمة المرور',
           AppTranslationKeys.pleaseWait: 'الرجاء الانتظار...',
+          AppTranslationKeys.or: 'أو',
+          AppTranslationKeys.loginGoogle: 'تسجيل الدخول عبر جوجل',
+          AppTranslationKeys.loginFacebook: 'تسجيل الدخول عبر فيسبوك',
+          AppTranslationKeys.registerGoogle: 'التسجيل عبر جوجل',
+          AppTranslationKeys.registerFacebook: 'التسجيل عبر فيسبوك',
           //add profile photo screen
           AppTranslationKeys.photoAlert:
               "اذا كنت تريد يمكنك اضافة صورة الى حسابك, ان كنت لا ترغب في ذلك تخط تلك الخطوة",
@@ -109,8 +122,11 @@ class AppTranslations extends Translations {
               'و رموز A-Z,a-z,0-9 يجب ان تحتوي كلمة المرور على',
           AppTranslationKeys.confirmPasswordValidation:
               'اكتب نفس كلمة المرور للتأكيد',
+          //messages
+          AppTranslationKeys.loginedSuccessfully: 'تم تسجيل الدخول بنجاح',
           //errors
           AppTranslationKeys.pageNotFound: 'الصفحة غير موجودة',
+          AppTranslationKeys.somethingWentWrong: 'حدث خطأ ما',
         },
       };
 }
