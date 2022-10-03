@@ -48,6 +48,16 @@ dependencies:
   badges: ^2.0.3
   introduction_screen: ^3.0.2
   rive: ^0.9.1
+  connectivity_plus: ^2.3.7
+  flutter_rating_bar: ^4.0.1
+  # qr_code_scanner: ^1.0.1
+  # geolocator: ^9.0.2
+  # flutter_polyline_points: ^1.0.0
+  # flutter_google_maps: ^4.0.0
+  # google_mobile_ads: ^2.0.1
+  # flutter_facebook_auth: ^4.4.1+1 
+  # firebase_core: ^1.24.0
+  # firebase_messaging: ^13.0.4
 
 dev_dependencies:
   flutter_test:

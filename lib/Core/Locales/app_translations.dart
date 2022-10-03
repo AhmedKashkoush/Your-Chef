@@ -49,6 +49,10 @@ class AppTranslations extends Translations {
           AppTranslationKeys.congratulatingMessage:
               'You are now our customer, go to login page to complete authentication process',
           AppTranslationKeys.goToLoginPage: 'Go To Login Page',
+          //forgot password screen
+          AppTranslationKeys.forgotPasswordMessage:
+              'Type your email address to help us match your account and provide you with new password',
+          AppTranslationKeys.resetYourPassword: 'Reset Your Password',
           //validation
           AppTranslationKeys.requiredField: 'Required Field',
           AppTranslationKeys.nameLength: 'Name must be at least 3 characters',
@@ -62,6 +66,7 @@ class AppTranslations extends Translations {
               'Write the same password to confirm',
           //messages
           AppTranslationKeys.loginedSuccessfully: 'Logined Successfully',
+          AppTranslationKeys.passwordSet: 'Password Set',
           //errors
           AppTranslationKeys.pageNotFound: 'Page not found',
           AppTranslationKeys.somethingWentWrong: 'Something went wrong',
@@ -110,6 +115,10 @@ class AppTranslations extends Translations {
           AppTranslationKeys.congratulatingMessage:
               'انت الان عميل لدينا, توجه الى صفحة تسجيل الدخول لاتمام عملية المصادقة',
           AppTranslationKeys.goToLoginPage: 'الذهاب لصفحة تسجيل الدخول',
+          //forgot password screen
+          AppTranslationKeys.forgotPasswordMessage:
+              'اكتب بريدك الالكتروني لتساعدنا على الوصول الى حسابك و توفير كلمة المرور الجديدة لك',
+          AppTranslationKeys.resetYourPassword: 'اعادة تعيين كلمة مرورك',
           //validation
           AppTranslationKeys.requiredField: 'حقل مطلوب',
           AppTranslationKeys.nameLength:
@@ -124,6 +133,7 @@ class AppTranslations extends Translations {
               'اكتب نفس كلمة المرور للتأكيد',
           //messages
           AppTranslationKeys.loginedSuccessfully: 'تم تسجيل الدخول بنجاح',
+          AppTranslationKeys.passwordSet: 'تم تعيين كلمة المرور',
           //errors
           AppTranslationKeys.pageNotFound: 'الصفحة غير موجودة',
           AppTranslationKeys.somethingWentWrong: 'حدث خطأ ما',

@@ -9,4 +9,6 @@ abstract class IAuthRepository {
   Future uploadPhoto(String email, File photo);
   Future sendOtp(String email);
   Future verifyOtp(String email, String code);
+  Future resetPassword(String email, String newPassword);
+  Future changePassword(String email, String newPassword);
 }

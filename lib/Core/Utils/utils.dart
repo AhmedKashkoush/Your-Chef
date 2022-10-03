@@ -65,3 +65,4 @@ class Utils {
 }
 
 enum MessageType { success, error, normal, alert, notify }
+enum VerificationFor { account, resetPassword, changePassword }

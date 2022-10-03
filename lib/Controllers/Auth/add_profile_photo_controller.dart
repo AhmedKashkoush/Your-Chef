@@ -96,8 +96,10 @@ class AddProfilePhotoController extends GetxController {
             messageType: MessageType.error,
             borderRadius: 15,
           );
-        } else
+        } else {
+          args['page_type'] = VerificationFor.account;
           Get.offNamed(AppRouteNames.registerVerify, arguments: args);
+        }
       } else {
         Utils.showSnackBarMessage(
           AppTranslationKeys.somethingWentWrong.tr,

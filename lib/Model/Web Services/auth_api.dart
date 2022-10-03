@@ -130,4 +130,14 @@ class AuthApi implements IAuthRepository {
     }
     return null;
   }
+
+  @override
+  Future changePassword(String email, String newPassword) async {
+    return null;
+  }
+
+  @override
+  Future resetPassword(String email, String newPassword) async {
+    return null;
+  }
 }

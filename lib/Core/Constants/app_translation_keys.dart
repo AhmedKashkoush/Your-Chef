@@ -4,6 +4,7 @@ class AppTranslationKeys {
   static const String back = 'back';
   static const String skip = 'skip';
   static const String getStarted = 'get_started';
+
   //auth
   static const String appTitle = 'your_chef';
   static const String email = 'email';
@@ -21,6 +22,7 @@ class AppTranslationKeys {
   static const String loginFacebook = 'login_facebook';
   static const String registerGoogle = 'register_google';
   static const String registerFacebook = 'register_facebook';
+
   //photo
   static const String photoAlert = 'photo_alert';
   static const String uploadAPhoto = 'upload_a_photo';
@@ -29,6 +31,7 @@ class AppTranslationKeys {
   static const String continue_ = 'continue';
   static const String camera = 'camera';
   static const String gallery = 'gallery';
+
   //verification
   static const String verifyYourAccount = 'verify_your_account';
   static const String verifyAccountWarning = 'verify_account_warning';
@@ -40,6 +43,10 @@ class AppTranslationKeys {
   static const String congratulations = 'congratulations';
   static const String congratulatingMessage = 'congratulating_message';
   static const String goToLoginPage = 'go_to_login_page';
+
+  //forgot password
+  static const String forgotPasswordMessage = 'forgot_password_message';
+  static const String resetYourPassword = 'reset_your_password';
 
   //home
   static const String search = 'search';
@@ -56,6 +63,7 @@ class AppTranslationKeys {
 
   //messages
   static const String loginedSuccessfully = 'logined_successfully';
+  static const String passwordSet = 'Password set';
 
   //errors
   static const String pageNotFound = 'page_not_found';

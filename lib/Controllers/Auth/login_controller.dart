@@ -57,7 +57,7 @@ class LoginController extends GetxController {
   }
 
   void toForgotPassword() {
-    Get.toNamed(AppRouteNames.error);
+    Get.toNamed(AppRouteNames.forgotPassword);
   }
 
   void validate(BuildContext context) async {
