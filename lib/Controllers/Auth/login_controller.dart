@@ -5,7 +5,7 @@ import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/Core/Utils/api_messages.dart';
 import 'package:your_chief/Core/Utils/utils.dart';
 import 'package:your_chief/Core/Validation/validation.dart';
-import 'package:your_chief/Model/Repositories/Repositories/auth_repository.dart';
+import 'package:your_chief/Model/Repository/Repositories/auth_repository.dart';
 import 'package:your_chief/Model/Web%20Services/auth_api.dart';
 
 import '../../Core/Constants/app_translation_keys.dart';

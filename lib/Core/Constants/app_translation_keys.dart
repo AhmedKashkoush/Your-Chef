@@ -32,7 +32,7 @@ class AppTranslationKeys {
   static const String camera = 'camera';
   static const String gallery = 'gallery';
 
-  //verification
+  //account verification
   static const String verifyYourAccount = 'verify_your_account';
   static const String verifyAccountWarning = 'verify_account_warning';
   static const String verify = 'verify';
@@ -47,6 +47,10 @@ class AppTranslationKeys {
   //forgot password
   static const String forgotPasswordMessage = 'forgot_password_message';
   static const String resetYourPassword = 'reset_your_password';
+
+  //email verification
+  static const String verifyYourEmail = 'verify_your_email';
+  static const String verifyEmailWarning = 'verify_email_warning';
 
   //home
   static const String search = 'search';

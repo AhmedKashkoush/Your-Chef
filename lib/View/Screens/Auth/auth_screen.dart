@@ -5,7 +5,7 @@ import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/View/Responsiveness/orientation_widget.dart';
 import 'package:your_chief/View/Screens/Auth/login_view.dart';
 import 'package:your_chief/View/Screens/Auth/register_view.dart';
-import 'package:your_chief/View/Widgets/title_widget.dart';
+import 'package:your_chief/View/Widgets/Texts/title_widget.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -71,7 +71,7 @@ class _AuthScreenPortrait extends StatelessWidget {
             height: 40,
           ),
           Image.asset(
-            AppImages.yourChief,
+            AppImages.yourChef,
             width: 124,
             height: 124,
           ),
@@ -122,7 +122,7 @@ class _AuthScreenLandscape extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(
-                        AppImages.yourChief,
+                        AppImages.yourChef,
                       ),
                       const SizedBox(
                         width: 40,
@@ -144,7 +144,7 @@ class _AuthScreenLandscape extends StatelessWidget {
                       height: 40,
                     ),
                     Image.asset(
-                      AppImages.yourChief,
+                      AppImages.yourChef,
                       width: 144,
                       height: 144,
                     ),

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Controllers/Auth/login_controller.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
-import 'package:your_chief/View/Widgets/custom_outlined_form_field.dart';
-import 'package:your_chief/View/Widgets/primary_button.dart';
-import 'package:your_chief/View/Widgets/social_auth_button.dart';
+import 'package:your_chief/View/Widgets/Buttons/primary_button.dart';
+import 'package:your_chief/View/Widgets/Buttons/social_auth_button.dart';
+import 'package:your_chief/View/Widgets/TextFields/custom_outlined_form_field.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -95,48 +94,16 @@ class LoginView extends StatelessWidget {
                 ),
                 SocialAuthButton(
                   text: AppTranslationKeys.loginGoogle.tr,
-                  icon: const Icon(
-                    Ionicons.logo_google,
-                    color: Colors.redAccent,
-                  ),
                   onPressed: controller.loginWithGoogle,
-                  textStyle: TextStyle(
-                    color: Colors.redAccent,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    primary: Colors.redAccent,
-                    side: BorderSide(color: Colors.redAccent),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                  ),
+                  type: SocialAuthButtonType.google,
                 ),
                 const SizedBox(
                   height: 8,
                 ),
                 SocialAuthButton(
                   text: AppTranslationKeys.loginFacebook.tr,
-                  icon: const Icon(
-                    Ionicons.logo_facebook,
-                    color: Colors.blueAccent,
-                  ),
                   onPressed: controller.loginWithFacebook,
-                  textStyle: TextStyle(
-                    color: Colors.blueAccent,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    primary: Colors.blueAccent,
-                    side: BorderSide(color: Colors.blueAccent),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                  ),
+                  type: SocialAuthButtonType.facebook,
                 ),
               ],
             ),

@@ -36,7 +36,7 @@ class AppTranslations extends Translations {
           AppTranslationKeys.continue_: 'Continue',
           AppTranslationKeys.camera: 'Camera',
           AppTranslationKeys.gallery: 'Gallery',
-          //verify account screen
+          //account verify account screen
           AppTranslationKeys.verifyYourAccount: 'Verify Your Account',
           AppTranslationKeys.verifyAccountWarning:
               'Make sure to write the sent code properly to verify your account',
@@ -53,6 +53,10 @@ class AppTranslations extends Translations {
           AppTranslationKeys.forgotPasswordMessage:
               'Type your email address to help us match your account and provide you with new password',
           AppTranslationKeys.resetYourPassword: 'Reset Your Password',
+          //email verify account screen
+          AppTranslationKeys.verifyYourEmail: 'Verify Your Email',
+          AppTranslationKeys.verifyEmailWarning:
+              'We sent you a code, Check your email and make sure to write the sent code properly to verify the email',
           //validation
           AppTranslationKeys.requiredField: 'Required Field',
           AppTranslationKeys.nameLength: 'Name must be at least 3 characters',
@@ -103,13 +107,17 @@ class AppTranslations extends Translations {
           AppTranslationKeys.continue_: 'استمر',
           AppTranslationKeys.camera: 'الكاميرا',
           AppTranslationKeys.gallery: 'المعرض',
-          //verify account screen
+          //account verify account screen
           AppTranslationKeys.verifyYourAccount: 'تأكيد حسابك',
           AppTranslationKeys.verifyAccountWarning:
               'تأكد من كتابة الكود المرسل بطريقة صحيحة لتأكيد حسابك',
           AppTranslationKeys.verify: 'تأكيد',
           AppTranslationKeys.haveNotReceiveCode: "ان لم تستلم اي كود اضغط",
           AppTranslationKeys.resend: 'اعادة الارسال',
+          //email verify account screen
+          AppTranslationKeys.verifyYourEmail: 'تأكيد بريدك الالكتروني',
+          AppTranslationKeys.verifyEmailWarning:
+              'لقد ارسلنا اليك كودا, تفقد بريدك الالكتروني و تأكد من كتابة الكود المرسل بطريقة صحيحة لتأكيد البريد',
           //verification complete screen
           AppTranslationKeys.congratulations: 'تهانينا',
           AppTranslationKeys.congratulatingMessage:

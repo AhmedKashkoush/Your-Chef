@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/View/Responsiveness/orientation_widget.dart';
-import 'package:your_chief/View/Widgets/primary_button.dart';
+import 'package:your_chief/View/Widgets/Buttons/primary_button.dart';
 
 import '../../../Core/Routing/route_names.dart';
 

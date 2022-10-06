@@ -9,11 +9,12 @@ import 'package:your_chief/View/Screens/Auth/add_profile_photo_screen.dart';
 import 'package:your_chief/View/Screens/Auth/auth_screen.dart';
 import 'package:your_chief/View/Screens/Auth/forgot_password_screen.dart';
 import 'package:your_chief/View/Screens/Auth/verify_account_screen.dart';
-import 'package:your_chief/View/Screens/Error/page_not_found_screen.dart';
+import 'package:your_chief/View/Screens/Auth/verify_email_screen.dart';
 import 'package:your_chief/View/Screens/Home/main_screen.dart';
 import 'package:your_chief/View/Screens/OnBoarding/onboarding_screen.dart';
 
 import '../../View/Screens/Auth/account_verified_screen.dart';
+import '../Bindings/Auth/verify_email_binding.dart';
 import '../Bindings/Home/main_screen_binding.dart';
 
 class AppRoutes {
@@ -71,13 +72,10 @@ class AppRoutes {
     ),
     GetPage(
       name: AppRouteNames.verifyEmail,
-      page: () => const AuthScreen(),
-    ),
-    GetPage(
-      name: AppRouteNames.error,
-      page: () => const PageNotFoundScreen(),
-      transition: Transition.upToDown,
-      curve: Curves.fastLinearToSlowEaseIn,
+      page: () => const VerifyEmailScreen(),
+      binding: VerifyEmailBinding(),
+      transition: Transition.rightToLeft,
+      curve: Curves.slowMiddle,
     ),
   ];
 }

@@ -6,7 +6,7 @@ import 'package:your_chief/Core/Global/current_user.dart';
 import 'package:your_chief/Core/Helpers/Web/api_helper.dart';
 import 'package:your_chief/Core/Utils/api_messages.dart';
 import 'package:your_chief/Model/Models/user_model.dart';
-import 'package:your_chief/Model/Repositories/Structure/auth_structure.dart';
+import 'package:your_chief/Model/Repository/Structure/auth_structure.dart';
 
 class AuthApi implements IAuthRepository {
   final ApiHelper _helper = ApiHelper();

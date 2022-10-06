@@ -4,12 +4,12 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Controllers/Home/main_screen_controller.dart';
 import 'package:your_chief/Core/Constants/app_colors.dart';
-import 'package:your_chief/Core/Constants/app_images.dart';
-import 'package:your_chief/View/Widgets/custom_main_bottom_bar.dart';
-import 'package:your_chief/View/Widgets/custom_search_bar.dart';
-import 'package:your_chief/View/Widgets/title_widget.dart';
+import 'package:your_chief/View/Widgets/BottomBars/custom_main_bottom_bar.dart';
+import 'package:your_chief/View/Widgets/Drawers/main_drawer.dart';
+import 'package:your_chief/View/Widgets/TextFields/custom_search_bar.dart';
+import 'package:your_chief/View/Widgets/Texts/title_widget.dart';
 
-import '../../Widgets/custom_profile_avatar.dart';
+import '../../Widgets/Avatars/custom_profile_avatar.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -19,32 +19,11 @@ class MainScreen extends StatelessWidget {
     return GetBuilder<MainScreenController>(builder: (controller) {
       return Scaffold(
         key: controller.homeKey,
-        drawer: SafeArea(
-          child: Drawer(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadiusDirectional.horizontal(
-                end: Radius.circular(24),
-              ),
-            ),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  DrawerHeader(
-                    //decoration: BoxDecoration(color: AppColors.primary,),
-                    child: SizedBox(
-                      height: 450,
-                      child: Center(
-                        child: Image.asset(
-                          AppImages.yourChief,
-                          height: 200,
-                        ),
-                      ),
-                    ),
-                  ),
-                ]),
-          ),
+        drawer: const MainDrawer(
+          currentPage: MainDrawerPage.main,
         ),
         body: NestedScrollView(
+          floatHeaderSlivers: true,
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
               SliverAppBar(
@@ -60,9 +39,11 @@ class MainScreen extends StatelessWidget {
                   onPressed: controller.openDrawer,
                 ),
                 foregroundColor: AppColors.appBarIconColors,
-                snap: true,
-                floating: true,
-                pinned: true,
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                elevation: 0,
+                //snap: true,
+                //floating: true,
+                //pinned: true,
                 actions: [
                   IconButton(
                     icon: Badge(
@@ -94,43 +75,59 @@ class MainScreen extends StatelessWidget {
                       //   controller.currentUser!.image!,
                       // ),
                       // image: CachedNetworkImageProvider(
-                      //   "http://192.168.1.6:8000/${controller.currentUser!.image!}",
+                      //   "${controller.currentUser!.image!.replaceFirst('http://127.0.0.1:8000', ApiLinks.host)}",
                       //   headers: ApiHeaders.authHeaders,
                       //   //cacheKey: controller.currentUser!.image!,
                       // ),
                     ),
                   ),
                 ],
-                bottom: PreferredSize(
-                  preferredSize: Size.fromHeight(kToolbarHeight),
-                  child: const CustomSearchBar(
-                    hint: 'Search',
-                    hintStyle: const TextStyle(
-                      color: AppColors.appBarIconColors,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    prefix: Icon(
-                      Ionicons.search_outline,
-                      color: AppColors.appBarIconColors,
-                    ),
+                // bottom: PreferredSize(
+                //   preferredSize: Size.fromHeight(kToolbarHeight),
+                //   child: Expanded(
+                //     child: const CustomSearchBar(
+                //       hint: 'Search',
+                //       hintStyle: const TextStyle(
+                //         color: AppColors.appBarIconColors,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //       prefix: Icon(
+                //         Ionicons.search_outline,
+                //         color: AppColors.appBarIconColors,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+              ),
+              SliverToBoxAdapter(
+                child: const CustomSearchBar(
+                  hint: 'Search',
+                  hintStyle: const TextStyle(
+                    color: AppColors.appBarIconColors,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  prefix: Icon(
+                    Ionicons.search_outline,
+                    color: AppColors.appBarIconColors,
                   ),
                 ),
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-              ),
-              // PreferredSize(
-              //   preferredSize: Size.fromHeight(kToolbarHeight),
-              //   child: const CustomSearchBar(
-              //     hint: 'Search',
-              //     hintStyle: const TextStyle(
-              //       color: AppColors.appBarIconColors,
-              //       fontWeight: FontWeight.bold,
-              //     ),
-              //     prefix: Icon(
-              //       Ionicons.search_outline,
-              //       color: AppColors.appBarIconColors,
+              )
+              // SliverAppBar(
+              //   title: Expanded(
+              //     child: const CustomSearchBar(
+              //       hint: 'Search',
+              //       hintStyle: const TextStyle(
+              //         color: AppColors.appBarIconColors,
+              //         fontWeight: FontWeight.bold,
+              //       ),
+              //       prefix: Icon(
+              //         Ionicons.search_outline,
+              //         color: AppColors.appBarIconColors,
+              //       ),
               //     ),
               //   ),
+              //   backgroundColor: Colors.transparent,
+              //   elevation: 0,
               // ),
             ];
           },

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:your_chief/Model/Repositories/Structure/auth_structure.dart';
+import 'package:your_chief/Model/Repository/Structure/auth_structure.dart';
 
 class AuthRepository implements IAuthRepository {
   final IAuthRepository repository;

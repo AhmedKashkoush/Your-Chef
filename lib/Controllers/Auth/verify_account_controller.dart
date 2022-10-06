@@ -5,10 +5,10 @@ import 'package:get/get.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/Core/Utils/utils.dart';
+import 'package:your_chief/Model/Repository/Repositories/auth_repository.dart';
 import 'package:your_chief/Model/Web%20Services/auth_api.dart';
 
 import '../../Core/Utils/api_messages.dart';
-import '../../Model/Repositories/Repositories/auth_repository.dart';
 
 class VerifyAccountController extends GetxController {
   dynamic args = Get.arguments;
@@ -83,23 +83,24 @@ class VerifyAccountController extends GetxController {
           borderRadius: 15,
         );
       } else {
-        switch (args['page_type']) {
-          case VerificationFor.account:
-            Get.offNamed(AppRouteNames.verificationComplete);
-            break;
-          case VerificationFor.resetPassword:
-            Utils.showSnackBarMessage(
-              AppTranslationKeys.passwordSet.tr,
-              context,
-              messageType: MessageType.success,
-              borderRadius: 15,
-            );
-            Get.offNamed(AppRouteNames.auth);
-            break;
-          case VerificationFor.changePassword:
-            Get.offNamed(AppRouteNames.verificationComplete);
-            break;
-        }
+        Get.offNamed(AppRouteNames.verificationComplete);
+        // switch (args['page_type']) {
+        //   case VerificationFor.account:
+        //     Get.offNamed(AppRouteNames.verificationComplete);
+        //     break;
+        //   case VerificationFor.resetPassword:
+        //     Utils.showSnackBarMessage(
+        //       AppTranslationKeys.passwordSet.tr,
+        //       context,
+        //       messageType: MessageType.success,
+        //       borderRadius: 15,
+        //     );
+        //     Get.offNamed(AppRouteNames.auth);
+        //     break;
+        //   case VerificationFor.changePassword:
+        //     Get.offNamed(AppRouteNames.verificationComplete);
+        //     break;
+        // }
       }
     } else {
       Utils.showSnackBarMessage(

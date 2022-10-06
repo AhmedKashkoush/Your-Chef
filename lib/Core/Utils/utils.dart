@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:your_chief/View/Widgets/pizza_loading.dart';
+import 'package:your_chief/View/Widgets/Loading/pizza_loading.dart';
 
 class Utils {
   static void showLoadingDialog(String title) {

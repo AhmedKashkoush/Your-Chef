@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Controllers/Auth/add_profile_photo_controller.dart';
-import 'package:your_chief/View/Widgets/outlined_primary_button.dart';
-import 'package:your_chief/View/Widgets/primary_button.dart';
+import 'package:your_chief/View/Widgets/Buttons/outlined_primary_button.dart';
+import 'package:your_chief/View/Widgets/Buttons/primary_button.dart';
 
 import '../../../Core/Constants/app_translation_keys.dart';
-import '../../Widgets/custom_bordered_avatar.dart';
+import '../../Widgets/Avatars/custom_bordered_avatar.dart';
 
 class AddProfilePhotoScreen extends StatelessWidget {
   const AddProfilePhotoScreen({Key? key}) : super(key: key);

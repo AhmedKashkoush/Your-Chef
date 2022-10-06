@@ -59,6 +59,7 @@ class CustomSearchBar extends StatelessWidget {
             suffixIcon: suffix,
             filled: true,
             fillColor: fillColor ?? Colors.grey.withOpacity(0.5),
+            contentPadding: const EdgeInsets.symmetric(vertical: 0),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
               borderSide: BorderSide.none,

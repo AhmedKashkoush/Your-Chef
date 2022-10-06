@@ -4,8 +4,8 @@ import 'package:your_chief/Controllers/Auth/forgot_password_controller.dart';
 import 'package:your_chief/Core/Constants/app_images.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/View/Responsiveness/orientation_widget.dart';
-import 'package:your_chief/View/Widgets/custom_outlined_form_field.dart';
-import 'package:your_chief/View/Widgets/primary_button.dart';
+import 'package:your_chief/View/Widgets/Buttons/primary_button.dart';
+import 'package:your_chief/View/Widgets/TextFields/custom_outlined_form_field.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
@@ -48,7 +48,7 @@ class _ForgotPasswordScreenPortrait extends StatelessWidget {
               height: 20,
             ),
             Image.asset(
-              AppImages.yourChiefForgot,
+              AppImages.yourChefForgot,
               width: 280,
               height: 280,
             ),
@@ -100,7 +100,7 @@ class _ForgotPasswordScreenLandscape extends StatelessWidget {
         child: Row(
           children: [
             Image.asset(
-              AppImages.yourChiefForgot,
+              AppImages.yourChefForgot,
               width: 280,
               height: 280,
             ),

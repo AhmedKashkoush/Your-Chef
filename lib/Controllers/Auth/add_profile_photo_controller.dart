@@ -9,7 +9,7 @@ import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/Core/Utils/api_messages.dart';
 import 'package:your_chief/Core/Utils/utils.dart';
-import 'package:your_chief/Model/Repositories/Repositories/auth_repository.dart';
+import 'package:your_chief/Model/Repository/Repositories/auth_repository.dart';
 import 'package:your_chief/Model/Web%20Services/auth_api.dart';
 
 class AddProfilePhotoController extends GetxController {
@@ -97,7 +97,7 @@ class AddProfilePhotoController extends GetxController {
             borderRadius: 15,
           );
         } else {
-          args['page_type'] = VerificationFor.account;
+          //args['page_type'] = VerificationFor.account;
           Get.offNamed(AppRouteNames.registerVerify, arguments: args);
         }
       } else {
