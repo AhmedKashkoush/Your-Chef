@@ -108,10 +108,18 @@ class MainDrawer extends StatelessWidget {
                       ),
                       onTap: () {},
                       horizontalTitleGap: 18,
-                      iconColor: Theme.of(context).primaryColor,
-                      selectedColor: Theme.of(context).scaffoldBackgroundColor,
+                      iconColor: Theme.of(context)
+                          .colorScheme
+                          .secondary
+                          .withOpacity(0.8),
+                      textColor: Theme.of(context)
+                          .colorScheme
+                          .secondary
+                          .withOpacity(0.8),
+                      selectedColor: Theme.of(context)
+                          .primaryColor, //Theme.of(context).scaffoldBackgroundColor,
                       selectedTileColor:
-                          Theme.of(context).primaryColor.withOpacity(0.6),
+                          Theme.of(context).primaryColor.withOpacity(0.4),
                       selected: _pages[index]['type'] == currentPage,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadiusDirectional.only(

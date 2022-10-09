@@ -1,8 +1,10 @@
 import 'package:badges/badges.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Controllers/Home/main_screen_controller.dart';
+import 'package:your_chief/Core/Constants/api_headers.dart';
 import 'package:your_chief/Core/Constants/app_colors.dart';
 import 'package:your_chief/View/Widgets/BottomBars/custom_main_bottom_bar.dart';
 import 'package:your_chief/View/Widgets/Drawers/main_drawer.dart';
@@ -71,14 +73,13 @@ class MainScreen extends StatelessWidget {
                     child: CustomProfileAvatar(
                       name: controller.currentUser!.name,
                       color: AppColors.primary,
-                      // image: AssetImage(
-                      //   controller.currentUser!.image!,
-                      // ),
-                      // image: CachedNetworkImageProvider(
-                      //   "${controller.currentUser!.image!.replaceFirst('http://127.0.0.1:8000', ApiLinks.host)}",
-                      //   headers: ApiHeaders.authHeaders,
-                      //   //cacheKey: controller.currentUser!.image!,
-                      // ),
+                      image: controller.currentUser!.image == null
+                          ? null
+                          : CachedNetworkImageProvider(
+                              "${controller.currentUser!.image!}",
+                              headers: ApiHeaders.authHeaders,
+                              cacheKey: controller.currentUser!.image!,
+                            ),
                     ),
                   ),
                 ],

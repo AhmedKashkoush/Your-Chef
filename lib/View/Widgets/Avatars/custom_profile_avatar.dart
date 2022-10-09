@@ -24,7 +24,7 @@ class CustomProfileAvatar extends StatelessWidget {
     });
     return CircleAvatar(
       radius: radius,
-      backgroundColor: color,
+      backgroundColor: image == null ? color : Colors.grey.shade500,
       foregroundImage: image,
       child: image != null
           ? null
