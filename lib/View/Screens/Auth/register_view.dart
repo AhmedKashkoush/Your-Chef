@@ -73,7 +73,7 @@ class RegisterView extends StatelessWidget {
                     icon: controller.isPasswordHidden
                         ? Icon(Icons.visibility)
                         : Icon(Icons.visibility_off),
-                    onPressed: controller.togglePasswordVisiblity,
+                    onPressed: controller.togglePasswordVisibility,
                   ),
                   controller: controller.passwordController,
                   validator: controller.paswordValidator,
@@ -89,7 +89,7 @@ class RegisterView extends StatelessWidget {
                     icon: controller.isConfirmHidden
                         ? Icon(Icons.visibility)
                         : Icon(Icons.visibility_off),
-                    onPressed: controller.toggleConfirmVisiblity,
+                    onPressed: controller.toggleConfirmVisibility,
                   ),
                   controller: controller.confirmController,
                   validator: controller.confirmValidator,

@@ -40,7 +40,7 @@ class LoginView extends StatelessWidget {
                     icon: controller.isPasswordHidden
                         ? Icon(Icons.visibility)
                         : Icon(Icons.visibility_off),
-                    onPressed: controller.togglePasswordVisiblity,
+                    onPressed: controller.togglePasswordVisibility,
                   ),
                   controller: controller.passwordController,
                   onChanged: controller.onFieldChanged,

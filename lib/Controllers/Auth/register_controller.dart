@@ -42,12 +42,12 @@ class RegisterController extends GetxController {
     super.dispose();
   }
 
-  void togglePasswordVisiblity() {
+  void togglePasswordVisibility() {
     _isPasswordHidden = !_isPasswordHidden;
     update();
   }
 
-  void toggleConfirmVisiblity() {
+  void toggleConfirmVisibility() {
     _isConfirmHidden = !_isConfirmHidden;
     update();
   }

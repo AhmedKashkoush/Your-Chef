@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:otp_text_field/otp_text_field.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/Core/Utils/utils.dart';
@@ -13,6 +14,7 @@ import '../../Core/Utils/api_messages.dart';
 class VerifyAccountController extends GetxController {
   dynamic args = Get.arguments;
   final int otpLength = 5;
+  final OtpFieldController otpController = OtpFieldController();
   bool canVerify = false;
   bool canSendOtp = true;
   late Timer _timer;

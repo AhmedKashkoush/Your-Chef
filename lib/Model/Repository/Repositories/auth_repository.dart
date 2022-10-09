@@ -41,4 +41,14 @@ class AuthRepository implements IAuthRepository {
   Future resetPassword(String email, String newPassword) async {
     return await repository.resetPassword(email, newPassword);
   }
+
+  @override
+  Future sendOtpMail(String email) async {
+    return await repository.sendOtpMail(email);
+  }
+
+  @override
+  Future verifyOtpMail(String email, String code) async {
+    return await repository.verifyOtpMail(email, code);
+  }
 }

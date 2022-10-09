@@ -31,7 +31,7 @@ class LoginController extends GetxController {
     super.dispose();
   }
 
-  void togglePasswordVisiblity() {
+  void togglePasswordVisibility() {
     _isPasswordHidden = !_isPasswordHidden;
     update();
   }

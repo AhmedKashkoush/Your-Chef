@@ -11,4 +11,6 @@ abstract class IAuthRepository {
   Future verifyOtp(String email, String code);
   Future resetPassword(String email, String newPassword);
   Future changePassword(String email, String newPassword);
+  Future sendOtpMail(String email);
+  Future verifyOtpMail(String email, String code);
 }

@@ -12,9 +12,9 @@ class AccountVerifiedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: OrientationWidget(
-        portrait: const _AccountVerifiedScreenPortrait(),
-        landscape: const _AccountVerifiedScreenLandscape(),
+      body: const OrientationWidget(
+        portrait: _AccountVerifiedScreenPortrait(),
+        landscape: _AccountVerifiedScreenLandscape(),
       ),
     );
   }

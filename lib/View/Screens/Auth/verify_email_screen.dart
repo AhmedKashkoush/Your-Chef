@@ -68,6 +68,7 @@ class _VerifyEmailScreenPortrait extends StatelessWidget {
               padding: const EdgeInsets.all(26.0),
               child: OTPTextField(
                 length: controller.otpLength,
+                controller: controller.otpController,
                 width: MediaQuery.of(context).size.width,
                 otpFieldStyle: OtpFieldStyle(
                   borderColor: Theme.of(context).primaryColor,
@@ -135,7 +136,7 @@ class _VerifyEmailScreenLandscape extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(26.0),
+      padding: const EdgeInsets.symmetric(horizontal: 26.0, vertical: 10),
       child: GetBuilder<VerifyEmailController>(builder: (controller) {
         return Row(
           children: [
@@ -191,6 +192,7 @@ class _VerifyEmailScreenLandscape extends StatelessWidget {
                     ),
                     child: OTPTextField(
                       length: controller.otpLength,
+                      controller: controller.otpController,
                       width: MediaQuery.of(context).size.width,
                       otpFieldStyle: OtpFieldStyle(
                         borderColor: Theme.of(context).primaryColor,

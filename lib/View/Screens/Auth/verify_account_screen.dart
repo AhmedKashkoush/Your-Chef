@@ -64,6 +64,7 @@ class _VerifyAccountScreenPortrait extends StatelessWidget {
               padding: const EdgeInsets.all(26.0),
               child: OTPTextField(
                 length: controller.otpLength,
+                controller: controller.otpController,
                 width: MediaQuery.of(context).size.width,
                 otpFieldStyle: OtpFieldStyle(
                   borderColor: Theme.of(context).primaryColor,
@@ -189,6 +190,7 @@ class _VerifyAccountScreenLandscape extends StatelessWidget {
                     ),
                     child: OTPTextField(
                       length: controller.otpLength,
+                      controller: controller.otpController,
                       width: MediaQuery.of(context).size.width,
                       otpFieldStyle: OtpFieldStyle(
                         borderColor: Theme.of(context).primaryColor,

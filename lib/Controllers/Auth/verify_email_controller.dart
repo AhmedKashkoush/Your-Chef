@@ -2,7 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:otp_text_field/otp_text_field.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
+import 'package:your_chief/Core/Utils/api_messages.dart';
+import 'package:your_chief/Model/Repository/Repositories/auth_repository.dart';
+import 'package:your_chief/Model/Web%20Services/auth_api.dart';
 
 import '../../Core/Constants/app_translation_keys.dart';
 import '../../Core/Utils/utils.dart';
@@ -10,6 +14,7 @@ import '../../Core/Utils/utils.dart';
 class VerifyEmailController extends GetxController {
   dynamic args = Get.arguments;
   final int otpLength = 5;
+  final OtpFieldController otpController = OtpFieldController();
   bool canVerify = false;
   bool canSendOtp = true;
   late Timer _timer;
@@ -19,7 +24,7 @@ class VerifyEmailController extends GetxController {
 
   String _otp = '';
 
-  //final AuthRepository _otpApi = AuthRepository(AuthApi());
+  final AuthRepository _otpApi = AuthRepository(AuthApi());
 
   @override
   void onInit() {
@@ -50,6 +55,9 @@ class VerifyEmailController extends GetxController {
 
   void otpOnChanged(String otp) {
     _otp = otp;
+    // int pos = otp.characters.length - 1;
+    // String character = otp.characters.elementAt(pos);
+    // otpController.setValue(character, pos);
     if (otp.length == otpLength) {
       if (!canVerify) {
         canVerify = true;
@@ -65,42 +73,42 @@ class VerifyEmailController extends GetxController {
     if (_isLoading) return;
     if (!_isLoading) Utils.showLoadingDialog(AppTranslationKeys.pleaseWait.tr);
     _isLoading = true;
-    // dynamic _data = await _otpApi.verifyOtp(
-    //   args['email'],
-    //   _otp,
-    // );
+    dynamic _data = await _otpApi.verifyOtpMail(
+      args['email'],
+      _otp,
+    );
     Get.back();
     _isLoading = false;
-    Get.offNamed(AppRouteNames.resetPassword);
-    // if (_data != null) {
-    //   if (_data is ApiMessages) {
-    //     Utils.showSnackBarMessage(
-    //       _data.message,
-    //       context,
-    //       messageType: MessageType.error,
-    //       borderRadius: 15,
-    //     );
-    //   } else {
-    //     Get.offNamed(AppRouteNames.resetPassword);
-    //   }
-    // } else {
-    //   Utils.showSnackBarMessage(
-    //     AppTranslationKeys.somethingWentWrong.tr,
-    //     context,
-    //     messageType: MessageType.error,
-    //     borderRadius: 15,
-    //   );
-    // }
+    // Get.offNamed(AppRouteNames.resetPassword);
+    if (_data != null) {
+      if (_data is ApiMessages) {
+        Utils.showSnackBarMessage(
+          _data.message,
+          context,
+          messageType: MessageType.error,
+          borderRadius: 15,
+        );
+      } else {
+        Get.offNamed(AppRouteNames.resetPassword);
+      }
+    } else {
+      Utils.showSnackBarMessage(
+        AppTranslationKeys.somethingWentWrong.tr,
+        context,
+        messageType: MessageType.error,
+        borderRadius: 15,
+      );
+    }
   }
 
   void sendOtp() async {
     _setTimer(2);
-    // dynamic _data = await _otpApi.sendOtp(args['email']);
-    // if (_data != null) {
-    //   if (_data is ApiMessages) {
-    //     Get.snackbar('error', _data.message);
-    //   }
-    // }
+    dynamic _data = await _otpApi.sendOtpMail(args['email']);
+    if (_data != null) {
+      if (_data is ApiMessages) {
+        Get.snackbar('error', _data.message);
+      }
+    }
   }
 
   Future<bool> backConfirm() async {

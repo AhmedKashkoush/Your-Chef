@@ -57,6 +57,10 @@ class AppTranslations extends Translations {
           AppTranslationKeys.verifyYourEmail: 'Verify Your Email',
           AppTranslationKeys.verifyEmailWarning:
               'We sent you a code, Check your email and make sure to write the sent code properly to verify the email',
+          //reset password screen
+          AppTranslationKeys.typeYourNewPassword: 'Type Your New Password',
+          AppTranslationKeys.newPassword: 'New password',
+          AppTranslationKeys.confirm: 'Confirm',
           //validation
           AppTranslationKeys.requiredField: 'Required Field',
           AppTranslationKeys.nameLength: 'Name must be at least 3 characters',
@@ -126,6 +130,10 @@ class AppTranslations extends Translations {
           //forgot password screen
           AppTranslationKeys.forgotPasswordMessage:
               'اكتب بريدك الالكتروني لتساعدنا على الوصول الى حسابك و توفير كلمة المرور الجديدة لك',
+          //reset password screen
+          AppTranslationKeys.typeYourNewPassword: 'اكتب كلمة مرورك الجديدة',
+          AppTranslationKeys.newPassword: 'كلمة المرور الجديدة',
+          AppTranslationKeys.confirm: 'تأكيد',
           AppTranslationKeys.resetYourPassword: 'اعادة تعيين كلمة مرورك',
           //validation
           AppTranslationKeys.requiredField: 'حقل مطلوب',

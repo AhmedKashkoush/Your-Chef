@@ -8,4 +8,6 @@ class ApiLinks {
   static const String allProfilePhotos = '$base/users/profile-photo/all';
   static const String sendOtp = '$base/users/send-code';
   static const String verifyOtp = '$base/users/verify';
+  static const String sendOtpMail = '$base/users/send-code-mail';
+  static const String verifyOtpMail = '$base/users/verify-email';
 }

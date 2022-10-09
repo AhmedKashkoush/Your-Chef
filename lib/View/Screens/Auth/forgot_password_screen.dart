@@ -17,9 +17,9 @@ class ForgotPasswordScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: OrientationWidget(
-        portrait: const _ForgotPasswordScreenPortrait(),
-        landscape: const _ForgotPasswordScreenLandscape(),
+      body: const OrientationWidget(
+        portrait: _ForgotPasswordScreenPortrait(),
+        landscape: _ForgotPasswordScreenLandscape(),
       ),
     );
   }

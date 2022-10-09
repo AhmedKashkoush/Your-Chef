@@ -140,4 +140,45 @@ class AuthApi implements IAuthRepository {
   Future resetPassword(String email, String newPassword) async {
     return null;
   }
+
+  @override
+  Future sendOtpMail(String email) async {
+    final Map<String, dynamic> body = {
+      ApiBodyKeys.email: email,
+    };
+    dynamic data = await _helper.postData(
+      url: ApiLinks.sendOtpMail,
+      body: body,
+      headers: ApiHeaders.authHeaders,
+    );
+    if (data != null) {
+      if (data['status'] == 'success') {
+        return 'code sent';
+      } else {
+        return ApiMessages(data['msg']);
+      }
+    }
+    return null;
+  }
+
+  @override
+  Future verifyOtpMail(String email, String code) async {
+    final Map<String, dynamic> body = {
+      ApiBodyKeys.email: email,
+      ApiBodyKeys.code: code,
+    };
+    dynamic data = await _helper.postData(
+      url: ApiLinks.verifyOtpMail,
+      body: body,
+      headers: ApiHeaders.authHeaders,
+    );
+    if (data != null) {
+      if (data['status'] == 'success') {
+        return 'Code matched';
+      } else {
+        return ApiMessages(data['msg']);
+      }
+    }
+    return null;
+  }
 }

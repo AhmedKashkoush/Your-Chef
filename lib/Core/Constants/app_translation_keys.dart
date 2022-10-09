@@ -52,6 +52,11 @@ class AppTranslationKeys {
   static const String verifyYourEmail = 'verify_your_email';
   static const String verifyEmailWarning = 'verify_email_warning';
 
+  //reset password
+  static const String typeYourNewPassword = 'type_your_new_password';
+  static const String newPassword = 'new_password';
+  static const String confirm = 'confirm';
+
   //home
   static const String search = 'search';
   static const String home = 'home';
