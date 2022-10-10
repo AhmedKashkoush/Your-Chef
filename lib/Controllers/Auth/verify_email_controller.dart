@@ -89,7 +89,10 @@ class VerifyEmailController extends GetxController {
           borderRadius: 15,
         );
       } else {
-        Get.offNamed(AppRouteNames.resetPassword);
+        Get.offNamed(
+          AppRouteNames.resetPassword,
+          arguments: args,
+        );
       }
     } else {
       Utils.showSnackBarMessage(

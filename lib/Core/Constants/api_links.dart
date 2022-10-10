@@ -10,4 +10,5 @@ class ApiLinks {
   static const String verifyOtp = '$base/users/verify';
   static const String sendOtpMail = '$base/users/send-code-mail';
   static const String verifyOtpMail = '$base/users/verify-email';
+  static const String resetPassword = '$base/users/reset-password';
 }

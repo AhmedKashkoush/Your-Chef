@@ -17,4 +17,7 @@ class AppColors {
 
   static const Color badgeColor = Color(0xFFF32E2E);
   static const Color appBarIconColors = Color(0xFF999999);
+
+  static const Color onlineDotColor = Color(0xFF73D470);
+  static const Color offlineDotColor = Color(0xFF9A9696);
 }

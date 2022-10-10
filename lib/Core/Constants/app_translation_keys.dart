@@ -72,7 +72,7 @@ class AppTranslationKeys {
 
   //messages
   static const String loginedSuccessfully = 'logined_successfully';
-  static const String passwordSet = 'Password set';
+  static const String passwordSet = 'password_set';
 
   //errors
   static const String pageNotFound = 'page_not_found';

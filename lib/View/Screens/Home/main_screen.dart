@@ -6,6 +6,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Controllers/Home/main_screen_controller.dart';
 import 'package:your_chief/Core/Constants/api_headers.dart';
 import 'package:your_chief/Core/Constants/app_colors.dart';
+import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/View/Widgets/BottomBars/custom_main_bottom_bar.dart';
 import 'package:your_chief/View/Widgets/Drawers/main_drawer.dart';
 import 'package:your_chief/View/Widgets/TextFields/custom_search_bar.dart';
@@ -73,6 +74,7 @@ class MainScreen extends StatelessWidget {
                     child: CustomProfileAvatar(
                       name: controller.currentUser!.name,
                       color: AppColors.primary,
+                      isOnline: true,
                       image: controller.currentUser!.image == null
                           ? null
                           : CachedNetworkImageProvider(
@@ -101,8 +103,8 @@ class MainScreen extends StatelessWidget {
                 // ),
               ),
               SliverToBoxAdapter(
-                child: const CustomSearchBar(
-                  hint: 'Search',
+                child: CustomSearchBar(
+                  hint: AppTranslationKeys.search.tr,
                   hintStyle: const TextStyle(
                     color: AppColors.appBarIconColors,
                     fontWeight: FontWeight.bold,

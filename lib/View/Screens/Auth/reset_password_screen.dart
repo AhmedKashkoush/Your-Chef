@@ -85,7 +85,7 @@ class _ResetPasswordScreenPortrait extends StatelessWidget {
               onPressed: !controller.isReadyToConfirm
                   ? null
                   : () {
-                      //controller.validate(context);
+                      controller.validate(context);
                     },
             ),
           ],

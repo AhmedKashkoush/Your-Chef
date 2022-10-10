@@ -61,6 +61,8 @@ class AppTranslations extends Translations {
           AppTranslationKeys.typeYourNewPassword: 'Type Your New Password',
           AppTranslationKeys.newPassword: 'New password',
           AppTranslationKeys.confirm: 'Confirm',
+          //home screen
+          AppTranslationKeys.search: 'Search',
           //validation
           AppTranslationKeys.requiredField: 'Required Field',
           AppTranslationKeys.nameLength: 'Name must be at least 3 characters',
@@ -135,6 +137,8 @@ class AppTranslations extends Translations {
           AppTranslationKeys.newPassword: 'كلمة المرور الجديدة',
           AppTranslationKeys.confirm: 'تأكيد',
           AppTranslationKeys.resetYourPassword: 'اعادة تعيين كلمة مرورك',
+          //home screen
+          AppTranslationKeys.search: 'بحث',
           //validation
           AppTranslationKeys.requiredField: 'حقل مطلوب',
           AppTranslationKeys.nameLength:

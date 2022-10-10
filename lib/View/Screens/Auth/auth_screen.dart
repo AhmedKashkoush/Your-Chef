@@ -32,6 +32,7 @@ class AuthScreen extends StatelessWidget {
       //         String languageCode = 'en';
       //         if (Get.locale != Locale('ar')) languageCode = 'ar';
       //         Get.updateLocale(Locale(languageCode));
+      //         CurrentLocale.setLocale(Locale(languageCode));
       //       },
       //       icon: Text(Get.locale!.languageCode),
       //     )
