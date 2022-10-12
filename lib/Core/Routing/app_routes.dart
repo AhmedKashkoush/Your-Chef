@@ -5,6 +5,7 @@ import 'package:your_chief/Core/Bindings/Auth/auth_bindings.dart';
 import 'package:your_chief/Core/Bindings/Auth/forgot_password_binding.dart';
 import 'package:your_chief/Core/Bindings/Auth/reset_password_binding.dart';
 import 'package:your_chief/Core/Bindings/Auth/verify_account_binding.dart';
+import 'package:your_chief/Core/Bindings/Home/search_binding.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/View/Screens/Auth/add_profile_photo_screen.dart';
 import 'package:your_chief/View/Screens/Auth/auth_screen.dart';
@@ -13,6 +14,7 @@ import 'package:your_chief/View/Screens/Auth/reset_password_screen.dart';
 import 'package:your_chief/View/Screens/Auth/verify_account_screen.dart';
 import 'package:your_chief/View/Screens/Auth/verify_email_screen.dart';
 import 'package:your_chief/View/Screens/Home/main_screen.dart';
+import 'package:your_chief/View/Screens/Home/search_screen.dart';
 import 'package:your_chief/View/Screens/OnBoarding/onboarding_screen.dart';
 
 import '../../View/Screens/Auth/account_verified_screen.dart';
@@ -67,6 +69,15 @@ class AppRoutes {
       binding: MainScreenBinding(),
       transition: Transition.fade,
       curve: Curves.slowMiddle,
+    ),
+    GetPage(
+      name: AppRouteNames.homeSearch,
+      page: () => const SearchScreen(),
+      binding: SearchBinding(),
+      transition: Transition.fade,
+      transitionDuration: const Duration(milliseconds: 700),
+      opaque: false,
+      curve: Curves.fastLinearToSlowEaseIn,
     ),
     GetPage(
       name: AppRouteNames.verifyEmail,

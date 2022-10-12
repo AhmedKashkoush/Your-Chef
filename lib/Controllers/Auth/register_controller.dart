@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/Core/Utils/api_messages.dart';
 import 'package:your_chief/Core/Utils/utils.dart';
@@ -18,11 +19,25 @@ class RegisterController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final List<String> genders = [
+    AppTranslationKeys.male,
+    AppTranslationKeys.female,
+  ];
+  final List<IconData> genderIcons = [
+    Ionicons.male_outline,
+    Ionicons.female_outline,
+  ];
   final Validation _validation = Validation();
   bool _isPasswordHidden = true;
   bool _isConfirmHidden = true;
   bool get isPasswordHidden => _isPasswordHidden;
   bool get isConfirmHidden => _isConfirmHidden;
+
+  String? _gender;
+  String? get gender => _gender;
+
+  IconData _genderIcon = Ionicons.male_female_outline;
+  IconData get genderIcon => _genderIcon;
 
   Map<String, dynamic> _args = {};
   Map<String, dynamic> get args => _args;
@@ -52,9 +67,22 @@ class RegisterController extends GetxController {
     update();
   }
 
+  void onGenderChanged(String? value) {
+    _gender = value;
+    int index = genders.indexOf(_gender!);
+    _genderIcon = genderIcons[index];
+    update();
+  }
+
   String? nameValidator(String? name) {
-    if (name!.isEmpty) return _validation.required?.tr;
-    if (name.length < 3) return _validation.name?.tr;
+    if (name!.trim().isEmpty) return _validation.required?.tr;
+    if (name.trim().length < 3) return _validation.name?.tr;
+    return null;
+  }
+
+  String? genderValidator(String? gender) {
+    if (gender == null) return _validation.required?.tr;
+    if (gender.isEmpty) return _validation.required?.tr;
     return null;
   }
 
@@ -87,7 +115,9 @@ class RegisterController extends GetxController {
     if (_isLoading) return;
     bool isValid = formKey.currentState!.validate();
     if (isValid) {
-      args['name'] = '${fnameController.text} ${lnameController.text}';
+      args['name'] =
+          '${fnameController.text.trim()} ${lnameController.text.trim()}';
+      args['gender'] = gender == AppTranslationKeys.male ? 1 : 2;
       args['phone'] = '${phoneController.text}';
       args['email'] = '${emailController.text}';
       args['password'] = '${passwordController.text}';
@@ -97,6 +127,7 @@ class RegisterController extends GetxController {
       _isLoading = true;
       dynamic _data = await _registerApi.register(
         args['name'].trim(),
+        args['gender'],
         args['phone'].trim(),
         args['email'].trim(),
         args['password'].trim(),

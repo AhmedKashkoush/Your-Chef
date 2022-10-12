@@ -103,15 +103,22 @@ class MainScreen extends StatelessWidget {
                 // ),
               ),
               SliverToBoxAdapter(
-                child: CustomSearchBar(
-                  hint: AppTranslationKeys.search.tr,
-                  hintStyle: const TextStyle(
-                    color: AppColors.appBarIconColors,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  prefix: Icon(
-                    Ionicons.search_outline,
-                    color: AppColors.appBarIconColors,
+                child: Hero(
+                  tag: 'home search',
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: CustomSearchBar(
+                      hint: AppTranslationKeys.search.tr,
+                      hintStyle: const TextStyle(
+                        color: AppColors.appBarIconColors,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      onTap: controller.onSearchTap,
+                      prefix: Icon(
+                        Ionicons.search_outline,
+                        color: AppColors.appBarIconColors,
+                      ),
+                    ),
                   ),
                 ),
               )

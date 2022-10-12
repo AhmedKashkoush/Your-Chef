@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_chief/Core/Global/current_user.dart';
+import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/Model/Models/user_model.dart';
 
 class MainScreenController extends GetxController {
@@ -30,5 +31,9 @@ class MainScreenController extends GetxController {
   void changePage(int index) {
     _currentPage = index;
     update();
+  }
+
+  void onSearchTap() {
+    Get.toNamed(AppRouteNames.homeSearch);
   }
 }

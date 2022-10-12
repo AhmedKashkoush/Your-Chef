@@ -63,6 +63,10 @@ class AppTranslations extends Translations {
           AppTranslationKeys.confirm: 'Confirm',
           //home screen
           AppTranslationKeys.search: 'Search',
+          //lists and categories
+          AppTranslationKeys.gender: 'Gender',
+          AppTranslationKeys.male: 'Male',
+          AppTranslationKeys.female: 'Female',
           //validation
           AppTranslationKeys.requiredField: 'Required Field',
           AppTranslationKeys.nameLength: 'Name must be at least 3 characters',
@@ -139,6 +143,10 @@ class AppTranslations extends Translations {
           AppTranslationKeys.resetYourPassword: 'اعادة تعيين كلمة مرورك',
           //home screen
           AppTranslationKeys.search: 'بحث',
+          //lists and categories
+          AppTranslationKeys.gender: 'النوع',
+          AppTranslationKeys.male: 'ذكر',
+          AppTranslationKeys.female: 'انثى',
           //validation
           AppTranslationKeys.requiredField: 'حقل مطلوب',
           AppTranslationKeys.nameLength:

@@ -61,6 +61,11 @@ class AppTranslationKeys {
   static const String search = 'search';
   static const String home = 'home';
 
+  //lists and categories
+  static const String gender = 'gender';
+  static const String male = 'male';
+  static const String female = 'female';
+
   //validation
   static const String requiredField = 'required_field';
   static const String nameLength = 'name_length';

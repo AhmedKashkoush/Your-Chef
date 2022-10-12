@@ -4,6 +4,7 @@ import 'package:your_chief/Controllers/Auth/register_controller.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/View/Widgets/Buttons/primary_button.dart';
 import 'package:your_chief/View/Widgets/Buttons/social_auth_button.dart';
+import 'package:your_chief/View/Widgets/DropDowns/custom_dorp_down_form_field.dart';
 import 'package:your_chief/View/Widgets/TextFields/custom_outlined_form_field.dart';
 
 class RegisterView extends StatelessWidget {
@@ -41,6 +42,39 @@ class RegisterView extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                CustomDropDownFormField<String>(
+                  items: controller.genders
+                      .map(
+                        (gender) => DropdownMenuItem<String>(
+                          child: ListTile(
+                            leading: Icon(controller.genderIcons[
+                                controller.genders.indexOf(gender)]),
+                            title: Text(gender.tr),
+                          ),
+                          value: gender,
+                        ),
+                      )
+                      .toList(),
+                  selectedItemBuilder: (context) {
+                    return controller.genders
+                        .map(
+                          (item) => DropdownMenuItem<String>(
+                            child: Text(item.tr),
+                            value: item,
+                          ),
+                        )
+                        .toList();
+                  },
+                  hint: AppTranslationKeys.gender.tr,
+                  icon: controller.genderIcon,
+                  isExpanded: true,
+                  onChanged: controller.onGenderChanged,
+                  value: controller.gender,
+                  validator: controller.genderValidator,
                 ),
                 const SizedBox(
                   height: 10,

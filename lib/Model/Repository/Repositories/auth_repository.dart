@@ -12,9 +12,9 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future register(
-      String name, String phone, String email, String password) async {
-    return await repository.register(name, phone, email, password);
+  Future register(String name, int gender, String phone, String email,
+      String password) async {
+    return await repository.register(name, gender, phone, email, password);
   }
 
   @override

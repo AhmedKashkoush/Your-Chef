@@ -43,10 +43,11 @@ class AuthApi implements IAuthRepository {
   }
 
   @override
-  Future register(
-      String name, String phone, String email, String password) async {
+  Future register(String name, int gender, String phone, String email,
+      String password) async {
     final Map<String, dynamic> body = {
       ApiBodyKeys.name: name,
+      ApiBodyKeys.gender: gender,
       ApiBodyKeys.phone: phone,
       ApiBodyKeys.email: email,
       ApiBodyKeys.password: password,

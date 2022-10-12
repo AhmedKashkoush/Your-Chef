@@ -39,13 +39,16 @@ class Utils {
               const SizedBox(
                 width: 15,
               ),
-            Text(
-              message,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: messageType != MessageType.normal || messageType != null
-                    ? Colors.white
-                    : null,
+            Expanded(
+              child: Text(
+                message,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color:
+                      messageType != MessageType.normal || messageType != null
+                          ? Colors.white
+                          : null,
+                ),
               ),
             ),
           ],

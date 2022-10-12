@@ -10,6 +10,7 @@ class CustomSearchBar extends StatelessWidget {
   final TextStyle? labelStyle;
   final TextStyle? hintStyle;
   final void Function(String)? onChanged;
+  final void Function(String)? onSubmitted;
   final bool enabled;
   final TextInputType? keyboardType;
   final bool readOnly;
@@ -31,6 +32,7 @@ class CustomSearchBar extends StatelessWidget {
     this.readOnly = true,
     this.onTap,
     this.fillColor,
+    this.onSubmitted,
   }) : super(key: key);
 
   @override
@@ -47,6 +49,7 @@ class CustomSearchBar extends StatelessWidget {
           controller: controller,
           onTap: onTap,
           onChanged: onChanged,
+          onSubmitted: onSubmitted,
           enabled: enabled,
           readOnly: readOnly,
           keyboardType: keyboardType,
