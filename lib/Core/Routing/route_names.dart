@@ -15,6 +15,9 @@ class AppRouteNames {
   static const String home = '/';
   static const String homeSearch = '/homeSearch';
 
+  //account
+  static const String account = '/account';
+
   //error routes
   static const String error = '/error';
 }

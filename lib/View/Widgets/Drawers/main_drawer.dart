@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:your_chief/Controllers/Other/main_drawer_controller.dart';
 import 'package:your_chief/Core/Constants/app_images.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -65,6 +67,8 @@ class MainDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MainDrawerController controller =
+        Get.put(MainDrawerController(page: this.currentPage));
     return SafeArea(
       child: Drawer(
         shape: RoundedRectangleBorder(
@@ -76,12 +80,12 @@ class MainDrawer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(
-                color: Theme.of(context).scaffoldBackgroundColor,
-                borderRadius: BorderRadiusDirectional.only(
-                  topEnd: Radius.circular(24),
-                ),
-              ),
+              // decoration: BoxDecoration(
+              //   color: Theme.of(context).scaffoldBackgroundColor,
+              //   borderRadius: BorderRadiusDirectional.only(
+              //     topEnd: Radius.circular(24),
+              //   ),
+              // ),
               child: SizedBox(
                 height: 450,
                 child: Center(
@@ -99,32 +103,37 @@ class MainDrawer extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsetsDirectional.only(end: 25),
-                    child: ListTile(
-                      title: Text(_pages[index]['name'].toString()),
-                      leading: Icon(
-                        _pages[index]['type'] == currentPage
-                            ? _pages[index]['active_icon'] as IconData
-                            : _pages[index]['icon'] as IconData,
-                      ),
-                      onTap: () {},
-                      horizontalTitleGap: 18,
-                      iconColor: Theme.of(context)
-                          .colorScheme
-                          .secondary
-                          .withOpacity(0.8),
-                      textColor: Theme.of(context)
-                          .colorScheme
-                          .secondary
-                          .withOpacity(0.8),
-                      selectedColor: Theme.of(context)
-                          .primaryColor, //Theme.of(context).scaffoldBackgroundColor,
-                      selectedTileColor:
-                          Theme.of(context).primaryColor.withOpacity(0.4),
-                      selected: _pages[index]['type'] == currentPage,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusDirectional.only(
-                          topEnd: Radius.circular(25),
-                          bottomEnd: Radius.circular(25),
+                    child: Material(
+                      child: ListTile(
+                        title: Text(_pages[index]['name'].toString()),
+                        leading: Icon(
+                          _pages[index]['type'] == currentPage
+                              ? _pages[index]['active_icon'] as IconData
+                              : _pages[index]['icon'] as IconData,
+                        ),
+                        onTap: () {
+                          controller
+                              .to(_pages[index]['type'] as MainDrawerPage);
+                        },
+                        horizontalTitleGap: 18,
+                        iconColor: Theme.of(context)
+                            .colorScheme
+                            .secondary
+                            .withOpacity(0.8),
+                        textColor: Theme.of(context)
+                            .colorScheme
+                            .secondary
+                            .withOpacity(0.8),
+                        selectedColor: Theme.of(context)
+                            .primaryColor, //Theme.of(context).scaffoldBackgroundColor,
+                        selectedTileColor:
+                            Theme.of(context).primaryColor.withOpacity(0.4),
+                        selected: _pages[index]['type'] == currentPage,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadiusDirectional.only(
+                            topEnd: Radius.circular(25),
+                            bottomEnd: Radius.circular(25),
+                          ),
                         ),
                       ),
                     ),

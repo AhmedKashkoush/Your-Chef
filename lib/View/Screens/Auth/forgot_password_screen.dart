@@ -4,6 +4,7 @@ import 'package:your_chief/Controllers/Auth/forgot_password_controller.dart';
 import 'package:your_chief/Core/Constants/app_images.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/View/Responsiveness/orientation_widget.dart';
+import 'package:your_chief/View/Widgets/AppBars/transparent_app_bar.dart';
 import 'package:your_chief/View/Widgets/Buttons/primary_button.dart';
 import 'package:your_chief/View/Widgets/TextFields/custom_outlined_form_field.dart';
 
@@ -13,10 +14,7 @@ class ForgotPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+      appBar: TransparentAppBar(),
       body: const OrientationWidget(
         portrait: _ForgotPasswordScreenPortrait(),
         landscape: _ForgotPasswordScreenLandscape(),

@@ -4,6 +4,7 @@ import 'package:your_chief/Core/Constants/app_animations.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/View/Responsiveness/orientation_widget.dart';
 import 'package:your_chief/View/Widgets/Animations/sized_asset_animation.dart';
+import 'package:your_chief/View/Widgets/AppBars/transparent_app_bar.dart';
 
 class PageNotFoundScreen extends StatelessWidget {
   const PageNotFoundScreen({Key? key}) : super(key: key);
@@ -11,10 +12,7 @@ class PageNotFoundScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+      appBar: TransparentAppBar(),
       body: OrientationWidget(
         portrait: _PageNotFoundPortrait(),
         landscape: _PageNotFoundLandScape(),

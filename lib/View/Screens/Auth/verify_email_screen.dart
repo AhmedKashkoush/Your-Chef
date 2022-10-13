@@ -7,6 +7,7 @@ import 'package:otp_text_field/style.dart';
 import 'package:your_chief/Controllers/Auth/verify_email_controller.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/View/Responsiveness/orientation_widget.dart';
+import 'package:your_chief/View/Widgets/AppBars/transparent_app_bar.dart';
 import 'package:your_chief/View/Widgets/Buttons/primary_button.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
@@ -18,10 +19,7 @@ class VerifyEmailScreen extends StatelessWidget {
     return WillPopScope(
       onWillPop: controller.backConfirm,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
+        appBar: TransparentAppBar(),
         body: const OrientationWidget(
           portrait: _VerifyEmailScreenPortrait(),
           landscape: _VerifyEmailScreenLandscape(),

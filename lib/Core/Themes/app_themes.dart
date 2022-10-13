@@ -9,29 +9,30 @@ class AppThemes {
     scaffoldBackgroundColor: AppColors.bgColor,
     appBarTheme: AppBarTheme(backgroundColor: AppColors.primary),
     textTheme: TextTheme(
-      headline5: TextStyle(
+      headline5: const TextStyle(
         fontStyle: FontStyle.italic,
         fontWeight: FontWeight.w900,
         color: AppColors.primary,
         letterSpacing: 1.5,
       ),
-      bodyText1: TextStyle(
+      bodyText1: const TextStyle(
         color: AppColors.primary,
       ),
-      bodyText2: TextStyle(
+      bodyText2: const TextStyle(
         color: AppColors.body,
+        fontWeight: FontWeight.bold,
       ),
     ),
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: AppColors.body,
     ),
-    tabBarTheme: TabBarTheme(
+    tabBarTheme: const TabBarTheme(
       unselectedLabelStyle: const TextStyle(
         color: AppColors.body,
         fontSize: 18,
         fontWeight: FontWeight.bold,
       ),
-      labelStyle: const TextStyle(
+      labelStyle: TextStyle(
         color: AppColors.secondary,
         fontSize: 18,
         fontWeight: FontWeight.bold,
@@ -55,29 +56,29 @@ class AppThemes {
     scaffoldBackgroundColor: AppColors.bgColorDark,
     appBarTheme: AppBarTheme(backgroundColor: AppColors.primary),
     textTheme: TextTheme(
-      headline5: TextStyle(
+      headline5: const TextStyle(
         fontStyle: FontStyle.italic,
         fontWeight: FontWeight.w900,
         color: AppColors.primary,
         letterSpacing: 1.5,
       ),
-      bodyText1: TextStyle(
+      bodyText1: const TextStyle(
         color: AppColors.primary,
       ),
-      bodyText2: TextStyle(
+      bodyText2: const TextStyle(
         color: AppColors.body,
       ),
     ),
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: AppColors.body,
     ),
-    tabBarTheme: TabBarTheme(
-      unselectedLabelStyle: const TextStyle(
+    tabBarTheme: const TabBarTheme(
+      unselectedLabelStyle: TextStyle(
         color: AppColors.body,
         fontSize: 18,
         fontWeight: FontWeight.bold,
       ),
-      labelStyle: const TextStyle(
+      labelStyle: TextStyle(
         color: AppColors.primary,
         fontSize: 18,
         fontWeight: FontWeight.bold,

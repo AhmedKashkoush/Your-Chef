@@ -44,9 +44,7 @@ class SearchScreen extends StatelessWidget {
                           ),
                     prefix: !canPop
                         ? null
-                        : IconButton(
-                            icon: Icon(Icons.adaptive.arrow_back),
-                            onPressed: controller.back,
+                        : BackButton(
                             color: AppColors.appBarIconColors,
                           ),
                   ),

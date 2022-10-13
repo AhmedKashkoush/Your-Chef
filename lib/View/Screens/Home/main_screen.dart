@@ -4,26 +4,34 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Controllers/Home/main_screen_controller.dart';
+import 'package:your_chief/Controllers/Other/main_drawer_controller.dart';
 import 'package:your_chief/Core/Constants/api_headers.dart';
 import 'package:your_chief/Core/Constants/app_colors.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
+import 'package:your_chief/Core/Services/connectivity_service.dart';
 import 'package:your_chief/View/Widgets/BottomBars/custom_main_bottom_bar.dart';
 import 'package:your_chief/View/Widgets/Drawers/main_drawer.dart';
+import 'package:your_chief/View/Widgets/Icons/badge_icon.dart';
 import 'package:your_chief/View/Widgets/TextFields/custom_search_bar.dart';
 import 'package:your_chief/View/Widgets/Texts/title_widget.dart';
 
-import '../../Widgets/Avatars/custom_profile_avatar.dart';
+import '../../Widgets/Avatars/active_status_profile_avatar_listener.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
 
+  static const MainDrawerPage page = MainDrawerPage.main;
+
   @override
   Widget build(BuildContext context) {
+    ConnectivityService _connection = Get.find();
+    MainDrawerController _drawerController =
+        Get.put(MainDrawerController(page: page));
     return GetBuilder<MainScreenController>(builder: (controller) {
       return Scaffold(
         key: controller.homeKey,
         drawer: const MainDrawer(
-          currentPage: MainDrawerPage.main,
+          currentPage: page,
         ),
         body: NestedScrollView(
           floatHeaderSlivers: true,
@@ -33,11 +41,9 @@ class MainScreen extends StatelessWidget {
                 title: const TitleWidget(),
                 centerTitle: true,
                 leading: IconButton(
-                  icon: Badge(
-                    child: Icon(Icons.filter_list_outlined),
+                  icon: BadgeIcon(
+                    icon: Icons.filter_list_outlined,
                     position: BadgePosition.topEnd(top: 0, end: -2),
-                    animationType: BadgeAnimationType.scale,
-                    badgeColor: AppColors.badgeColor,
                   ),
                   onPressed: controller.openDrawer,
                 ),
@@ -49,12 +55,11 @@ class MainScreen extends StatelessWidget {
                 //pinned: true,
                 actions: [
                   IconButton(
-                    icon: Badge(
-                      child: Icon(Ionicons.notifications_outline),
+                    icon: BadgeIcon(
+                      icon: Ionicons.notifications_outline,
+                      padding: 6,
                       position: BadgePosition.topEnd(end: -6),
-                      animationType: BadgeAnimationType.scale,
-                      padding: const EdgeInsets.all(6),
-                      badgeContent: const Text(
+                      content: const Text(
                         '1',
                         style: TextStyle(
                           color: Colors.white,
@@ -62,7 +67,6 @@ class MainScreen extends StatelessWidget {
                           fontSize: 10,
                         ),
                       ),
-                      badgeColor: AppColors.badgeColor,
                     ),
                     onPressed: () {},
                   ),
@@ -71,10 +75,11 @@ class MainScreen extends StatelessWidget {
                       vertical: 10.0,
                       horizontal: 12,
                     ),
-                    child: CustomProfileAvatar(
+                    child: ActiveStatusProfileAvatarListener(
+                      onlineStream: _connection.userStatusStream,
                       name: controller.currentUser!.name,
                       color: AppColors.primary,
-                      isOnline: true,
+                      onTap: _drawerController.toAccount,
                       image: controller.currentUser!.image == null
                           ? null
                           : CachedNetworkImageProvider(
@@ -83,6 +88,23 @@ class MainScreen extends StatelessWidget {
                               cacheKey: controller.currentUser!.image!,
                             ),
                     ),
+                    // child: StreamBuilder(
+                    //     stream: _connection.userStatusStream,
+                    //     builder: (context, AsyncSnapshot snapshot) {
+                    //       return CustomProfileAvatar(
+                    //         name: controller.currentUser!.name,
+                    //         color: AppColors.primary,
+                    //         isOnline: CurrentUser.isOnline,
+                    //         onTap: _drawerController.toAccount,
+                    //         image: controller.currentUser!.image == null
+                    //             ? null
+                    //             : CachedNetworkImageProvider(
+                    //                 "${controller.currentUser!.image!}",
+                    //                 headers: ApiHeaders.authHeaders,
+                    //                 cacheKey: controller.currentUser!.image!,
+                    //               ),
+                    //       );
+                    //     }),
                   ),
                 ],
                 // bottom: PreferredSize(

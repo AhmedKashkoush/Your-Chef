@@ -39,8 +39,4 @@ class SearchScreenController extends GetxController {
 
   void search(String? query) {}
   void toVoiceSearch() {}
-
-  void back() {
-    Get.back();
-  }
 }

@@ -5,16 +5,18 @@ import 'package:your_chief/Core/Global/current_locale.dart';
 import 'package:your_chief/Core/Locales/app_translations.dart';
 import 'package:your_chief/Core/Routing/app_routes.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
+import 'package:your_chief/Core/Services/connectivity_service.dart';
 import 'package:your_chief/Core/Themes/app_themes.dart';
 import 'package:your_chief/View/Screens/Error/page_not_found_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.white,
     systemNavigationBarColor: Colors.white,
     statusBarIconBrightness: Brightness.light,
   ));
+  await Get.putAsync(() => ConnectivityService().init());
   runApp(const MyApp());
 }
 

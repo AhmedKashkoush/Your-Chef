@@ -31,6 +31,7 @@ class AuthApi implements IAuthRepository {
           UserModel user = UserModel.fromJson(userData);
           CurrentUser.setCurrentUser(user);
           CurrentUser.setToken(token);
+          CurrentUser.setStatus(true);
           return user;
         } else {
           return ApiMessages(data['msg']);
