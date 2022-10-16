@@ -78,7 +78,6 @@ class LoginController extends GetxController {
           _data.message,
           context,
           messageType: MessageType.error,
-          borderRadius: 15,
           action: _data.message == 'This user is not verified'
               ? SnackBarAction(
                   label: 'Verify User',
@@ -89,10 +88,9 @@ class LoginController extends GetxController {
         );
       } else {
         Utils.showSnackBarMessage(
-          AppTranslationKeys.loginedSuccessfully.tr,
+          AppTranslationKeys.loggedInSuccessfully.tr,
           context,
           messageType: MessageType.success,
-          borderRadius: 15,
         );
         Get.offNamed(AppRouteNames.home);
       }
@@ -101,14 +99,8 @@ class LoginController extends GetxController {
         AppTranslationKeys.somethingWentWrong.tr,
         context,
         messageType: MessageType.error,
-        borderRadius: 15,
       );
     }
-    // Get.snackbar(
-    //   'Error',
-    //   'Something went wrong',
-    //   snackPosition: SnackPosition.BOTTOM,
-    // );
   }
 
   void loginWithGoogle() {}

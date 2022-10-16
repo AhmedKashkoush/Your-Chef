@@ -61,10 +61,32 @@ class AppTranslationKeys {
   static const String search = 'search';
   static const String home = 'home';
 
+  //account
+  static const String editProfile = 'edit_profile';
+  static const String switchAccount = 'switch_account';
+  static const String notifications = 'notifications';
+  static const String onlineStatus = 'online_status';
+  static const String ordersHistory = 'orders_history';
+  static const String changePassword = 'change_password';
+  static const String localBackup = 'local_backup';
+  static const String delete = 'delete';
+  static const String logout = 'logout';
+
   //lists and categories
   static const String gender = 'gender';
   static const String male = 'male';
   static const String female = 'female';
+
+  //drawer
+  static const String homePage = 'home_page';
+  static const String account = 'account';
+  static const String restaurantPlaces = 'restaurant_places';
+  static const String security = 'security';
+  static const String policyAndTerms = 'policy_and_terms';
+  static const String licenses = 'licenses';
+  static const String ads = 'ads';
+  static const String settings = 'settings';
+  static const String aboutApp = 'about_app';
 
   //validation
   static const String requiredField = 'required_field';
@@ -76,8 +98,15 @@ class AppTranslationKeys {
   static const String confirmPasswordValidation = 'confirm_password_validation';
 
   //messages
-  static const String loginedSuccessfully = 'logined_successfully';
+  static const String checkIntenet = 'check_internet';
+  static const String online = 'online';
+  static const String loggedInSuccessfully = 'logged_in_successfully';
   static const String passwordSet = 'password_set';
+  static const String warning = 'warning';
+  static const String warningMessage = 'warning_message';
+  static const String accountDeleted = 'account_deleted';
+  static const String loggingOut = 'logging_out';
+  static const String youLoggedOut = 'you_logged_out';
 
   //errors
   static const String pageNotFound = 'page_not_found';

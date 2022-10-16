@@ -6,6 +6,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Controllers/Account/account_controller.dart';
 import 'package:your_chief/Core/Constants/api_headers.dart';
 import 'package:your_chief/Core/Constants/app_colors.dart';
+import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/View/Responsiveness/orientation_widget.dart';
 import 'package:your_chief/View/Widgets/AppBars/transparent_app_bar.dart';
 import 'package:your_chief/View/Widgets/Avatars/custom_profile_avatar.dart';
@@ -122,12 +123,15 @@ class _AccountScreenPortrait extends StatelessWidget {
               itemCount: controller.options.length,
               itemBuilder: (BuildContext context, int index) {
                 return TileButton(
-                  title: controller.options[index]['name'],
-                  icon: controller.options[index]['icon'],
-                  iconColor: controller.options[index]['color'],
-                  titleColor: controller.options[index]['color'],
+                  title: controller.options[index].name.tr,
+                  icon: controller.options[index].icon,
+                  iconColor: controller.options[index].color,
+                  titleColor: controller.options[index].color,
                   onTap: () {
-                    controller.toOption(index);
+                    controller.toOption(
+                      controller.options[index].option,
+                      context,
+                    );
                   },
                 );
               },
@@ -142,7 +146,7 @@ class _AccountScreenPortrait extends StatelessWidget {
               vertical: 8,
             ),
             child: PrimaryButton(
-              text: 'Log Out',
+              text: AppTranslationKeys.logout.tr,
               color: AppColors.dangerColor,
               onPressed: () {
                 controller.logout(context);
@@ -203,7 +207,7 @@ class _AccountScreenLandscape extends StatelessWidget {
                 color: AppColors.dangerColor,
               ),
               label: Text(
-                'Log Out',
+                AppTranslationKeys.logout.tr,
                 style: const TextStyle(
                   color: AppColors.dangerColor,
                 ),
@@ -223,12 +227,13 @@ class _AccountScreenLandscape extends StatelessWidget {
               itemCount: controller.options.length,
               itemBuilder: (BuildContext context, int index) {
                 return TileButton(
-                  title: controller.options[index]['name'],
-                  icon: controller.options[index]['icon'],
-                  iconColor: controller.options[index]['color'],
-                  titleColor: controller.options[index]['color'],
+                  title: controller.options[index].name.tr,
+                  icon: controller.options[index].icon,
+                  iconColor: controller.options[index].color,
+                  titleColor: controller.options[index].color,
                   onTap: () {
-                    controller.toOption(index);
+                    controller.toOption(
+                        controller.options[index].option, context);
                   },
                 );
               },

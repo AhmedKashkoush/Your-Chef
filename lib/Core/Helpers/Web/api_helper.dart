@@ -5,6 +5,25 @@ import 'package:path/path.dart';
 import 'package:your_chief/Core/Constants/api_headers.dart';
 
 class ApiHelper extends GetConnect {
+  Future getData({
+    required String url,
+    Map<String, String>? headers,
+    Map<String, dynamic>? query,
+  }) async {
+    try {
+      Response response = await get(
+        url,
+        query: query,
+        headers: headers,
+        contentType: ApiHeaders.accept,
+      );
+      dynamic _data = response.body;
+      return _data;
+    } catch (e) {
+      return null;
+    }
+  }
+
   Future postData({
     required String url,
     Map<String, String>? headers,

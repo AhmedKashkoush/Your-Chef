@@ -101,7 +101,6 @@ class RegisterController extends GetxController {
   String? paswordValidator(String? password) {
     if (password!.isEmpty) return _validation.required?.tr;
     if (password.length < 8) return _validation.passwordLength?.tr;
-    //if (!_passValidator.validate(password)) return _validation.notValidPassword;
     return null;
   }
 
@@ -141,7 +140,6 @@ class RegisterController extends GetxController {
             _data.message,
             context,
             messageType: MessageType.error,
-            borderRadius: 15,
           );
         } else
           Get.offNamed(
@@ -153,7 +151,6 @@ class RegisterController extends GetxController {
           AppTranslationKeys.somethingWentWrong.tr,
           context,
           messageType: MessageType.error,
-          borderRadius: 15,
         );
       }
     }

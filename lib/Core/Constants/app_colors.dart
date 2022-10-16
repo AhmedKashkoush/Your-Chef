@@ -22,6 +22,6 @@ class AppColors {
   static const Color offlineDotColor = Color(0xFF9A9696);
 
   static const Color buttonTilesColor = Color(0xFFDCDBDB);
-  static const double buttonTilesOpacity = 0.4;
+  static const double buttonTilesOpacity = 0.25;
   static const Color dangerColor = Color(0xFFF32E2E);
 }

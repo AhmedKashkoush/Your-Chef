@@ -50,8 +50,8 @@ class ResetPasswordController extends GetxController {
   }
 
   void onTextChange(String? text) {
-    if (newPasswordController.text.length > 8 &&
-        confirmPasswordController.text.length > 8 &&
+    if (newPasswordController.text.length > 7 &&
+        confirmPasswordController.text.length > 7 &&
         confirmPasswordController.text == newPasswordController.text) {
       if (!isReadyToConfirm) {
         _isReadyToConfirm = true;

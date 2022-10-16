@@ -21,7 +21,6 @@ class AppTranslations extends Translations {
           AppTranslationKeys.lname: 'Last name',
           AppTranslationKeys.phone: 'Phone',
           AppTranslationKeys.confirmPass: 'Confirm password',
-          AppTranslationKeys.pleaseWait: 'Please wait...',
           AppTranslationKeys.or: 'Or',
           AppTranslationKeys.loginGoogle: 'Login with Google',
           AppTranslationKeys.loginFacebook: 'Login with Facebook',
@@ -63,10 +62,30 @@ class AppTranslations extends Translations {
           AppTranslationKeys.confirm: 'Confirm',
           //home screen
           AppTranslationKeys.search: 'Search',
+          //account
+          AppTranslationKeys.editProfile: 'Edit Profile',
+          AppTranslationKeys.switchAccount: 'Switch Account',
+          AppTranslationKeys.notifications: 'Notifications',
+          AppTranslationKeys.onlineStatus: 'Online Status',
+          AppTranslationKeys.ordersHistory: 'Orders History',
+          AppTranslationKeys.changePassword: 'Change Password',
+          AppTranslationKeys.localBackup: 'Local Backup',
+          AppTranslationKeys.delete: 'Delete',
+          AppTranslationKeys.logout: 'Log Out',
           //lists and categories
           AppTranslationKeys.gender: 'Gender',
           AppTranslationKeys.male: 'Male',
           AppTranslationKeys.female: 'Female',
+          //drawer
+          AppTranslationKeys.homePage: 'Home Page',
+          AppTranslationKeys.account: 'Account',
+          AppTranslationKeys.restaurantPlaces: 'Restaurant Places',
+          AppTranslationKeys.security: 'Security',
+          AppTranslationKeys.policyAndTerms: 'Policy and Terms',
+          AppTranslationKeys.licenses: 'Licenses',
+          AppTranslationKeys.ads: 'Ads',
+          AppTranslationKeys.settings: 'Settings',
+          AppTranslationKeys.aboutApp: 'About App',
           //validation
           AppTranslationKeys.requiredField: 'Required Field',
           AppTranslationKeys.nameLength: 'Name must be at least 3 characters',
@@ -79,8 +98,17 @@ class AppTranslations extends Translations {
           AppTranslationKeys.confirmPasswordValidation:
               'Write the same password to confirm',
           //messages
-          AppTranslationKeys.loginedSuccessfully: 'Logined Successfully',
+          AppTranslationKeys.checkIntenet: 'Check your internet connection',
+          AppTranslationKeys.online: 'Online',
+          AppTranslationKeys.pleaseWait: 'Please wait...',
+          AppTranslationKeys.loggedInSuccessfully: 'Logged in Successfully',
           AppTranslationKeys.passwordSet: 'Password Set',
+          AppTranslationKeys.warning: 'Warning',
+          AppTranslationKeys.warningMessage:
+              'This account and its information will be deleted permanently, Are you sure you want to confirm this step?',
+          AppTranslationKeys.accountDeleted: 'Account deleted',
+          AppTranslationKeys.loggingOut: 'Logging Out...',
+          AppTranslationKeys.youLoggedOut: 'You logged out',
           //errors
           AppTranslationKeys.pageNotFound: 'Page not found',
           AppTranslationKeys.somethingWentWrong: 'Something went wrong',
@@ -102,7 +130,6 @@ class AppTranslations extends Translations {
           AppTranslationKeys.lname: 'الاسم الأخير',
           AppTranslationKeys.phone: 'الهاتف',
           AppTranslationKeys.confirmPass: 'تأكيد كلمة المرور',
-          AppTranslationKeys.pleaseWait: 'الرجاء الانتظار...',
           AppTranslationKeys.or: 'أو',
           AppTranslationKeys.loginGoogle: 'تسجيل الدخول عبر جوجل',
           AppTranslationKeys.loginFacebook: 'تسجيل الدخول عبر فيسبوك',
@@ -143,10 +170,30 @@ class AppTranslations extends Translations {
           AppTranslationKeys.resetYourPassword: 'اعادة تعيين كلمة مرورك',
           //home screen
           AppTranslationKeys.search: 'بحث',
+          //account
+          AppTranslationKeys.editProfile: 'تعديل الملف الشخصي',
+          AppTranslationKeys.switchAccount: 'تبديل الحساب',
+          AppTranslationKeys.notifications: 'الاشعارات',
+          AppTranslationKeys.onlineStatus: 'حالة الاتصال',
+          AppTranslationKeys.ordersHistory: 'سجل الطلبات',
+          AppTranslationKeys.changePassword: 'تغيير كلمة المرور',
+          AppTranslationKeys.localBackup: 'النسخ الاحتياطي المحلي',
+          AppTranslationKeys.delete: 'حذف',
+          AppTranslationKeys.logout: 'تسجيل الخروج',
           //lists and categories
           AppTranslationKeys.gender: 'النوع',
           AppTranslationKeys.male: 'ذكر',
           AppTranslationKeys.female: 'انثى',
+          //drawer
+          AppTranslationKeys.homePage: 'الصفحة الرئيسية',
+          AppTranslationKeys.account: 'الحساب',
+          AppTranslationKeys.restaurantPlaces: 'أماكن المطاعم',
+          AppTranslationKeys.security: 'الأمان',
+          AppTranslationKeys.policyAndTerms: 'السياسة و الشروط',
+          AppTranslationKeys.licenses: 'التراخيص',
+          AppTranslationKeys.ads: 'الاعلانات',
+          AppTranslationKeys.settings: 'الاعدادات',
+          AppTranslationKeys.aboutApp: 'عن التطبيق',
           //validation
           AppTranslationKeys.requiredField: 'حقل مطلوب',
           AppTranslationKeys.nameLength:
@@ -160,8 +207,17 @@ class AppTranslations extends Translations {
           AppTranslationKeys.confirmPasswordValidation:
               'اكتب نفس كلمة المرور للتأكيد',
           //messages
-          AppTranslationKeys.loginedSuccessfully: 'تم تسجيل الدخول بنجاح',
+          AppTranslationKeys.checkIntenet: 'تحقق من اتصالك بالانترنت',
+          AppTranslationKeys.online: 'متصل',
+          AppTranslationKeys.pleaseWait: 'الرجاء الانتظار...',
+          AppTranslationKeys.loggedInSuccessfully: 'تم تسجيل الدخول بنجاح',
           AppTranslationKeys.passwordSet: 'تم تعيين كلمة المرور',
+          AppTranslationKeys.warning: 'تحذير',
+          AppTranslationKeys.warningMessage:
+              'سيتم حذف هذا الحساب و معلوماته بشكل نهائي, هل انت متأكد من تأكيد تلك الخطوة؟',
+          AppTranslationKeys.loggingOut: 'جاري تسجيل الخروج...',
+          AppTranslationKeys.accountDeleted: 'تم حذف الحساب',
+          AppTranslationKeys.youLoggedOut: 'لقد سجلت الخروج',
           //errors
           AppTranslationKeys.pageNotFound: 'الصفحة غير موجودة',
           AppTranslationKeys.somethingWentWrong: 'حدث خطأ ما',

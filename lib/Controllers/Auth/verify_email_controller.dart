@@ -55,9 +55,6 @@ class VerifyEmailController extends GetxController {
 
   void otpOnChanged(String otp) {
     _otp = otp;
-    // int pos = otp.characters.length - 1;
-    // String character = otp.characters.elementAt(pos);
-    // otpController.setValue(character, pos);
     if (otp.length == otpLength) {
       if (!canVerify) {
         canVerify = true;
@@ -79,14 +76,12 @@ class VerifyEmailController extends GetxController {
     );
     Get.back();
     _isLoading = false;
-    // Get.offNamed(AppRouteNames.resetPassword);
     if (_data != null) {
       if (_data is ApiMessages) {
         Utils.showSnackBarMessage(
           _data.message,
           context,
           messageType: MessageType.error,
-          borderRadius: 15,
         );
       } else {
         Get.offNamed(
@@ -99,7 +94,6 @@ class VerifyEmailController extends GetxController {
         AppTranslationKeys.somethingWentWrong.tr,
         context,
         messageType: MessageType.error,
-        borderRadius: 15,
       );
     }
   }

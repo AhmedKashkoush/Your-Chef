@@ -13,7 +13,7 @@ class MainScreenController extends GetxController {
 
   @override
   void onInit() {
-    _currentUser = CurrentUser.currentUser;
+    _currentUser = CurrentUser.user;
     super.onInit();
   }
 

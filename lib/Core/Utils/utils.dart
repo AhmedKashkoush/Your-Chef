@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:your_chief/Core/Constants/app_colors.dart';
 import 'package:your_chief/View/Widgets/Loading/pizza_loading.dart';
 
 class Utils {
@@ -17,7 +18,7 @@ class Utils {
     String message,
     BuildContext context, {
     MessageType? messageType,
-    double? borderRadius = 0,
+    double? borderRadius = 15,
     SnackBarAction? action,
   }) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -33,6 +34,16 @@ class Utils {
             if (messageType == MessageType.success)
               Icon(
                 Ionicons.checkmark_circle_outline,
+                color: Colors.white,
+              ),
+            if (messageType == MessageType.online)
+              Icon(
+                Icons.wifi_outlined,
+                color: Colors.white,
+              ),
+            if (messageType == MessageType.offline)
+              Icon(
+                Icons.wifi_off_outlined,
                 color: Colors.white,
               ),
             if (messageType != null)
@@ -59,7 +70,11 @@ class Utils {
             ? Colors.red
             : messageType == MessageType.success
                 ? Colors.green
-                : null,
+                : messageType == MessageType.online
+                    ? AppColors.onlineDotColor
+                    : messageType == MessageType.offline
+                        ? AppColors.offlineDotColor
+                        : null,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius!),
         ),
@@ -68,5 +83,5 @@ class Utils {
   }
 }
 
-enum MessageType { success, error, normal, alert, notify }
+enum MessageType { success, error, normal, alert, notify, online, offline }
 enum VerificationFor { account, resetPassword, changePassword }

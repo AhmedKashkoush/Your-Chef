@@ -94,7 +94,6 @@ class AddProfilePhotoController extends GetxController {
             _data.message,
             context,
             messageType: MessageType.error,
-            borderRadius: 15,
           );
         } else {
           //args['page_type'] = VerificationFor.account;
@@ -105,7 +104,6 @@ class AddProfilePhotoController extends GetxController {
           AppTranslationKeys.somethingWentWrong.tr,
           context,
           messageType: MessageType.error,
-          borderRadius: 15,
         );
       }
     } else

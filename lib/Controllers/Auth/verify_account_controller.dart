@@ -82,34 +82,15 @@ class VerifyAccountController extends GetxController {
           _data.message,
           context,
           messageType: MessageType.error,
-          borderRadius: 15,
         );
       } else {
         Get.offNamed(AppRouteNames.verificationComplete);
-        // switch (args['page_type']) {
-        //   case VerificationFor.account:
-        //     Get.offNamed(AppRouteNames.verificationComplete);
-        //     break;
-        //   case VerificationFor.resetPassword:
-        //     Utils.showSnackBarMessage(
-        //       AppTranslationKeys.passwordSet.tr,
-        //       context,
-        //       messageType: MessageType.success,
-        //       borderRadius: 15,
-        //     );
-        //     Get.offNamed(AppRouteNames.auth);
-        //     break;
-        //   case VerificationFor.changePassword:
-        //     Get.offNamed(AppRouteNames.verificationComplete);
-        //     break;
-        // }
       }
     } else {
       Utils.showSnackBarMessage(
         AppTranslationKeys.somethingWentWrong.tr,
         context,
         messageType: MessageType.error,
-        borderRadius: 15,
       );
     }
   }

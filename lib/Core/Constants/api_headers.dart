@@ -6,7 +6,7 @@ class ApiHeaders {
     'X-Authorization': apiKey,
   };
 
-  static const Map<String, dynamic> accessHeaders = {
+  static const Map<String, String> accessHeaders = {
     'X-Authorization': apiKey,
     'Accept': accept,
   };
