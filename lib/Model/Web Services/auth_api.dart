@@ -76,9 +76,10 @@ class AuthApi implements IAuthRepository {
   }
 
   @override
-  Future sendOtp(String email) async {
+  Future sendOtp(String email, String via) async {
     final Map<String, dynamic> body = {
       ApiBodyKeys.email: email,
+      ApiBodyKeys.via: via,
       ApiBodyKeys.locale: CurrentLocale.locale?.languageCode
     };
     try {

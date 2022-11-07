@@ -33,6 +33,9 @@ class AppTranslationKeys {
   static const String gallery = 'gallery';
 
   //account verification
+  static const String chooseVerificationMethod = 'choose_verification_method';
+  static const String viaEmail = 'via_email';
+  static const String viaPhone = 'via_phone';
   static const String verifyYourAccount = 'verify_your_account';
   static const String verifyAccountWarning = 'verify_account_warning';
   static const String verify = 'verify';

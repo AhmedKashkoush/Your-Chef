@@ -5,6 +5,7 @@ import 'package:your_chief/Core/Bindings/Auth/add_profile_photo_binding.dart';
 import 'package:your_chief/Core/Bindings/Auth/auth_bindings.dart';
 import 'package:your_chief/Core/Bindings/Auth/forgot_password_binding.dart';
 import 'package:your_chief/Core/Bindings/Auth/reset_password_binding.dart';
+import 'package:your_chief/Core/Bindings/Auth/verification_method_binding.dart';
 import 'package:your_chief/Core/Bindings/Auth/verify_account_binding.dart';
 import 'package:your_chief/Core/Bindings/Home/search_binding.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
@@ -13,6 +14,7 @@ import 'package:your_chief/View/Screens/Auth/add_profile_photo_screen.dart';
 import 'package:your_chief/View/Screens/Auth/auth_screen.dart';
 import 'package:your_chief/View/Screens/Auth/forgot_password_screen.dart';
 import 'package:your_chief/View/Screens/Auth/reset_password_screen.dart';
+import 'package:your_chief/View/Screens/Auth/verification_method_screen.dart';
 import 'package:your_chief/View/Screens/Auth/verify_account_screen.dart';
 import 'package:your_chief/View/Screens/Auth/verify_email_screen.dart';
 import 'package:your_chief/View/Screens/Home/main_screen.dart';
@@ -44,6 +46,13 @@ class AppRoutes {
       binding: AddProfilePhotoBindings(),
       transition: Transition.rightToLeft,
       curve: Curves.slowMiddle,
+    ),
+    GetPage(
+      name: AppRouteNames.verificationMethod,
+      page: () => const VerificationMethodScreen(),
+      binding: VerificationMethodBinding(),
+      transition: Transition.downToUp,
+      curve: Curves.fastLinearToSlowEaseIn,
     ),
     GetPage(
       name: AppRouteNames.registerVerify,

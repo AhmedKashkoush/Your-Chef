@@ -97,7 +97,7 @@ class VerifyAccountController extends GetxController {
 
   void sendOtp() async {
     _setTimer(2);
-    dynamic _data = await _otpApi.sendOtp(args['email']);
+    dynamic _data = await _otpApi.sendOtp(args['email'], args['via']);
     if (_data != null) {
       if (_data is ApiMessages) {
         Get.snackbar('error', _data.message);

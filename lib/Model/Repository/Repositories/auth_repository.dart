@@ -18,8 +18,8 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future sendOtp(String email) async {
-    return await repository.sendOtp(email);
+  Future sendOtp(String email, String via) async {
+    return await repository.sendOtp(email, via);
   }
 
   @override

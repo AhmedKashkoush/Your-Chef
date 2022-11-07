@@ -14,9 +14,9 @@ class UserModel {
     required this.email,
     required this.phone,
     this.image,
-    required this.isOnline,
-    required this.notifications,
-    required this.homeNotifications,
+    this.isOnline = false,
+    this.notifications = 0,
+    this.homeNotifications = 0,
   });
 
   static UserModel fromJson(Map<String, dynamic> json) {
@@ -26,9 +26,11 @@ class UserModel {
       email: json['email'],
       phone: json['phone'],
       image: json['image'],
-      isOnline: json['online_status'] == 'Online',
-      notifications: json['notifications'],
-      homeNotifications: json['home_notifications'],
+      isOnline: json['online_status'] == null
+          ? false
+          : json['online_status'] == 'Online',
+      notifications: json['notifications'] ?? 0,
+      homeNotifications: json['home_notifications'] ?? 0,
     );
   }
 

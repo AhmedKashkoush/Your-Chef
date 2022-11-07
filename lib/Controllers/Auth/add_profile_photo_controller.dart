@@ -97,7 +97,7 @@ class AddProfilePhotoController extends GetxController {
           );
         } else {
           //args['page_type'] = VerificationFor.account;
-          Get.offNamed(AppRouteNames.registerVerify, arguments: args);
+          Get.offNamed(AppRouteNames.verificationMethod, arguments: args);
         }
       } else {
         Utils.showSnackBarMessage(
@@ -107,6 +107,6 @@ class AddProfilePhotoController extends GetxController {
         );
       }
     } else
-      Get.offNamed(AppRouteNames.registerVerify, arguments: args);
+      Get.offNamed(AppRouteNames.verificationMethod, arguments: args);
   }
 }

@@ -35,6 +35,11 @@ class AppTranslations extends Translations {
           AppTranslationKeys.continue_: 'Continue',
           AppTranslationKeys.camera: 'Camera',
           AppTranslationKeys.gallery: 'Gallery',
+          //verification method screen
+          AppTranslationKeys.chooseVerificationMethod:
+              'Choose Verification Method',
+          AppTranslationKeys.viaEmail: 'Via Email',
+          AppTranslationKeys.viaPhone: 'Via Phone',
           //account verify account screen
           AppTranslationKeys.verifyYourAccount: 'Verify Your Account',
           AppTranslationKeys.verifyAccountWarning:
@@ -144,6 +149,10 @@ class AppTranslations extends Translations {
           AppTranslationKeys.continue_: 'استمر',
           AppTranslationKeys.camera: 'الكاميرا',
           AppTranslationKeys.gallery: 'المعرض',
+          //verification method screen
+          AppTranslationKeys.chooseVerificationMethod: 'اختر اسلوب التحقق',
+          AppTranslationKeys.viaEmail: 'عن طريق البريد',
+          AppTranslationKeys.viaPhone: 'عن طريق الهاتف',
           //account verify account screen
           AppTranslationKeys.verifyYourAccount: 'تأكيد حسابك',
           AppTranslationKeys.verifyAccountWarning:
