@@ -71,18 +71,25 @@ class _AccountScreenPortrait extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomProfileAvatar(
-                  name: controller.currentUser!.name,
-                  color: AppColors.primary,
-                  showDot: false,
-                  radius: 64,
-                  image: controller.currentUser!.image == null
-                      ? null
-                      : CachedNetworkImageProvider(
-                          "${controller.currentUser!.image!}",
-                          headers: ApiHeaders.authHeaders,
-                          cacheKey: controller.currentUser!.image!,
-                        ),
+                Hero(
+                  tag: 'profile-photo',
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: CustomProfileAvatar(
+                      name: controller.currentUser!.name,
+                      color: AppColors.primary,
+                      showDot: false,
+                      radius: 64,
+                      onTap: controller.onPhotoTap,
+                      image: controller.currentUser!.image == null
+                          ? null
+                          : CachedNetworkImageProvider(
+                              "${controller.currentUser!.image!}",
+                              headers: ApiHeaders.authHeaders,
+                              cacheKey: controller.currentUser!.image!,
+                            ),
+                    ),
+                  ),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
@@ -170,18 +177,25 @@ class _AccountScreenLandscape extends StatelessWidget {
         children: [
           ListTile(
             horizontalTitleGap: 10,
-            leading: CustomProfileAvatar(
-              name: controller.currentUser!.name,
-              color: AppColors.primary,
-              showDot: false,
-              radius: 34,
-              image: controller.currentUser!.image == null
-                  ? null
-                  : CachedNetworkImageProvider(
-                      "${controller.currentUser!.image!}",
-                      headers: ApiHeaders.authHeaders,
-                      cacheKey: controller.currentUser!.image!,
-                    ),
+            leading: Hero(
+              tag: 'profile-photo',
+              child: Material(
+                type: MaterialType.transparency,
+                child: CustomProfileAvatar(
+                  name: controller.currentUser!.name,
+                  color: AppColors.primary,
+                  showDot: false,
+                  radius: 34,
+                  onTap: controller.onPhotoTap,
+                  image: controller.currentUser!.image == null
+                      ? null
+                      : CachedNetworkImageProvider(
+                          "${controller.currentUser!.image!}",
+                          headers: ApiHeaders.authHeaders,
+                          cacheKey: controller.currentUser!.image!,
+                        ),
+                ),
+              ),
             ),
             title: Text(
               controller.currentUser!.name,

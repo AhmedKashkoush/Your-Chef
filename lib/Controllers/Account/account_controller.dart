@@ -9,6 +9,7 @@ import 'package:your_chief/Core/Utils/api_messages.dart';
 import 'package:your_chief/Core/Utils/utils.dart';
 import 'package:your_chief/Model/Models/user_model.dart';
 import 'package:your_chief/Model/Web%20Services/user_api.dart';
+import 'package:your_chief/View/Widgets/Avatars/rounded_avatar.dart';
 
 import '../../Model/Repository/Repositories/user_repository.dart';
 import '../../View/Models/Account/account_item.dart';
@@ -173,6 +174,19 @@ class AccountController extends GetxController {
         messageType: MessageType.error,
       );
     }
+  }
+
+  void onPhotoTap() {
+    if (currentUser!.image == null) return;
+    Get.dialog(Hero(
+      tag: 'profile-photo',
+      child: Material(
+        type: MaterialType.transparency,
+        child: RoundedAvatar(
+          imageUrl: currentUser!.image!,
+        ),
+      ),
+    ));
   }
 }
 
