@@ -184,6 +184,7 @@ class AccountController extends GetxController {
         type: MaterialType.transparency,
         child: RoundedAvatar(
           imageUrl: currentUser!.image!,
+          size: 200,
         ),
       ),
     ));
