@@ -5,11 +5,13 @@ class RoundedAvatar extends StatelessWidget {
   final double radius;
   final double? size;
   final String imageUrl;
+  final bool isAsset;
   const RoundedAvatar({
     Key? key,
     this.radius = 15,
     required this.imageUrl,
     this.size,
+    this.isAsset = false,
   }) : super(key: key);
 
   @override
@@ -20,10 +22,15 @@ class RoundedAvatar extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
-        image: DecorationImage(
-          image: CachedNetworkImageProvider(imageUrl),
-          isAntiAlias: true,
-        ),
+        image: !isAsset
+            ? DecorationImage(
+                image: CachedNetworkImageProvider(imageUrl),
+                isAntiAlias: true,
+              )
+            : DecorationImage(
+                image: AssetImage(imageUrl),
+                isAntiAlias: true,
+              ),
       ),
     );
   }

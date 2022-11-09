@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
+import 'package:your_chief/Core/Utils/Options/main_drawer_pages.dart';
 import 'package:your_chief/View/Models/Drawer/MainDrawer/main_drawer_item.dart';
-import 'package:your_chief/View/Widgets/Drawers/main_drawer.dart';
 
 import '../../Core/Constants/app_translation_keys.dart';
 

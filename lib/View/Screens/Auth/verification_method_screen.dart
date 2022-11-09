@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:your_chief/Controllers/Auth/verification_method_controller.dart';
 import 'package:your_chief/Core/Constants/app_svgs.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
+import 'package:your_chief/Core/Utils/Options/verifications_methods.dart';
 import 'package:your_chief/View/Widgets/Buttons/primary_button.dart';
 import 'package:your_chief/View/Widgets/Buttons/selectable_button.dart';
 
@@ -86,5 +87,3 @@ class VerificationMethodScreen extends StatelessWidget {
     });
   }
 }
-
-enum VerificationMethod { mail, phone }

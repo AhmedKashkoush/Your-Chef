@@ -64,6 +64,10 @@ class AppTranslationKeys {
   static const String search = 'search';
   static const String home = 'home';
 
+  //food view
+  static const String foods = 'foods';
+  static const String from = 'from';
+
   //account
   static const String editProfile = 'edit_profile';
   static const String switchAccount = 'switch_account';
@@ -110,6 +114,8 @@ class AppTranslationKeys {
   static const String accountDeleted = 'account_deleted';
   static const String loggingOut = 'logging_out';
   static const String youLoggedOut = 'you_logged_out';
+  static const String addedToFavourites = 'added_to_favourites';
+  static const String removedFromFavourites = 'removed_from_favourites';
 
   //errors
   static const String pageNotFound = 'page_not_found';

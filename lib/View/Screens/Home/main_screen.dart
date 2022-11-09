@@ -15,6 +15,7 @@ import 'package:your_chief/View/Widgets/Icons/badge_icon.dart';
 import 'package:your_chief/View/Widgets/TextFields/custom_search_bar.dart';
 import 'package:your_chief/View/Widgets/Texts/title_widget.dart';
 
+import '../../../Core/Utils/Options/main_drawer_pages.dart';
 import '../../Widgets/Avatars/active_status_profile_avatar_listener.dart';
 
 class MainScreen extends StatelessWidget {

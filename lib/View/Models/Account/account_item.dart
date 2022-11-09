@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:your_chief/Controllers/Account/account_controller.dart';
+import 'package:your_chief/Core/Utils/Options/account_options.dart';
 
 class AccountItem {
   final String name;

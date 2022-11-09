@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
+import 'package:your_chief/Core/Utils/Options/message_types.dart';
 import 'package:your_chief/Core/Utils/api_messages.dart';
 import 'package:your_chief/Core/Utils/utils.dart';
 import 'package:your_chief/Core/Validation/validation.dart';

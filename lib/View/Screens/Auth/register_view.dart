@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_chief/Controllers/Auth/register_controller.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
+import 'package:your_chief/Core/Utils/Options/social_auth_options.dart';
 import 'package:your_chief/View/Widgets/Buttons/primary_button.dart';
 import 'package:your_chief/View/Widgets/Buttons/social_auth_button.dart';
 import 'package:your_chief/View/Widgets/DropDowns/custom_dorp_down_form_field.dart';
@@ -166,7 +167,7 @@ class RegisterView extends StatelessWidget {
                 SocialAuthButton(
                   text: AppTranslationKeys.registerGoogle.tr,
                   onPressed: controller.registerWithGoogle,
-                  type: SocialAuthButtonType.google,
+                  type: SocialAuthOption.google,
                 ),
                 const SizedBox(
                   height: 8,
@@ -174,7 +175,7 @@ class RegisterView extends StatelessWidget {
                 SocialAuthButton(
                   text: AppTranslationKeys.registerFacebook.tr,
                   onPressed: controller.registerWithFacebook,
-                  type: SocialAuthButtonType.facebook,
+                  type: SocialAuthOption.facebook,
                 ),
               ],
             ),

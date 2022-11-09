@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_chief/Controllers/Other/main_drawer_controller.dart';
 import 'package:your_chief/Core/Constants/app_images.dart';
+import 'package:your_chief/Core/Utils/Options/main_drawer_pages.dart';
 
 class MainDrawer extends StatelessWidget {
   final MainDrawerPage currentPage;
@@ -92,16 +93,4 @@ class MainDrawer extends StatelessWidget {
       ),
     );
   }
-}
-
-enum MainDrawerPage {
-  main,
-  map,
-  settings,
-  account,
-  security,
-  policy,
-  about,
-  licenses,
-  ads,
 }

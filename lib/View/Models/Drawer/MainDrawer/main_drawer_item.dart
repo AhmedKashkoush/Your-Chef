@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:your_chief/View/Widgets/Drawers/main_drawer.dart';
+import 'package:your_chief/Core/Utils/Options/main_drawer_pages.dart';
 
 class MainDrawerItem {
   final String name;

@@ -7,7 +7,6 @@ class FoodModel {
   final double rate;
   final bool hasOffer;
   final double? oldPrice;
-  final double? sale;
   final bool isFavourite;
 
   FoodModel({
@@ -19,7 +18,6 @@ class FoodModel {
     required this.rate,
     this.hasOffer = false,
     this.oldPrice,
-    this.sale,
     this.isFavourite = false,
   });
 
@@ -32,7 +30,6 @@ class FoodModel {
         rate: json['rate'],
         hasOffer: json['hasOffer'] ?? false,
         oldPrice: json['oldPrice'],
-        sale: json['sale'],
         isFavourite: json['isFavourite'] ?? false,
       );
 
@@ -45,7 +42,6 @@ class FoodModel {
         'rate': model.rate,
         'hasOffer': model.hasOffer,
         'oldPrice': model.oldPrice,
-        'sale': model.sale,
         'isFavourite': model.isFavourite,
       };
 }

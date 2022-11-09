@@ -67,6 +67,9 @@ class AppTranslations extends Translations {
           AppTranslationKeys.confirm: 'Confirm',
           //home screen
           AppTranslationKeys.search: 'Search',
+          //food view
+          AppTranslationKeys.foods: 'Foods',
+          AppTranslationKeys.from: 'From',
           //account
           AppTranslationKeys.editProfile: 'Edit Profile',
           AppTranslationKeys.switchAccount: 'Switch Account',
@@ -114,6 +117,9 @@ class AppTranslations extends Translations {
           AppTranslationKeys.accountDeleted: 'Account deleted',
           AppTranslationKeys.loggingOut: 'Logging Out...',
           AppTranslationKeys.youLoggedOut: 'You logged out',
+          AppTranslationKeys.addedToFavourites: 'was added to Favourites',
+          AppTranslationKeys.removedFromFavourites:
+              'was removed from Favourites',
           //errors
           AppTranslationKeys.pageNotFound: 'Page not found',
           AppTranslationKeys.somethingWentWrong: 'Something went wrong',
@@ -179,6 +185,9 @@ class AppTranslations extends Translations {
           AppTranslationKeys.resetYourPassword: 'اعادة تعيين كلمة مرورك',
           //home screen
           AppTranslationKeys.search: 'بحث',
+          //food view
+          AppTranslationKeys.foods: 'الاطعمة',
+          AppTranslationKeys.from: 'من',
           //account
           AppTranslationKeys.editProfile: 'تعديل الملف الشخصي',
           AppTranslationKeys.switchAccount: 'تبديل الحساب',
@@ -227,6 +236,8 @@ class AppTranslations extends Translations {
           AppTranslationKeys.loggingOut: 'جاري تسجيل الخروج...',
           AppTranslationKeys.accountDeleted: 'تم حذف الحساب',
           AppTranslationKeys.youLoggedOut: 'لقد سجلت الخروج',
+          AppTranslationKeys.addedToFavourites: 'اضيف الى المفضلة',
+          AppTranslationKeys.removedFromFavourites: 'حذف من المفضلة',
           //errors
           AppTranslationKeys.pageNotFound: 'الصفحة غير موجودة',
           AppTranslationKeys.somethingWentWrong: 'حدث خطأ ما',

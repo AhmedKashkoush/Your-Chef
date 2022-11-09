@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:your_chief/Core/Utils/Options/social_auth_options.dart';
 
 class SocialAuthButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final VoidCallback? onLongPress;
   final String text;
-  final SocialAuthButtonType type;
+  final SocialAuthOption type;
   const SocialAuthButton({
     Key? key,
     this.onPressed,
@@ -44,40 +45,38 @@ class SocialAuthButton extends StatelessWidget {
     );
   }
 
-  IconData _checkTypeForIcon(SocialAuthButtonType type) {
+  IconData _checkTypeForIcon(SocialAuthOption type) {
     switch (type) {
-      case SocialAuthButtonType.facebook:
+      case SocialAuthOption.facebook:
         return Ionicons.logo_facebook;
-      case SocialAuthButtonType.google:
+      case SocialAuthOption.google:
         return Ionicons.logo_google;
-      case SocialAuthButtonType.microsoft:
+      case SocialAuthOption.microsoft:
         return Ionicons.logo_microsoft;
-      case SocialAuthButtonType.apple:
+      case SocialAuthOption.apple:
         return Ionicons.logo_apple;
-      case SocialAuthButtonType.yahoo:
+      case SocialAuthOption.yahoo:
         return Ionicons.logo_yahoo;
-      case SocialAuthButtonType.twitter:
+      case SocialAuthOption.twitter:
         return Ionicons.logo_twitter;
     }
   }
 
-  Color _checkTypeForColor(SocialAuthButtonType type, BuildContext context) {
+  Color _checkTypeForColor(SocialAuthOption type, BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     switch (type) {
-      case SocialAuthButtonType.facebook:
+      case SocialAuthOption.facebook:
         return Colors.blueAccent;
-      case SocialAuthButtonType.google:
+      case SocialAuthOption.google:
         return Colors.redAccent;
-      case SocialAuthButtonType.microsoft:
+      case SocialAuthOption.microsoft:
         return Colors.blue.shade800;
-      case SocialAuthButtonType.apple:
+      case SocialAuthOption.apple:
         return isDark ? Colors.white : Colors.black;
-      case SocialAuthButtonType.yahoo:
+      case SocialAuthOption.yahoo:
         return Colors.purple;
-      case SocialAuthButtonType.twitter:
+      case SocialAuthOption.twitter:
         return Colors.blue.shade400;
     }
   }
 }
-
-enum SocialAuthButtonType { facebook, google, microsoft, apple, yahoo, twitter }

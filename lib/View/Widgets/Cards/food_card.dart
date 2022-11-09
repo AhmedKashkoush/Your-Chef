@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Core/Constants/app_colors.dart';
+import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/Model/Models/food_model.dart';
+import 'package:your_chief/View/Widgets/Avatars/rounded_avatar.dart';
 
 class FoodCard extends StatefulWidget {
   final FoodModel model;
@@ -31,78 +34,80 @@ class _FoodCardState extends State<FoodCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Banner(
-      location: BannerLocation.topStart,
-      message: widget.model.hasOffer && widget.model.sale != null
-          ? '${widget.model.sale! * 100.0}%'
-          : '',
-      color: widget.model.hasOffer ? AppColors.badgeColor : Colors.transparent,
-      child: GestureDetector(
-        onTap: widget.onTap,
-        child: Card(
-          clipBehavior: Clip.antiAlias,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          child: Container(
-            //height: 180,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 180,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      image: DecorationImage(
-                        image: AssetImage(widget.model.imageUrl),
-                        isAntiAlias: true,
-                      ),
+    return GestureDetector(
+      onTap: widget.onTap,
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        child: Container(
+          height: 120,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                child: Container(
+                  //height: context.height * 0.2,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                      image: AssetImage(widget.model.imageUrl),
+                      isAntiAlias: true,
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        ListTile(
-                          horizontalTitleGap: -5,
-                          title: Text(
-                            widget.model.name,
-                            style: const TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
+              ),
+              Flexible(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsetsDirectional.only(start: 14),
+                        child: Row(
+                          children: [
+                            Text(
+                              widget.model.name,
+                              style: const TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          trailing:
-                              StatefulBuilder(builder: (context, setState) {
-                            return IconButton(
-                              onPressed: widget.onFavouriteTap == null
-                                  ? null
-                                  : () {
-                                      widget.onFavouriteTap?.call();
-                                      setState(() {
-                                        isFavourite = !isFavourite;
-                                      });
-                                    },
-                              icon: isFavourite
-                                  ? Icon(Ionicons.heart,
-                                      color: AppColors.badgeColor)
-                                  : Icon(Ionicons.heart_outline),
-                            );
-                          }),
+                            Expanded(
+                              child: SizedBox(),
+                            ),
+                            StatefulBuilder(builder: (context, setState) {
+                              return IconButton(
+                                onPressed: widget.onFavouriteTap == null
+                                    ? null
+                                    : () {
+                                        widget.onFavouriteTap!.call();
+                                        setState(() {
+                                          isFavourite = !isFavourite;
+                                        });
+                                      },
+                                icon: isFavourite
+                                    ? Icon(Ionicons.heart,
+                                        color: AppColors.badgeColor)
+                                    : Icon(Ionicons.heart_outline),
+                              );
+                            }),
+                          ],
                         ),
-                        ListTile(
-                          //leading: RoundedAvatar(imageUrl: model.restaurantImageUrl,),
-                          leading: Image.asset(
-                            widget.model.restaurantImageUrl,
-                            height: 40,
+                      ),
+                      Flexible(
+                        child: ListTile(
+                          horizontalTitleGap: -2,
+                          leading: RoundedAvatar(
+                            imageUrl: widget.model.restaurantImageUrl,
+                            radius: 10,
+                            size: 30,
+                            isAsset: true,
                           ),
                           title: Text(
-                            'From: ${widget.model.restaurant}',
+                            '${AppTranslationKeys.from.tr}: ${widget.model.restaurant}',
                             style: const TextStyle(
                               color: AppColors.appBarIconColors,
                               fontStyle: FontStyle.italic,
@@ -131,10 +136,7 @@ class _FoodCardState extends State<FoodCard> {
                             initialRating: widget.model.rate,
                             glow: false,
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Stack(
+                          trailing: Stack(
                             alignment: AlignmentDirectional.centerEnd,
                             clipBehavior: Clip.none,
                             children: [
@@ -147,46 +149,61 @@ class _FoodCardState extends State<FoodCard> {
                                   fontSize: 18,
                                 ),
                               ),
-                              Positioned.directional(
-                                textDirection: Directionality.of(context),
-                                top: -15,
-                                end: -5,
-                                child: Text(
-                                  '${widget.model.oldPrice}\$',
-                                  style: const TextStyle(
-                                    color: AppColors.appBarIconColors,
-                                    decoration: TextDecoration.lineThrough,
+                              if (widget.model.oldPrice != null)
+                                Positioned.directional(
+                                  textDirection: Directionality.of(context),
+                                  top: -15,
+                                  end: -5,
+                                  child: Text(
+                                    '${widget.model.oldPrice}\$',
+                                    style: const TextStyle(
+                                      color: AppColors.appBarIconColors,
+                                      decoration: TextDecoration.lineThrough,
+                                    ),
                                   ),
-                                ),
-                              )
+                                )
                             ],
                           ),
                         ),
-                        // ListTile(
-                        //   title: Text(
-                        //     '${widget.model.price}\$',
-                        //     style: const TextStyle(
-                        //       color: AppColors.secondary,
-                        //       fontWeight: FontWeight.bold,
-                        //       fontSize: 14,
-                        //     ),
-                        //   ),
-                        //   subtitle: widget.model.hasOffer
-                        //       ? Text(
-                        //           '${widget.model.oldPrice}\$',
-                        //           style: const TextStyle(
-                        //             color: AppColors.appBarIconColors,
-                        //             decoration: TextDecoration.lineThrough,
-                        //           ),
-                        //         )
-                        //       : null,
-                        // ),
-                      ],
-                    ),
+                      ),
+                      // Flexible(
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.all(12.0),
+                      //     child: Stack(
+                      //       alignment: AlignmentDirectional.centerEnd,
+                      //       clipBehavior: Clip.none,
+                      //       children: [
+                      //         Text(
+                      //           '${widget.model.price}\$',
+                      //           textAlign: TextAlign.end,
+                      //           style: const TextStyle(
+                      //             color: AppColors.secondary,
+                      //             fontWeight: FontWeight.bold,
+                      //             fontSize: 18,
+                      //           ),
+                      //         ),
+                      //         if (widget.model.oldPrice != null)
+                      //           Positioned.directional(
+                      //             textDirection: Directionality.of(context),
+                      //             top: -15,
+                      //             end: -5,
+                      //             child: Text(
+                      //               '${widget.model.oldPrice}\$',
+                      //               style: const TextStyle(
+                      //                 color: AppColors.appBarIconColors,
+                      //                 decoration: TextDecoration.lineThrough,
+                      //               ),
+                      //             ),
+                      //           )
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

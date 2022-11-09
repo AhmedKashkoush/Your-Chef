@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Core/Constants/app_colors.dart';
+import 'package:your_chief/Core/Utils/Options/message_types.dart';
 import 'package:your_chief/View/Widgets/Loading/pizza_loading.dart';
 
 class Utils {
@@ -20,6 +21,8 @@ class Utils {
     MessageType? messageType,
     double? borderRadius = 15,
     SnackBarAction? action,
+    IconData? icon,
+    Color? iconColor,
   }) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
@@ -46,7 +49,12 @@ class Utils {
                 Icons.wifi_off_outlined,
                 color: Colors.white,
               ),
-            if (messageType != null)
+            if (icon != null)
+              Icon(
+                icon,
+                color: iconColor,
+              ),
+            if (messageType != null || icon != null)
               const SizedBox(
                 width: 15,
               ),
@@ -56,7 +64,7 @@ class Utils {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color:
-                      messageType != MessageType.normal || messageType != null
+                      messageType != MessageType.normal && messageType != null
                           ? Colors.white
                           : null,
                 ),
@@ -82,6 +90,3 @@ class Utils {
     );
   }
 }
-
-enum MessageType { success, error, normal, alert, notify, online, offline }
-enum VerificationFor { account, resetPassword, changePassword }
