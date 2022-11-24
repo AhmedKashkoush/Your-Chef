@@ -4,6 +4,12 @@ class AppTranslationKeys {
   static const String back = 'back';
   static const String skip = 'skip';
   static const String getStarted = 'get_started';
+  static const String onBoardingTitle1 = 'onboarding_title1';
+  static const String onBoardingTitle2 = 'onboarding_title2';
+  static const String onBoardingTitle3 = 'onboarding_title3';
+  static const String onBoardingBody1 = 'onboarding_body1';
+  static const String onBoardingBody2 = 'onboarding_body2';
+  static const String onBoardingBody3 = 'onboarding_body3';
 
   //auth
   static const String appTitle = 'your_chef';

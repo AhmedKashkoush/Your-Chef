@@ -8,6 +8,7 @@ import 'package:your_chief/Core/Bindings/Auth/reset_password_binding.dart';
 import 'package:your_chief/Core/Bindings/Auth/verification_method_binding.dart';
 import 'package:your_chief/Core/Bindings/Auth/verify_account_binding.dart';
 import 'package:your_chief/Core/Bindings/Home/search_binding.dart';
+import 'package:your_chief/Core/Bindings/Onboarding/onboarding_binding.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/View/Screens/Account/account_screen.dart';
 import 'package:your_chief/View/Screens/Auth/add_profile_photo_screen.dart';
@@ -31,7 +32,7 @@ class AppRoutes {
     GetPage(
       name: AppRouteNames.onBoarding,
       page: () => const OnBoardingScreen(),
-      //binding: AuthBindings(),
+      binding: OnboardingBinding(),
     ),
     GetPage(
       name: AppRouteNames.auth,

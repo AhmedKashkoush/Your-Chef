@@ -10,6 +10,15 @@ class AppTranslations extends Translations {
           AppTranslationKeys.back: 'Back',
           AppTranslationKeys.skip: 'Skip',
           AppTranslationKeys.getStarted: 'Get Started',
+          AppTranslationKeys.onBoardingTitle1: 'Orders',
+          AppTranslationKeys.onBoardingTitle2: 'Payment',
+          AppTranslationKeys.onBoardingTitle3: 'Restaurants',
+          AppTranslationKeys.onBoardingBody1:
+              'You can order whatever you want from home easily',
+          AppTranslationKeys.onBoardingBody2:
+              'Pay with your own visa card by only entering card number then follow the required steps',
+          AppTranslationKeys.onBoardingBody3:
+              'You can know the nearest restaurants from your home or around your area or country (Also you can optionally order from a certain restaurant)',
           //auth screen
           AppTranslationKeys.appTitle: 'Your Chef',
           AppTranslationKeys.email: 'Email',
@@ -130,6 +139,15 @@ class AppTranslations extends Translations {
           AppTranslationKeys.back: 'رجوع',
           AppTranslationKeys.skip: 'تخطي',
           AppTranslationKeys.getStarted: 'البدء',
+          AppTranslationKeys.onBoardingTitle1: 'الطلبات',
+          AppTranslationKeys.onBoardingTitle2: 'الدفع',
+          AppTranslationKeys.onBoardingTitle3: 'المطاعم',
+          AppTranslationKeys.onBoardingBody1:
+              'يمكنك طلب اي شئ تريده من المنزل بكل سهولة',
+          AppTranslationKeys.onBoardingBody2:
+              'ادفع ببطاقة الفيزا خاصتك فقط بإدخال رقم البطاقة ثم اتبع الخطوات المطلوبة',
+          AppTranslationKeys.onBoardingBody3:
+              'يمكنك معرفة المطاعم الأقرب الى منزلك أو حول منطقتك أو بلدك (أيضاً يمكنك اختيارياً أن تطلب من مطعم معين)',
           //auth screen
           AppTranslationKeys.appTitle: 'طباخك',
           AppTranslationKeys.email: 'البريد الالكتروني',
