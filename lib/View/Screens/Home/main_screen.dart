@@ -29,88 +29,127 @@ class MainScreen extends StatelessWidget {
     MainDrawerController _drawerController =
         Get.put(MainDrawerController(page: page));
     return GetBuilder<MainScreenController>(builder: (controller) {
-      return Scaffold(
-        key: controller.homeKey,
-        drawer: const MainDrawer(
-          currentPage: page,
-        ),
-        body: NestedScrollView(
-          floatHeaderSlivers: true,
-          headerSliverBuilder: (context, innerBoxIsScrolled) {
-            return [
-              SliverAppBar(
-                title: const TitleWidget(),
-                centerTitle: true,
-                leading: IconButton(
-                  icon: BadgeIcon(
-                    icon: Icons.filter_list_outlined,
-                    position: BadgePosition.topEnd(top: 0, end: -2),
-                  ),
-                  onPressed: controller.openDrawer,
-                ),
-                foregroundColor: AppColors.appBarIconColors,
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                elevation: 0,
-                //snap: true,
-                //floating: true,
-                //pinned: true,
-                actions: [
-                  IconButton(
+      return WillPopScope(
+        onWillPop: controller.onAppClose,
+        child: Scaffold(
+          key: controller.homeKey,
+          extendBody: true,
+          drawer: const MainDrawer(
+            currentPage: page,
+          ),
+          body: NestedScrollView(
+            floatHeaderSlivers: true,
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return [
+                SliverAppBar(
+                  title: const TitleWidget(),
+                  centerTitle: true,
+                  leading: IconButton(
                     icon: BadgeIcon(
-                      icon: Ionicons.notifications_outline,
-                      padding: 6,
-                      position: BadgePosition.topEnd(end: -6),
-                      content: const Text(
-                        '1',
-                        style: TextStyle(
-                          color: Colors.white,
+                      icon: Icons.filter_list_outlined,
+                      position: BadgePosition.topEnd(top: 0, end: -2),
+                    ),
+                    onPressed: controller.openDrawer,
+                  ),
+                  foregroundColor: AppColors.appBarIconColors,
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                  elevation: 0,
+                  //snap: true,
+                  //floating: true,
+                  //pinned: true,
+                  actions: [
+                    IconButton(
+                      icon: BadgeIcon(
+                        icon: Ionicons.notifications_outline,
+                        padding: 6,
+                        position: BadgePosition.topEnd(end: -6),
+                        content: const Text(
+                          '1',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ),
+                      onPressed: () {},
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10.0,
+                        horizontal: 12,
+                      ),
+                      child: ActiveStatusProfileAvatarListener(
+                        onlineStream: _connection.userStatusStream,
+                        name: controller.currentUser!.name,
+                        color: AppColors.primary,
+                        onTap: _drawerController.toAccount,
+                        image: controller.currentUser!.image == null
+                            ? null
+                            : CachedNetworkImageProvider(
+                                "${controller.currentUser!.image!}",
+                                headers: ApiHeaders.authHeaders,
+                                cacheKey: controller.currentUser!.image!,
+                              ),
+                      ),
+                      // child: StreamBuilder(
+                      //     stream: _connection.userStatusStream,
+                      //     builder: (context, AsyncSnapshot snapshot) {
+                      //       return CustomProfileAvatar(
+                      //         name: controller.currentUser!.name,
+                      //         color: AppColors.primary,
+                      //         isOnline: CurrentUser.isOnline,
+                      //         onTap: _drawerController.toAccount,
+                      //         image: controller.currentUser!.image == null
+                      //             ? null
+                      //             : CachedNetworkImageProvider(
+                      //                 "${controller.currentUser!.image!}",
+                      //                 headers: ApiHeaders.authHeaders,
+                      //                 cacheKey: controller.currentUser!.image!,
+                      //               ),
+                      //       );
+                      //     }),
+                    ),
+                  ],
+                  // bottom: PreferredSize(
+                  //   preferredSize: Size.fromHeight(kToolbarHeight),
+                  //   child: Expanded(
+                  //     child: const CustomSearchBar(
+                  //       hint: 'Search',
+                  //       hintStyle: const TextStyle(
+                  //         color: AppColors.appBarIconColors,
+                  //         fontWeight: FontWeight.bold,
+                  //       ),
+                  //       prefix: Icon(
+                  //         Ionicons.search_outline,
+                  //         color: AppColors.appBarIconColors,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                ),
+                SliverToBoxAdapter(
+                  child: Hero(
+                    tag: 'home search',
+                    child: Material(
+                      type: MaterialType.transparency,
+                      child: CustomSearchBar(
+                        hint: AppTranslationKeys.search.tr,
+                        hintStyle: const TextStyle(
+                          color: AppColors.appBarIconColors,
                           fontWeight: FontWeight.bold,
-                          fontSize: 10,
+                        ),
+                        onTap: controller.onSearchTap,
+                        prefix: Icon(
+                          Ionicons.search_outline,
+                          color: AppColors.appBarIconColors,
                         ),
                       ),
                     ),
-                    onPressed: () {},
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 10.0,
-                      horizontal: 12,
-                    ),
-                    child: ActiveStatusProfileAvatarListener(
-                      onlineStream: _connection.userStatusStream,
-                      name: controller.currentUser!.name,
-                      color: AppColors.primary,
-                      onTap: _drawerController.toAccount,
-                      image: controller.currentUser!.image == null
-                          ? null
-                          : CachedNetworkImageProvider(
-                              "${controller.currentUser!.image!}",
-                              headers: ApiHeaders.authHeaders,
-                              cacheKey: controller.currentUser!.image!,
-                            ),
-                    ),
-                    // child: StreamBuilder(
-                    //     stream: _connection.userStatusStream,
-                    //     builder: (context, AsyncSnapshot snapshot) {
-                    //       return CustomProfileAvatar(
-                    //         name: controller.currentUser!.name,
-                    //         color: AppColors.primary,
-                    //         isOnline: CurrentUser.isOnline,
-                    //         onTap: _drawerController.toAccount,
-                    //         image: controller.currentUser!.image == null
-                    //             ? null
-                    //             : CachedNetworkImageProvider(
-                    //                 "${controller.currentUser!.image!}",
-                    //                 headers: ApiHeaders.authHeaders,
-                    //                 cacheKey: controller.currentUser!.image!,
-                    //               ),
-                    //       );
-                    //     }),
-                  ),
-                ],
-                // bottom: PreferredSize(
-                //   preferredSize: Size.fromHeight(kToolbarHeight),
-                //   child: Expanded(
+                )
+                // SliverAppBar(
+                //   title: Expanded(
                 //     child: const CustomSearchBar(
                 //       hint: 'Search',
                 //       hintStyle: const TextStyle(
@@ -123,52 +162,31 @@ class MainScreen extends StatelessWidget {
                 //       ),
                 //     ),
                 //   ),
+                //   backgroundColor: Colors.transparent,
+                //   elevation: 0,
                 // ),
+              ];
+            },
+            body: controller.pages[controller.currentPage],
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: Transform.scale(
+            scale: 1.3,
+            child: FloatingActionButton(
+              onPressed: controller.goToCart,
+              backgroundColor: AppColors.primary,
+              foregroundColor: Colors.white,
+              child: Icon(
+                Ionicons.cart_outline,
+                size: 30,
               ),
-              SliverToBoxAdapter(
-                child: Hero(
-                  tag: 'home search',
-                  child: Material(
-                    type: MaterialType.transparency,
-                    child: CustomSearchBar(
-                      hint: AppTranslationKeys.search.tr,
-                      hintStyle: const TextStyle(
-                        color: AppColors.appBarIconColors,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      onTap: controller.onSearchTap,
-                      prefix: Icon(
-                        Ionicons.search_outline,
-                        color: AppColors.appBarIconColors,
-                      ),
-                    ),
-                  ),
-                ),
-              )
-              // SliverAppBar(
-              //   title: Expanded(
-              //     child: const CustomSearchBar(
-              //       hint: 'Search',
-              //       hintStyle: const TextStyle(
-              //         color: AppColors.appBarIconColors,
-              //         fontWeight: FontWeight.bold,
-              //       ),
-              //       prefix: Icon(
-              //         Ionicons.search_outline,
-              //         color: AppColors.appBarIconColors,
-              //       ),
-              //     ),
-              //   ),
-              //   backgroundColor: Colors.transparent,
-              //   elevation: 0,
-              // ),
-            ];
-          },
-          body: controller.pages[controller.currentPage],
-        ),
-        bottomNavigationBar: CustomMainBottomBar(
-          selectedIndex: controller.currentPage,
-          onTap: controller.changePage,
+            ),
+          ),
+          bottomNavigationBar: CustomMainBottomBar(
+            selectedIndex: controller.currentPage,
+            onTap: controller.changePage,
+          ),
         ),
       );
     });

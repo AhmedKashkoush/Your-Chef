@@ -126,4 +126,5 @@ class AppTranslationKeys {
   //errors
   static const String pageNotFound = 'page_not_found';
   static const String somethingWentWrong = 'something_went_wrong';
+  static const String noResults = 'no_results';
 }

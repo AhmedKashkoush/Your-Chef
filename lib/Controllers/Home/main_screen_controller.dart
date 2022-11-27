@@ -106,4 +106,15 @@ class MainScreenController extends GetxController {
   void onSearchTap() {
     Get.toNamed(AppRouteNames.homeSearch);
   }
+
+  void goToCart() {}
+
+  Future<bool> onAppClose() async {
+    if (_currentPage != 0) {
+      _currentPage = 0;
+      update();
+      return Future.value(false);
+    }
+    return Future.value(true);
+  }
 }

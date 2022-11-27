@@ -1,6 +1,6 @@
 class ApiLinks {
   //Main
-  static const String host = 'http://192.168.1.7:8000';
+  static const String host = 'http://192.168.1.6:8000';
   static const String base = '$host/api/v1';
   //Auth
   static const String login = '$base/users/login';

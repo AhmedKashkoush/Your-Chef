@@ -9,11 +9,38 @@ import 'package:your_chief/Model/Models/food_model.dart';
 
 class FoodViewController extends GetxController {
   final MainScreenController _mainController = Get.find();
-  late List<FoodModel> foods;
+  bool _isGrid = false;
+  int _selectedCategory = 0;
+  late List<FoodModel> _foods;
+  List<FoodModel> _foodsFiltered = [];
+  late List<String> _categories;
+  final List<String> _testCategories = [
+    'All',
+    'Hamburger',
+    'Pizza',
+    'Pasta',
+    'Drinks',
+    'Snacks',
+  ];
+  bool get isGrid => _isGrid;
+  int get selectedCategory => _selectedCategory;
+  List<FoodModel> get foods => _foods;
+  List<FoodModel> get foodsFiltered => _foodsFiltered;
+  List<String> get categories => _categories;
   @override
   void onInit() {
-    foods = _mainController.foods;
+    _loadData();
     super.onInit();
+  }
+
+  void toggleGrid() {
+    _isGrid = !_isGrid;
+    update();
+  }
+
+  void selectCategory(int index) {
+    _selectedCategory = index;
+    update();
   }
 
   void preview() {}
@@ -31,7 +58,7 @@ class FoodViewController extends GetxController {
       isFavourite: isFavourite,
       oldPrice: food.oldPrice,
     );
-    foods = _mainController.foods;
+    _foods = _mainController.foods;
     update();
     Utils.showSnackBarMessage(
       isFavourite
@@ -41,5 +68,14 @@ class FoodViewController extends GetxController {
       icon: isFavourite ? Ionicons.heart : Ionicons.heart_outline,
       iconColor: isFavourite ? AppColors.badgeColor : null,
     );
+  }
+
+  Future<void> _loadData() async {
+    _categories = _testCategories;
+    _foods = _mainController.foods;
+  }
+
+  Future<void> refreshData() async {
+    await Future.delayed(const Duration(seconds: 2));
   }
 }

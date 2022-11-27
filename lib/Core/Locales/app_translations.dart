@@ -132,6 +132,7 @@ class AppTranslations extends Translations {
           //errors
           AppTranslationKeys.pageNotFound: 'Page not found',
           AppTranslationKeys.somethingWentWrong: 'Something went wrong',
+          AppTranslationKeys.noResults: 'No Results',
         },
         'ar': {
           //onboadring screen
@@ -259,6 +260,7 @@ class AppTranslations extends Translations {
           //errors
           AppTranslationKeys.pageNotFound: 'الصفحة غير موجودة',
           AppTranslationKeys.somethingWentWrong: 'حدث خطأ ما',
+          AppTranslationKeys.noResults: 'لا نتائج',
         },
       };
 }

@@ -41,170 +41,289 @@ class _FoodCardState extends State<FoodCard> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: Container(
           height: 120,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Flexible(
-                child: Container(
-                  //height: context.height * 0.2,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    image: DecorationImage(
-                      image: AssetImage(widget.model.imageUrl),
-                      isAntiAlias: true,
+          child: widget.isListTile
+              ? Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Container(
+                        //height: context.height * 0.2,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          image: DecorationImage(
+                            image: AssetImage(widget.model.imageUrl),
+                            isAntiAlias: true,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              Flexible(
-                flex: 2,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsetsDirectional.only(start: 14),
-                        child: Row(
+                    Flexible(
+                      flex: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Text(
-                              widget.model.name,
-                              style: const TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
+                            Padding(
+                              padding:
+                                  const EdgeInsetsDirectional.only(start: 14),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    widget.model.name,
+                                    style: const TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: SizedBox(),
+                                  ),
+                                  StatefulBuilder(builder: (context, setState) {
+                                    return IconButton(
+                                      onPressed: widget.onFavouriteTap == null
+                                          ? null
+                                          : () {
+                                              widget.onFavouriteTap!.call();
+                                              setState(() {
+                                                isFavourite = !isFavourite;
+                                              });
+                                            },
+                                      icon: isFavourite
+                                          ? Icon(Ionicons.heart,
+                                              color: AppColors.badgeColor)
+                                          : Icon(Ionicons.heart_outline),
+                                    );
+                                  }),
+                                ],
                               ),
                             ),
-                            Expanded(
-                              child: SizedBox(),
+                            Flexible(
+                              child: ListTile(
+                                horizontalTitleGap: -2,
+                                leading: RoundedAvatar(
+                                  imageUrl: widget.model.restaurantImageUrl,
+                                  radius: 10,
+                                  size: 30,
+                                  isAsset: true,
+                                ),
+                                title: Text(
+                                  '${AppTranslationKeys.from.tr}: ${widget.model.restaurant}',
+                                  style: const TextStyle(
+                                    color: AppColors.appBarIconColors,
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                subtitle: RatingBar(
+                                  itemSize: 15,
+                                  ratingWidget: RatingWidget(
+                                    full: Icon(
+                                      Ionicons.star,
+                                      color: AppColors.primary,
+                                    ),
+                                    half: Icon(
+                                      Ionicons.star_half_outline,
+                                      color: AppColors.primary,
+                                    ),
+                                    empty: Icon(
+                                      Ionicons.star_outline,
+                                      color: AppColors.primary,
+                                    ),
+                                  ),
+                                  allowHalfRating: true,
+                                  onRatingUpdate: (double value) {},
+                                  ignoreGestures: true,
+                                  initialRating: widget.model.rate,
+                                  glow: false,
+                                ),
+                                trailing: Stack(
+                                  alignment: AlignmentDirectional.centerEnd,
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    Text(
+                                      '${widget.model.price}\$',
+                                      textAlign: TextAlign.end,
+                                      style: const TextStyle(
+                                        color: AppColors.secondary,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    if (widget.model.oldPrice != null)
+                                      Positioned.directional(
+                                        textDirection:
+                                            Directionality.of(context),
+                                        top: -15,
+                                        end: -5,
+                                        child: Text(
+                                          '${widget.model.oldPrice}\$',
+                                          style: const TextStyle(
+                                            color: AppColors.appBarIconColors,
+                                            decoration:
+                                                TextDecoration.lineThrough,
+                                          ),
+                                        ),
+                                      )
+                                  ],
+                                ),
+                              ),
                             ),
-                            StatefulBuilder(builder: (context, setState) {
-                              return IconButton(
-                                onPressed: widget.onFavouriteTap == null
-                                    ? null
-                                    : () {
-                                        widget.onFavouriteTap!.call();
-                                        setState(() {
-                                          isFavourite = !isFavourite;
-                                        });
-                                      },
-                                icon: isFavourite
-                                    ? Icon(Ionicons.heart,
-                                        color: AppColors.badgeColor)
-                                    : Icon(Ionicons.heart_outline),
-                              );
-                            }),
                           ],
                         ),
                       ),
-                      Flexible(
-                        child: ListTile(
-                          horizontalTitleGap: -2,
-                          leading: RoundedAvatar(
-                            imageUrl: widget.model.restaurantImageUrl,
-                            radius: 10,
-                            size: 30,
-                            isAsset: true,
-                          ),
-                          title: Text(
-                            '${AppTranslationKeys.from.tr}: ${widget.model.restaurant}',
-                            style: const TextStyle(
-                              color: AppColors.appBarIconColors,
-                              fontStyle: FontStyle.italic,
-                              fontSize: 14,
-                            ),
-                          ),
-                          subtitle: RatingBar(
-                            itemSize: 15,
-                            ratingWidget: RatingWidget(
-                              full: Icon(
-                                Ionicons.star,
-                                color: AppColors.primary,
-                              ),
-                              half: Icon(
-                                Ionicons.star_half_outline,
-                                color: AppColors.primary,
-                              ),
-                              empty: Icon(
-                                Ionicons.star_outline,
-                                color: AppColors.primary,
+                    ),
+                  ],
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Stack(
+                        alignment: AlignmentDirectional.topEnd,
+                        children: [
+                          Container(
+                            //height: context.height * 0.2,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              image: DecorationImage(
+                                image: AssetImage(widget.model.imageUrl),
+                                isAntiAlias: true,
                               ),
                             ),
-                            allowHalfRating: true,
-                            onRatingUpdate: (double value) {},
-                            ignoreGestures: true,
-                            initialRating: widget.model.rate,
-                            glow: false,
                           ),
-                          trailing: Stack(
-                            alignment: AlignmentDirectional.centerEnd,
-                            clipBehavior: Clip.none,
+                          StatefulBuilder(builder: (context, setState) {
+                            return IconButton(
+                              onPressed: widget.onFavouriteTap == null
+                                  ? null
+                                  : () {
+                                      widget.onFavouriteTap!.call();
+                                      setState(() {
+                                        isFavourite = !isFavourite;
+                                      });
+                                    },
+                              icon: isFavourite
+                                  ? Icon(
+                                      Ionicons.heart,
+                                      color: AppColors.badgeColor,
+                                    )
+                                  : Icon(
+                                      Ionicons.heart_outline,
+                                      color: Colors.black45,
+                                    ),
+                            );
+                          }),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Flexible(
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.2,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 2),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              Text(
-                                '${widget.model.price}\$',
-                                textAlign: TextAlign.end,
-                                style: const TextStyle(
-                                  color: AppColors.secondary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
+                              Padding(
+                                padding:
+                                    const EdgeInsetsDirectional.only(start: 10),
+                                child: Text(
+                                  widget.model.name,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
-                              if (widget.model.oldPrice != null)
-                                Positioned.directional(
-                                  textDirection: Directionality.of(context),
-                                  top: -15,
-                                  end: -5,
-                                  child: Text(
-                                    '${widget.model.oldPrice}\$',
+                              Flexible(
+                                child: ListTile(
+                                  horizontalTitleGap: -2,
+                                  leading: RoundedAvatar(
+                                    imageUrl: widget.model.restaurantImageUrl,
+                                    radius: 10,
+                                    size: 30,
+                                    isAsset: true,
+                                  ),
+                                  title: Text(
+                                    '${AppTranslationKeys.from.tr}: ${widget.model.restaurant}',
                                     style: const TextStyle(
                                       color: AppColors.appBarIconColors,
-                                      decoration: TextDecoration.lineThrough,
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 12,
                                     ),
                                   ),
-                                )
+                                  subtitle: RatingBar(
+                                    itemSize: 15,
+                                    ratingWidget: RatingWidget(
+                                      full: Icon(
+                                        Ionicons.star,
+                                        color: AppColors.primary,
+                                      ),
+                                      half: Icon(
+                                        Ionicons.star_half_outline,
+                                        color: AppColors.primary,
+                                      ),
+                                      empty: Icon(
+                                        Ionicons.star_outline,
+                                        color: AppColors.primary,
+                                      ),
+                                    ),
+                                    allowHalfRating: true,
+                                    onRatingUpdate: (double value) {},
+                                    ignoreGestures: true,
+                                    initialRating: widget.model.rate,
+                                    glow: false,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 8,
+                                  horizontal: 14,
+                                ),
+                                child: Stack(
+                                  alignment: AlignmentDirectional.centerEnd,
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    Text(
+                                      '${widget.model.price}\$',
+                                      textAlign: TextAlign.end,
+                                      style: const TextStyle(
+                                        color: AppColors.secondary,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    if (widget.model.oldPrice != null)
+                                      Positioned.directional(
+                                        textDirection:
+                                            Directionality.of(context),
+                                        top: -15,
+                                        end: -5,
+                                        child: Text(
+                                          '${widget.model.oldPrice}\$',
+                                          style: const TextStyle(
+                                            color: AppColors.appBarIconColors,
+                                            decoration:
+                                                TextDecoration.lineThrough,
+                                          ),
+                                        ),
+                                      )
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         ),
                       ),
-                      // Flexible(
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.all(12.0),
-                      //     child: Stack(
-                      //       alignment: AlignmentDirectional.centerEnd,
-                      //       clipBehavior: Clip.none,
-                      //       children: [
-                      //         Text(
-                      //           '${widget.model.price}\$',
-                      //           textAlign: TextAlign.end,
-                      //           style: const TextStyle(
-                      //             color: AppColors.secondary,
-                      //             fontWeight: FontWeight.bold,
-                      //             fontSize: 18,
-                      //           ),
-                      //         ),
-                      //         if (widget.model.oldPrice != null)
-                      //           Positioned.directional(
-                      //             textDirection: Directionality.of(context),
-                      //             top: -15,
-                      //             end: -5,
-                      //             child: Text(
-                      //               '${widget.model.oldPrice}\$',
-                      //               style: const TextStyle(
-                      //                 color: AppColors.appBarIconColors,
-                      //                 decoration: TextDecoration.lineThrough,
-                      //               ),
-                      //             ),
-                      //           )
-                      //       ],
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
         ),
       ),
     );
