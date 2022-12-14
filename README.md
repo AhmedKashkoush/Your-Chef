@@ -1,4 +1,6 @@
+<p align="center">
 # Your Chef
+</p>
 <p align="center">
   <img width="192" height="188" src="assets/images/Your Chef.png">
 </p>
