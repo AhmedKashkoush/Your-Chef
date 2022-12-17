@@ -12,11 +12,14 @@ class AppRouteNames {
   static const String resetPassword = '/resetPassword';
   static const String verifyEmail = '/verifyEmail';
 
-  //home route
+  //home routes
   static const String home = '/';
   static const String homeSearch = '/homeSearch';
 
-  //account
+  //food routes
+  static const String foodDetails = '/foodDetails';
+
+  //account routes
   static const String account = '/account';
 
   //error routes

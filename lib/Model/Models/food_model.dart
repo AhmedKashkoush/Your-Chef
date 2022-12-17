@@ -1,5 +1,6 @@
 class FoodModel {
   final String name;
+  final String description;
   final double price;
   final String imageUrl;
   final String restaurant;
@@ -11,6 +12,7 @@ class FoodModel {
 
   FoodModel({
     required this.name,
+    required this.description,
     required this.price,
     required this.imageUrl,
     required this.restaurant,
@@ -23,6 +25,7 @@ class FoodModel {
 
   FoodModel fromJson(Map<String, dynamic> json) => FoodModel(
         name: json['name'],
+        description: json['description'],
         price: json['price'],
         imageUrl: json['imageUrl'],
         restaurant: json['restaurant'],
@@ -35,6 +38,7 @@ class FoodModel {
 
   Map<String, dynamic> toJson(FoodModel model) => <String, dynamic>{
         'name': model.name,
+        'description': model.description,
         'price': model.price,
         'imageUrl': model.imageUrl,
         'restaurant': model.restaurant,

@@ -74,6 +74,10 @@ class AppTranslationKeys {
   static const String foods = 'foods';
   static const String from = 'from';
 
+  //food details
+  static const String amount = 'amount';
+  static const String addToCart = 'add_to_cart';
+
   //account
   static const String editProfile = 'edit_profile';
   static const String switchAccount = 'switch_account';

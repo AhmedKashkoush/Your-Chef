@@ -17,6 +17,7 @@ class MainScreenController extends GetxController {
   List<FoodModel> foods = [
     FoodModel(
       name: 'Big mac combo',
+      description: 'Very Delicious',
       price: 29.99,
       imageUrl: AppImages.hamburger,
       restaurant: "McDonald's",
@@ -27,6 +28,7 @@ class MainScreenController extends GetxController {
     ),
     FoodModel(
       name: 'Big mac combo',
+      description: 'Very Delicious',
       price: 29.99,
       imageUrl: AppImages.hamburger,
       restaurant: "McDonald's",
@@ -37,6 +39,7 @@ class MainScreenController extends GetxController {
     ),
     FoodModel(
       name: 'Big mac combo',
+      description: 'Very Delicious',
       price: 29.99,
       imageUrl: AppImages.hamburger,
       restaurant: "McDonald's",
@@ -47,6 +50,7 @@ class MainScreenController extends GetxController {
     ),
     FoodModel(
       name: 'Big mac combo',
+      description: 'Very Delicious',
       price: 29.99,
       imageUrl: AppImages.hamburger,
       restaurant: "McDonald's",
@@ -55,6 +59,7 @@ class MainScreenController extends GetxController {
     ),
     FoodModel(
       name: 'Big mac combo',
+      description: 'Very Delicious',
       price: 29.99,
       imageUrl: AppImages.hamburger,
       restaurant: "McDonald's",
@@ -63,6 +68,7 @@ class MainScreenController extends GetxController {
     ),
     FoodModel(
       name: 'Big mac combo',
+      description: 'Very Delicious',
       price: 29.99,
       imageUrl: AppImages.hamburger,
       restaurant: "McDonald's",
@@ -73,6 +79,7 @@ class MainScreenController extends GetxController {
     ),
     FoodModel(
       name: 'Big mac combo',
+      description: 'Very Delicious',
       price: 29.99,
       imageUrl: AppImages.hamburger,
       restaurant: "McDonald's",

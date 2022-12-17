@@ -117,7 +117,9 @@ class FoodView extends StatelessWidget {
                                             model.oldPrice!,
                                         child: FoodCard(
                                           model: model,
-                                          onTap: controller.preview,
+                                          index: index,
+                                          onTap: () =>
+                                              controller.preview(model, index),
                                           isListTile: false,
                                           onFavouriteTap: () {
                                             controller.setFavouriteAt(
@@ -131,7 +133,9 @@ class FoodView extends StatelessWidget {
                                       );
                                     return FoodCard(
                                       model: model,
-                                      onTap: controller.preview,
+                                      index: index,
+                                      onTap: () =>
+                                          controller.preview(model, index),
                                       isListTile: false,
                                       onFavouriteTap: () {
                                         controller.setFavouriteAt(
@@ -166,7 +170,9 @@ class FoodView extends StatelessWidget {
                                             model.oldPrice!,
                                         child: FoodCard(
                                           model: model,
-                                          onTap: controller.preview,
+                                          index: index,
+                                          onTap: () =>
+                                              controller.preview(model, index),
                                           onFavouriteTap: () {
                                             controller.setFavouriteAt(
                                               context,
@@ -179,7 +185,9 @@ class FoodView extends StatelessWidget {
                                       );
                                     return FoodCard(
                                       model: model,
-                                      onTap: controller.preview,
+                                      index: index,
+                                      onTap: () =>
+                                          controller.preview(model, index),
                                       onFavouriteTap: () {
                                         controller.setFavouriteAt(
                                           context,

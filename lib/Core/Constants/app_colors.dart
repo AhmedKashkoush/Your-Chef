@@ -24,4 +24,6 @@ class AppColors {
   static const Color buttonTilesColor = Color(0xFFDCDBDB);
   static const double buttonTilesOpacity = 0.25;
   static const Color dangerColor = Color(0xFFF32E2E);
+
+  static const Color addToCartColor = Color.fromARGB(255, 5, 153, 23);
 }

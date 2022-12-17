@@ -12,12 +12,14 @@ class FoodCard extends StatefulWidget {
   final void Function()? onTap;
   final void Function()? onFavouriteTap;
   final bool isListTile;
+  final int? index;
   const FoodCard({
     Key? key,
     required this.model,
     this.onFavouriteTap,
     this.isListTile = true,
     required this.onTap,
+    this.index,
   }) : super(key: key);
 
   @override
@@ -46,13 +48,16 @@ class _FoodCardState extends State<FoodCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Flexible(
-                      child: Container(
-                        //height: context.height * 0.2,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          image: DecorationImage(
-                            image: AssetImage(widget.model.imageUrl),
-                            isAntiAlias: true,
+                      child: Hero(
+                        tag: '${widget.index}${widget.model.imageUrl}',
+                        child: Container(
+                          //height: context.height * 0.2,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            image: DecorationImage(
+                              image: AssetImage(widget.model.imageUrl),
+                              isAntiAlias: true,
+                            ),
                           ),
                         ),
                       ),
@@ -70,30 +75,43 @@ class _FoodCardState extends State<FoodCard> {
                                   const EdgeInsetsDirectional.only(start: 14),
                               child: Row(
                                 children: [
-                                  Text(
-                                    widget.model.name,
-                                    style: const TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold,
+                                  Hero(
+                                    tag: '${widget.index}${widget.model.name}',
+                                    child: Material(
+                                      type: MaterialType.transparency,
+                                      child: Text(
+                                        widget.model.name,
+                                        style: const TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                   Expanded(
                                     child: SizedBox(),
                                   ),
                                   StatefulBuilder(builder: (context, setState) {
-                                    return IconButton(
-                                      onPressed: widget.onFavouriteTap == null
-                                          ? null
-                                          : () {
-                                              widget.onFavouriteTap!.call();
-                                              setState(() {
-                                                isFavourite = !isFavourite;
-                                              });
-                                            },
-                                      icon: isFavourite
-                                          ? Icon(Ionicons.heart,
-                                              color: AppColors.badgeColor)
-                                          : Icon(Ionicons.heart_outline),
+                                    return Hero(
+                                      tag: '${widget.index}favourite',
+                                      child: Material(
+                                        type: MaterialType.transparency,
+                                        child: IconButton(
+                                          onPressed: widget.onFavouriteTap ==
+                                                  null
+                                              ? null
+                                              : () {
+                                                  widget.onFavouriteTap!.call();
+                                                  setState(() {
+                                                    isFavourite = !isFavourite;
+                                                  });
+                                                },
+                                          icon: isFavourite
+                                              ? Icon(Ionicons.heart,
+                                                  color: AppColors.badgeColor)
+                                              : Icon(Ionicons.heart_outline),
+                                        ),
+                                      ),
                                     );
                                   }),
                                 ],
@@ -183,35 +201,44 @@ class _FoodCardState extends State<FoodCard> {
                       child: Stack(
                         alignment: AlignmentDirectional.topEnd,
                         children: [
-                          Container(
-                            //height: context.height * 0.2,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              image: DecorationImage(
-                                image: AssetImage(widget.model.imageUrl),
-                                isAntiAlias: true,
+                          Hero(
+                            tag: '${widget.index}${widget.model.imageUrl}',
+                            child: Container(
+                              //height: context.height * 0.2,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                image: DecorationImage(
+                                  image: AssetImage(widget.model.imageUrl),
+                                  isAntiAlias: true,
+                                ),
                               ),
                             ),
                           ),
                           StatefulBuilder(builder: (context, setState) {
-                            return IconButton(
-                              onPressed: widget.onFavouriteTap == null
-                                  ? null
-                                  : () {
-                                      widget.onFavouriteTap!.call();
-                                      setState(() {
-                                        isFavourite = !isFavourite;
-                                      });
-                                    },
-                              icon: isFavourite
-                                  ? Icon(
-                                      Ionicons.heart,
-                                      color: AppColors.badgeColor,
-                                    )
-                                  : Icon(
-                                      Ionicons.heart_outline,
-                                      color: Colors.black45,
-                                    ),
+                            return Hero(
+                              tag: '${widget.index}favourite',
+                              child: Material(
+                                type: MaterialType.transparency,
+                                child: IconButton(
+                                  onPressed: widget.onFavouriteTap == null
+                                      ? null
+                                      : () {
+                                          widget.onFavouriteTap!.call();
+                                          setState(() {
+                                            isFavourite = !isFavourite;
+                                          });
+                                        },
+                                  icon: isFavourite
+                                      ? Icon(
+                                          Ionicons.heart,
+                                          color: AppColors.badgeColor,
+                                        )
+                                      : Icon(
+                                          Ionicons.heart_outline,
+                                          color: Colors.black45,
+                                        ),
+                                ),
+                              ),
                             );
                           }),
                         ],
@@ -232,11 +259,17 @@ class _FoodCardState extends State<FoodCard> {
                               Padding(
                                 padding:
                                     const EdgeInsetsDirectional.only(start: 10),
-                                child: Text(
-                                  widget.model.name,
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                child: Hero(
+                                  tag: '${widget.index}${widget.model.name}',
+                                  child: Material(
+                                    type: MaterialType.transparency,
+                                    child: Text(
+                                      widget.model.name,
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),

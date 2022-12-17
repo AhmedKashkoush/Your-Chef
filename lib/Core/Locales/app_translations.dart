@@ -79,6 +79,9 @@ class AppTranslations extends Translations {
           //food view
           AppTranslationKeys.foods: 'Foods',
           AppTranslationKeys.from: 'From',
+          //food details
+          AppTranslationKeys.amount: 'Amount',
+          AppTranslationKeys.addToCart: 'Add To cart',
           //account
           AppTranslationKeys.editProfile: 'Edit Profile',
           AppTranslationKeys.switchAccount: 'Switch Account',
@@ -207,6 +210,9 @@ class AppTranslations extends Translations {
           //food view
           AppTranslationKeys.foods: 'الاطعمة',
           AppTranslationKeys.from: 'من',
+          //food details
+          AppTranslationKeys.amount: 'الكمية',
+          AppTranslationKeys.addToCart: 'إضافة إلى العربة',
           //account
           AppTranslationKeys.editProfile: 'تعديل الملف الشخصي',
           AppTranslationKeys.switchAccount: 'تبديل الحساب',

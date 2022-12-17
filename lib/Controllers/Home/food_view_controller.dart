@@ -4,6 +4,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:your_chief/Controllers/Home/main_screen_controller.dart';
 import 'package:your_chief/Core/Constants/app_colors.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
+import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/Core/Utils/utils.dart';
 import 'package:your_chief/Model/Models/food_model.dart';
 
@@ -43,12 +44,21 @@ class FoodViewController extends GetxController {
     update();
   }
 
-  void preview() {}
+  void preview(FoodModel food, int index) {
+    Get.toNamed(
+      AppRouteNames.foodDetails,
+      arguments: {
+        'food': food,
+        'index': index,
+      },
+    );
+  }
 
   void setFavouriteAt(
       BuildContext context, FoodModel food, int index, bool isFavourite) {
     _mainController.foods[index] = FoodModel(
       name: food.name,
+      description: food.description,
       price: food.price,
       imageUrl: food.imageUrl,
       restaurant: food.restaurant,
