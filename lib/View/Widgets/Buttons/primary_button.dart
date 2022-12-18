@@ -7,6 +7,7 @@ class PrimaryButton extends StatelessWidget {
   final ButtonStyle? style;
   final TextStyle? textStyle;
   final Color? color;
+  final IconData? icon;
   const PrimaryButton({
     Key? key,
     this.onPressed,
@@ -15,6 +16,7 @@ class PrimaryButton extends StatelessWidget {
     this.textStyle,
     this.onLongPress,
     this.color,
+    this.icon,
   }) : super(key: key);
 
   @override
@@ -30,15 +32,42 @@ class PrimaryButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(14),
             ),
           ),
-      child: Text(
-        text,
-        style: textStyle ??
-            const TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+      child: icon == null
+          ? Text(
+              text,
+              style: textStyle ??
+                  const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+            )
+          : FittedBox(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 14),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      icon,
+                      color: Colors.white,
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      text,
+                      style: textStyle ??
+                          const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-      ),
     );
   }
 }

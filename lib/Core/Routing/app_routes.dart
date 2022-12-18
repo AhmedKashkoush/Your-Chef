@@ -88,7 +88,7 @@ class AppRoutes {
       name: AppRouteNames.foodDetails,
       page: () => const FoodDetailsScreen(),
       binding: FoodDetailsBinding(),
-      transition: Transition.downToUp,
+      transition: Transition.fade,
       curve: Curves.slowMiddle,
     ),
     GetPage(

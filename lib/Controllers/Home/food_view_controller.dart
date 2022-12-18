@@ -64,6 +64,7 @@ class FoodViewController extends GetxController {
       restaurant: food.restaurant,
       restaurantImageUrl: food.restaurantImageUrl,
       rate: food.rate,
+      stock: food.stock,
       hasOffer: food.hasOffer,
       isFavourite: isFavourite,
       oldPrice: food.oldPrice,

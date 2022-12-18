@@ -75,6 +75,11 @@ class AppTranslationKeys {
   static const String from = 'from';
 
   //food details
+  static const String price = 'price';
+  static const String rate = 'rate';
+  static const String stock = 'stock';
+  static const String totalPrice = 'total_price';
+  static const String description = 'description';
   static const String amount = 'amount';
   static const String addToCart = 'add_to_cart';
 

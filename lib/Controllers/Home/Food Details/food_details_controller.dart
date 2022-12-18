@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_chief/Model/Models/food_model.dart';
@@ -9,6 +8,8 @@ class FoodDetailsController extends GetxController {
   late final int index;
   int _amount = 0;
   int get amount => _amount;
+  double _totalPrice = 0;
+  double get totalPrice => _totalPrice;
   final args = Get.arguments;
   bool _showTitle = false;
   bool get showTitle => _showTitle;
@@ -39,12 +40,15 @@ class FoodDetailsController extends GetxController {
   }
 
   void incrementAmount() {
-    if (amount < 100) _amount++;
+    if (amount < food.stock) _amount++;
+    _totalPrice = (amount * food.price).toPrecision(2);
+    _totalPrice.toPrecision(2);
     update();
   }
 
   void decrementAmount() {
     if (_amount > 0) _amount--;
+    _totalPrice = (amount * food.price).toPrecision(2);
     update();
   }
 

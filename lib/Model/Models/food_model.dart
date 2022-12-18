@@ -6,11 +6,12 @@ class FoodModel {
   final String restaurant;
   final String restaurantImageUrl;
   final double rate;
+  final int stock;
   final bool hasOffer;
   final double? oldPrice;
   final bool isFavourite;
 
-  FoodModel({
+  const FoodModel({
     required this.name,
     required this.description,
     required this.price,
@@ -18,6 +19,7 @@ class FoodModel {
     required this.restaurant,
     required this.restaurantImageUrl,
     required this.rate,
+    this.stock = 0,
     this.hasOffer = false,
     this.oldPrice,
     this.isFavourite = false,
@@ -31,6 +33,7 @@ class FoodModel {
         restaurant: json['restaurant'],
         restaurantImageUrl: json['restaurantImageUrl'],
         rate: json['rate'],
+        stock: json['stock'],
         hasOffer: json['hasOffer'] ?? false,
         oldPrice: json['oldPrice'],
         isFavourite: json['isFavourite'] ?? false,
@@ -44,6 +47,7 @@ class FoodModel {
         'restaurant': model.restaurant,
         'restaurantImageUrl': model.restaurantImageUrl,
         'rate': model.rate,
+        'stock': model.stock,
         'hasOffer': model.hasOffer,
         'oldPrice': model.oldPrice,
         'isFavourite': model.isFavourite,

@@ -80,6 +80,11 @@ class AppTranslations extends Translations {
           AppTranslationKeys.foods: 'Foods',
           AppTranslationKeys.from: 'From',
           //food details
+          AppTranslationKeys.price: 'Price',
+          AppTranslationKeys.rate: 'Rate',
+          AppTranslationKeys.stock: 'Stock',
+          AppTranslationKeys.totalPrice: 'Total Price',
+          AppTranslationKeys.description: 'Description',
           AppTranslationKeys.amount: 'Amount',
           AppTranslationKeys.addToCart: 'Add To cart',
           //account
@@ -211,6 +216,11 @@ class AppTranslations extends Translations {
           AppTranslationKeys.foods: 'الاطعمة',
           AppTranslationKeys.from: 'من',
           //food details
+          AppTranslationKeys.price: 'السعر',
+          AppTranslationKeys.rate: 'التقييم',
+          AppTranslationKeys.stock: 'المخزون',
+          AppTranslationKeys.totalPrice: 'السعر الكلي',
+          AppTranslationKeys.description: 'الوصف',
           AppTranslationKeys.amount: 'الكمية',
           AppTranslationKeys.addToCart: 'إضافة إلى العربة',
           //account

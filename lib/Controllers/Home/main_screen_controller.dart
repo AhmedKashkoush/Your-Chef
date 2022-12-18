@@ -25,6 +25,7 @@ class MainScreenController extends GetxController {
       rate: 3.5,
       hasOffer: true,
       oldPrice: 50,
+      stock: 14,
     ),
     FoodModel(
       name: 'Big mac combo',
@@ -36,6 +37,7 @@ class MainScreenController extends GetxController {
       rate: 3.5,
       hasOffer: true,
       oldPrice: 50,
+      stock: 14,
     ),
     FoodModel(
       name: 'Big mac combo',
@@ -47,6 +49,7 @@ class MainScreenController extends GetxController {
       rate: 3.5,
       hasOffer: true,
       oldPrice: 50,
+      stock: 14,
     ),
     FoodModel(
       name: 'Big mac combo',
@@ -56,6 +59,7 @@ class MainScreenController extends GetxController {
       restaurant: "McDonald's",
       restaurantImageUrl: AppImages.mcdonalds,
       rate: 3.5,
+      stock: 14,
     ),
     FoodModel(
       name: 'Big mac combo',
@@ -65,6 +69,7 @@ class MainScreenController extends GetxController {
       restaurant: "McDonald's",
       restaurantImageUrl: AppImages.mcdonalds,
       rate: 3.5,
+      stock: 14,
     ),
     FoodModel(
       name: 'Big mac combo',
@@ -76,6 +81,7 @@ class MainScreenController extends GetxController {
       rate: 3.5,
       hasOffer: true,
       oldPrice: 50,
+      stock: 14,
     ),
     FoodModel(
       name: 'Big mac combo',
@@ -85,6 +91,7 @@ class MainScreenController extends GetxController {
       restaurant: "McDonald's",
       restaurantImageUrl: AppImages.mcdonalds,
       rate: 3.5,
+      stock: 14,
     ),
   ];
 

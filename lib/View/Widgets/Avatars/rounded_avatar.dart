@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RoundedAvatar extends StatelessWidget {
@@ -7,14 +6,14 @@ class RoundedAvatar extends StatelessWidget {
   final double? size;
   final String imageUrl;
   final bool isAsset;
-  final Color color;
+  final Color? color;
   const RoundedAvatar({
     Key? key,
     this.radius = 15,
     required this.imageUrl,
     this.size,
     this.isAsset = false,
-    this.color = Colors.white,
+    this.color,
   }) : super(key: key);
 
   @override
@@ -30,10 +29,12 @@ class RoundedAvatar extends StatelessWidget {
             ? DecorationImage(
                 image: CachedNetworkImageProvider(imageUrl),
                 isAntiAlias: true,
+                fit: BoxFit.fill,
               )
             : DecorationImage(
                 image: AssetImage(imageUrl),
                 isAntiAlias: true,
+                fit: BoxFit.fill,
               ),
       ),
     );

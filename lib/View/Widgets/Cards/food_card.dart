@@ -120,11 +120,17 @@ class _FoodCardState extends State<FoodCard> {
                             Flexible(
                               child: ListTile(
                                 horizontalTitleGap: -2,
-                                leading: RoundedAvatar(
-                                  imageUrl: widget.model.restaurantImageUrl,
-                                  radius: 10,
-                                  size: 30,
-                                  isAsset: true,
+                                leading: Hero(
+                                  tag: '${widget.index}restaurant',
+                                  child: Material(
+                                    type: MaterialType.transparency,
+                                    child: RoundedAvatar(
+                                      imageUrl: widget.model.restaurantImageUrl,
+                                      radius: 10,
+                                      size: 30,
+                                      isAsset: true,
+                                    ),
+                                  ),
                                 ),
                                 title: Text(
                                   '${AppTranslationKeys.from.tr}: ${widget.model.restaurant}',
@@ -134,39 +140,51 @@ class _FoodCardState extends State<FoodCard> {
                                     fontSize: 14,
                                   ),
                                 ),
-                                subtitle: RatingBar(
-                                  itemSize: 15,
-                                  ratingWidget: RatingWidget(
-                                    full: Icon(
-                                      Ionicons.star,
-                                      color: AppColors.primary,
-                                    ),
-                                    half: Icon(
-                                      Ionicons.star_half_outline,
-                                      color: AppColors.primary,
-                                    ),
-                                    empty: Icon(
-                                      Ionicons.star_outline,
-                                      color: AppColors.primary,
+                                subtitle: Hero(
+                                  tag: '${widget.index}rating',
+                                  child: Material(
+                                    type: MaterialType.transparency,
+                                    child: RatingBar(
+                                      itemSize: 15,
+                                      ratingWidget: RatingWidget(
+                                        full: Icon(
+                                          Ionicons.star,
+                                          color: AppColors.primary,
+                                        ),
+                                        half: Icon(
+                                          Ionicons.star_half_outline,
+                                          color: AppColors.primary,
+                                        ),
+                                        empty: Icon(
+                                          Ionicons.star_outline,
+                                          color: AppColors.primary,
+                                        ),
+                                      ),
+                                      allowHalfRating: true,
+                                      onRatingUpdate: (double value) {},
+                                      ignoreGestures: true,
+                                      initialRating: widget.model.rate,
+                                      glow: false,
                                     ),
                                   ),
-                                  allowHalfRating: true,
-                                  onRatingUpdate: (double value) {},
-                                  ignoreGestures: true,
-                                  initialRating: widget.model.rate,
-                                  glow: false,
                                 ),
                                 trailing: Stack(
                                   alignment: AlignmentDirectional.centerEnd,
                                   clipBehavior: Clip.none,
                                   children: [
-                                    Text(
-                                      '${widget.model.price}\$',
-                                      textAlign: TextAlign.end,
-                                      style: const TextStyle(
-                                        color: AppColors.secondary,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
+                                    Hero(
+                                      tag: '${widget.index}price',
+                                      child: Material(
+                                        type: MaterialType.transparency,
+                                        child: Text(
+                                          '${widget.model.price}\$',
+                                          textAlign: TextAlign.end,
+                                          style: const TextStyle(
+                                            color: AppColors.secondary,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                     if (widget.model.oldPrice != null)
@@ -276,11 +294,18 @@ class _FoodCardState extends State<FoodCard> {
                               Flexible(
                                 child: ListTile(
                                   horizontalTitleGap: -2,
-                                  leading: RoundedAvatar(
-                                    imageUrl: widget.model.restaurantImageUrl,
-                                    radius: 10,
-                                    size: 30,
-                                    isAsset: true,
+                                  leading: Hero(
+                                    tag: '${widget.index}restaurant',
+                                    child: Material(
+                                      type: MaterialType.transparency,
+                                      child: RoundedAvatar(
+                                        imageUrl:
+                                            widget.model.restaurantImageUrl,
+                                        radius: 10,
+                                        size: 30,
+                                        isAsset: true,
+                                      ),
+                                    ),
                                   ),
                                   title: Text(
                                     '${AppTranslationKeys.from.tr}: ${widget.model.restaurant}',
@@ -290,27 +315,33 @@ class _FoodCardState extends State<FoodCard> {
                                       fontSize: 12,
                                     ),
                                   ),
-                                  subtitle: RatingBar(
-                                    itemSize: 15,
-                                    ratingWidget: RatingWidget(
-                                      full: Icon(
-                                        Ionicons.star,
-                                        color: AppColors.primary,
-                                      ),
-                                      half: Icon(
-                                        Ionicons.star_half_outline,
-                                        color: AppColors.primary,
-                                      ),
-                                      empty: Icon(
-                                        Ionicons.star_outline,
-                                        color: AppColors.primary,
+                                  subtitle: Hero(
+                                    tag: '${widget.index}rating',
+                                    child: Material(
+                                      type: MaterialType.transparency,
+                                      child: RatingBar(
+                                        itemSize: 15,
+                                        ratingWidget: RatingWidget(
+                                          full: Icon(
+                                            Ionicons.star,
+                                            color: AppColors.primary,
+                                          ),
+                                          half: Icon(
+                                            Ionicons.star_half_outline,
+                                            color: AppColors.primary,
+                                          ),
+                                          empty: Icon(
+                                            Ionicons.star_outline,
+                                            color: AppColors.primary,
+                                          ),
+                                        ),
+                                        allowHalfRating: true,
+                                        onRatingUpdate: (double value) {},
+                                        ignoreGestures: true,
+                                        initialRating: widget.model.rate,
+                                        glow: false,
                                       ),
                                     ),
-                                    allowHalfRating: true,
-                                    onRatingUpdate: (double value) {},
-                                    ignoreGestures: true,
-                                    initialRating: widget.model.rate,
-                                    glow: false,
                                   ),
                                 ),
                               ),
@@ -323,13 +354,19 @@ class _FoodCardState extends State<FoodCard> {
                                   alignment: AlignmentDirectional.centerEnd,
                                   clipBehavior: Clip.none,
                                   children: [
-                                    Text(
-                                      '${widget.model.price}\$',
-                                      textAlign: TextAlign.end,
-                                      style: const TextStyle(
-                                        color: AppColors.secondary,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
+                                    Hero(
+                                      tag: '${widget.index}price',
+                                      child: Material(
+                                        type: MaterialType.transparency,
+                                        child: Text(
+                                          '${widget.model.price}\$',
+                                          textAlign: TextAlign.end,
+                                          style: const TextStyle(
+                                            color: AppColors.secondary,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                     if (widget.model.oldPrice != null)
