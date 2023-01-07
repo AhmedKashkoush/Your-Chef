@@ -39,6 +39,14 @@ class FoodDetailsController extends GetxController {
     super.dispose();
   }
 
+  void like() {
+    if (food.isFavourite) {
+      //unlike
+    } else {
+      //like
+    }
+  }
+
   void incrementAmount() {
     if (amount < food.stock) _amount++;
     _totalPrice = (amount * food.price).toPrecision(2);

@@ -174,7 +174,8 @@ class MainScreen extends StatelessWidget {
           floatingActionButton: Transform.scale(
             scale: 1.3,
             child: FloatingActionButton(
-              onPressed: controller.goToCart,
+              heroTag: 'cart',
+              onPressed: () => controller.goToCart(context),
               backgroundColor: AppColors.primary,
               foregroundColor: Colors.white,
               child: Icon(

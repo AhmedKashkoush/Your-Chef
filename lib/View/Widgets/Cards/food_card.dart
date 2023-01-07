@@ -6,6 +6,7 @@ import 'package:your_chief/Core/Constants/app_colors.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/Model/Models/food_model.dart';
 import 'package:your_chief/View/Widgets/Avatars/rounded_avatar.dart';
+import 'package:your_chief/View/Widgets/Buttons/heart_button.dart';
 
 class FoodCard extends StatefulWidget {
   final FoodModel model;
@@ -91,29 +92,12 @@ class _FoodCardState extends State<FoodCard> {
                                   Expanded(
                                     child: SizedBox(),
                                   ),
-                                  StatefulBuilder(builder: (context, setState) {
-                                    return Hero(
-                                      tag: '${widget.index}favourite',
-                                      child: Material(
-                                        type: MaterialType.transparency,
-                                        child: IconButton(
-                                          onPressed: widget.onFavouriteTap ==
-                                                  null
-                                              ? null
-                                              : () {
-                                                  widget.onFavouriteTap!.call();
-                                                  setState(() {
-                                                    isFavourite = !isFavourite;
-                                                  });
-                                                },
-                                          icon: isFavourite
-                                              ? Icon(Ionicons.heart,
-                                                  color: AppColors.badgeColor)
-                                              : Icon(Ionicons.heart_outline),
-                                        ),
-                                      ),
-                                    );
-                                  }),
+                                  Hero(
+                                    tag: '${widget.index}favourite',
+                                    child: HeartButton(
+                                      onTap: widget.onFavouriteTap,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -232,33 +216,12 @@ class _FoodCardState extends State<FoodCard> {
                               ),
                             ),
                           ),
-                          StatefulBuilder(builder: (context, setState) {
-                            return Hero(
-                              tag: '${widget.index}favourite',
-                              child: Material(
-                                type: MaterialType.transparency,
-                                child: IconButton(
-                                  onPressed: widget.onFavouriteTap == null
-                                      ? null
-                                      : () {
-                                          widget.onFavouriteTap!.call();
-                                          setState(() {
-                                            isFavourite = !isFavourite;
-                                          });
-                                        },
-                                  icon: isFavourite
-                                      ? Icon(
-                                          Ionicons.heart,
-                                          color: AppColors.badgeColor,
-                                        )
-                                      : Icon(
-                                          Ionicons.heart_outline,
-                                          color: Colors.black45,
-                                        ),
-                                ),
-                              ),
-                            );
-                          }),
+                          Hero(
+                            tag: '${widget.index}favourite',
+                            child: HeartButton(
+                              onTap: widget.onFavouriteTap,
+                            ),
+                          ),
                         ],
                       ),
                     ),

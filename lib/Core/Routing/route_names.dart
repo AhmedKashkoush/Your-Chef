@@ -15,6 +15,7 @@ class AppRouteNames {
   //home routes
   static const String home = '/';
   static const String homeSearch = '/homeSearch';
+  static const String cart = '/cart';
 
   //food routes
   static const String foodDetails = '/foodDetails';

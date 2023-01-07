@@ -4,38 +4,45 @@ import 'package:flutter/material.dart';
 class RoundedAvatar extends StatelessWidget {
   final double radius;
   final double? size;
-  final String imageUrl;
+  final double? width;
+  final double? height;
+  final String? imageUrl;
   final bool isAsset;
   final Color? color;
   const RoundedAvatar({
     Key? key,
     this.radius = 15,
-    required this.imageUrl,
+    this.imageUrl,
     this.size,
     this.isAsset = false,
     this.color,
+    this.width,
+    this.height,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
       clipBehavior: Clip.antiAlias,
-      width: size,
-      height: size,
+      duration: const Duration(milliseconds: 700),
+      width: width != null ? width : size,
+      height: height != null ? height : size,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(radius),
-        image: !isAsset
-            ? DecorationImage(
-                image: CachedNetworkImageProvider(imageUrl),
-                isAntiAlias: true,
-                fit: BoxFit.fill,
-              )
-            : DecorationImage(
-                image: AssetImage(imageUrl),
-                isAntiAlias: true,
-                fit: BoxFit.fill,
-              ),
+        image: imageUrl != null
+            ? (!isAsset
+                ? DecorationImage(
+                    image: CachedNetworkImageProvider(imageUrl!),
+                    isAntiAlias: true,
+                    fit: BoxFit.fill,
+                  )
+                : DecorationImage(
+                    image: AssetImage(imageUrl!),
+                    isAntiAlias: true,
+                    fit: BoxFit.fill,
+                  ))
+            : null,
       ),
     );
   }

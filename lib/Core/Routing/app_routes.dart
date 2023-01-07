@@ -7,6 +7,7 @@ import 'package:your_chief/Core/Bindings/Auth/forgot_password_binding.dart';
 import 'package:your_chief/Core/Bindings/Auth/reset_password_binding.dart';
 import 'package:your_chief/Core/Bindings/Auth/verification_method_binding.dart';
 import 'package:your_chief/Core/Bindings/Auth/verify_account_binding.dart';
+import 'package:your_chief/Core/Bindings/Home/Cart/cart_binding.dart';
 import 'package:your_chief/Core/Bindings/Home/Food%20Details/food_details_binding.dart';
 import 'package:your_chief/Core/Bindings/Home/search_binding.dart';
 import 'package:your_chief/Core/Bindings/Onboarding/onboarding_binding.dart';
@@ -19,6 +20,7 @@ import 'package:your_chief/View/Screens/Auth/reset_password_screen.dart';
 import 'package:your_chief/View/Screens/Auth/verification_method_screen.dart';
 import 'package:your_chief/View/Screens/Auth/verify_account_screen.dart';
 import 'package:your_chief/View/Screens/Auth/verify_email_screen.dart';
+import 'package:your_chief/View/Screens/Home/Cart/cart_screen.dart';
 import 'package:your_chief/View/Screens/Home/Food%20Details/food_details_screen.dart';
 import 'package:your_chief/View/Screens/Home/main_screen.dart';
 import 'package:your_chief/View/Screens/Home/search_screen.dart';
@@ -82,6 +84,13 @@ class AppRoutes {
       page: () => const MainScreen(),
       binding: MainScreenBinding(),
       transition: Transition.fade,
+      curve: Curves.slowMiddle,
+    ),
+    GetPage(
+      name: AppRouteNames.cart,
+      page: () => const CartScreen(),
+      binding: CartBinding(),
+      transition: Transition.upToDown,
       curve: Curves.slowMiddle,
     ),
     GetPage(

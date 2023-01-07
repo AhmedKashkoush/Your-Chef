@@ -15,6 +15,12 @@ class Utils {
     );
   }
 
+  static void removeCurrentMessage(BuildContext context) =>
+      ScaffoldMessenger.of(context).removeCurrentSnackBar();
+
+  static void hideCurrentMessage(BuildContext context) =>
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+
   static void showSnackBarMessage(
     String message,
     BuildContext context, {

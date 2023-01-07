@@ -6,6 +6,8 @@ class TransparentAppBar extends AppBar {
   final List<Widget>? actions;
   final PreferredSize? bottom;
   final Color? foregroundColor;
+  final Color? backgroundColor;
+  final bool centerTitle;
 
   TransparentAppBar({
     Key? key,
@@ -14,6 +16,8 @@ class TransparentAppBar extends AppBar {
     this.actions,
     this.bottom,
     this.foregroundColor,
+    this.centerTitle = false,
+    this.backgroundColor = Colors.transparent,
   }) : super(
           key: key,
           title: title,
@@ -22,6 +26,7 @@ class TransparentAppBar extends AppBar {
           bottom: bottom,
           foregroundColor: foregroundColor,
           elevation: 0,
-          backgroundColor: Colors.transparent,
+          backgroundColor: backgroundColor,
+          centerTitle: centerTitle,
         );
 }

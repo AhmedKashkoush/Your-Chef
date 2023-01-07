@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:your_chief/Core/Constants/app_images.dart';
 import 'package:your_chief/Core/Global/current_user.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
+import 'package:your_chief/Core/Utils/utils.dart';
 import 'package:your_chief/Model/Models/food_model.dart';
 import 'package:your_chief/Model/Models/user_model.dart';
 import 'package:your_chief/View/Screens/Home/food_view.dart';
@@ -121,7 +122,10 @@ class MainScreenController extends GetxController {
     Get.toNamed(AppRouteNames.homeSearch);
   }
 
-  void goToCart() {}
+  void goToCart(BuildContext context) {
+    Utils.removeCurrentMessage(context);
+    Get.toNamed(AppRouteNames.cart);
+  }
 
   Future<bool> onAppClose() async {
     if (_currentPage != 0) {
