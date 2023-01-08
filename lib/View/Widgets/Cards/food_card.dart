@@ -177,12 +177,19 @@ class _FoodCardState extends State<FoodCard> {
                                             Directionality.of(context),
                                         top: -15,
                                         end: -5,
-                                        child: Text(
-                                          '${widget.model.oldPrice}\$',
-                                          style: const TextStyle(
-                                            color: AppColors.appBarIconColors,
-                                            decoration:
-                                                TextDecoration.lineThrough,
+                                        child: Hero(
+                                          tag: '${widget.index}oldprice',
+                                          child: Material(
+                                            type: MaterialType.transparency,
+                                            child: Text(
+                                              '${widget.model.oldPrice}\$',
+                                              style: const TextStyle(
+                                                color:
+                                                    AppColors.appBarIconColors,
+                                                decoration:
+                                                    TextDecoration.lineThrough,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       )
@@ -229,129 +236,130 @@ class _FoodCardState extends State<FoodCard> {
                       height: 10,
                     ),
                     Flexible(
-                      child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 2),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.only(start: 10),
-                                child: Hero(
-                                  tag: '${widget.index}${widget.model.name}',
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 2),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsetsDirectional.only(start: 10),
+                              child: Hero(
+                                tag: '${widget.index}${widget.model.name}',
+                                child: Material(
+                                  type: MaterialType.transparency,
+                                  child: Text(
+                                    widget.model.name,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Flexible(
+                              child: ListTile(
+                                horizontalTitleGap: -2,
+                                leading: Hero(
+                                  tag: '${widget.index}restaurant',
                                   child: Material(
                                     type: MaterialType.transparency,
-                                    child: Text(
-                                      widget.model.name,
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
+                                    child: RoundedAvatar(
+                                      imageUrl: widget.model.restaurantImageUrl,
+                                      radius: 10,
+                                      size: 30,
+                                      isAsset: true,
+                                    ),
+                                  ),
+                                ),
+                                title: Text(
+                                  '${AppTranslationKeys.from.tr}: ${widget.model.restaurant}',
+                                  style: const TextStyle(
+                                    color: AppColors.appBarIconColors,
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                                subtitle: Hero(
+                                  tag: '${widget.index}rating',
+                                  child: Material(
+                                    type: MaterialType.transparency,
+                                    child: RatingBar(
+                                      itemSize: 15,
+                                      ratingWidget: RatingWidget(
+                                        full: Icon(
+                                          Ionicons.star,
+                                          color: AppColors.primary,
+                                        ),
+                                        half: Icon(
+                                          Ionicons.star_half_outline,
+                                          color: AppColors.primary,
+                                        ),
+                                        empty: Icon(
+                                          Ionicons.star_outline,
+                                          color: AppColors.primary,
+                                        ),
                                       ),
+                                      allowHalfRating: true,
+                                      onRatingUpdate: (double value) {},
+                                      ignoreGestures: true,
+                                      initialRating: widget.model.rate,
+                                      glow: false,
                                     ),
                                   ),
                                 ),
                               ),
-                              Flexible(
-                                child: ListTile(
-                                  horizontalTitleGap: -2,
-                                  leading: Hero(
-                                    tag: '${widget.index}restaurant',
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 8,
+                                horizontal: 14,
+                              ),
+                              child: Stack(
+                                alignment: AlignmentDirectional.centerEnd,
+                                clipBehavior: Clip.none,
+                                children: [
+                                  Hero(
+                                    tag: '${widget.index}price',
                                     child: Material(
                                       type: MaterialType.transparency,
-                                      child: RoundedAvatar(
-                                        imageUrl:
-                                            widget.model.restaurantImageUrl,
-                                        radius: 10,
-                                        size: 30,
-                                        isAsset: true,
+                                      child: Text(
+                                        '${widget.model.price}\$',
+                                        textAlign: TextAlign.end,
+                                        style: const TextStyle(
+                                          color: AppColors.secondary,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                  title: Text(
-                                    '${AppTranslationKeys.from.tr}: ${widget.model.restaurant}',
-                                    style: const TextStyle(
-                                      color: AppColors.appBarIconColors,
-                                      fontStyle: FontStyle.italic,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                  subtitle: Hero(
-                                    tag: '${widget.index}rating',
-                                    child: Material(
-                                      type: MaterialType.transparency,
-                                      child: RatingBar(
-                                        itemSize: 15,
-                                        ratingWidget: RatingWidget(
-                                          full: Icon(
-                                            Ionicons.star,
-                                            color: AppColors.primary,
-                                          ),
-                                          half: Icon(
-                                            Ionicons.star_half_outline,
-                                            color: AppColors.primary,
-                                          ),
-                                          empty: Icon(
-                                            Ionicons.star_outline,
-                                            color: AppColors.primary,
+                                  if (widget.model.oldPrice != null)
+                                    Positioned.directional(
+                                      textDirection: Directionality.of(context),
+                                      top: -15,
+                                      end: -5,
+                                      child: Hero(
+                                        tag: '${widget.index}oldprice',
+                                        child: Material(
+                                          type: MaterialType.transparency,
+                                          child: Text(
+                                            '${widget.model.oldPrice}\$',
+                                            style: const TextStyle(
+                                              color: AppColors.appBarIconColors,
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                            ),
                                           ),
                                         ),
-                                        allowHalfRating: true,
-                                        onRatingUpdate: (double value) {},
-                                        ignoreGestures: true,
-                                        initialRating: widget.model.rate,
-                                        glow: false,
                                       ),
-                                    ),
-                                  ),
-                                ),
+                                    )
+                                ],
                               ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 8,
-                                  horizontal: 14,
-                                ),
-                                child: Stack(
-                                  alignment: AlignmentDirectional.centerEnd,
-                                  clipBehavior: Clip.none,
-                                  children: [
-                                    Hero(
-                                      tag: '${widget.index}price',
-                                      child: Material(
-                                        type: MaterialType.transparency,
-                                        child: Text(
-                                          '${widget.model.price}\$',
-                                          textAlign: TextAlign.end,
-                                          style: const TextStyle(
-                                            color: AppColors.secondary,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    if (widget.model.oldPrice != null)
-                                      Positioned.directional(
-                                        textDirection:
-                                            Directionality.of(context),
-                                        top: -15,
-                                        end: -5,
-                                        child: Text(
-                                          '${widget.model.oldPrice}\$',
-                                          style: const TextStyle(
-                                            color: AppColors.appBarIconColors,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          ),
-                                        ),
-                                      )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

@@ -82,7 +82,9 @@ class AppTranslations extends Translations {
           //cart
           AppTranslationKeys.cart: 'Cart',
           //food details
+          AppTranslationKeys.sale: 'Sale',
           AppTranslationKeys.price: 'Price',
+          AppTranslationKeys.oldPrice: 'Old Price',
           AppTranslationKeys.rate: 'Rate',
           AppTranslationKeys.stock: 'Stock',
           AppTranslationKeys.totalPrice: 'Total Price',
@@ -220,7 +222,9 @@ class AppTranslations extends Translations {
           //cart
           AppTranslationKeys.cart: 'العربة',
           //food details
+          AppTranslationKeys.sale: 'تخفيض',
           AppTranslationKeys.price: 'السعر',
+          AppTranslationKeys.oldPrice: 'السعر القديم',
           AppTranslationKeys.rate: 'التقييم',
           AppTranslationKeys.stock: 'المخزون',
           AppTranslationKeys.totalPrice: 'السعر الكلي',

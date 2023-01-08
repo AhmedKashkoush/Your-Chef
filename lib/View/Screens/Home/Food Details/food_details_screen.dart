@@ -83,27 +83,99 @@ class _FoodDetailsScreenPortrait extends StatelessWidget {
                 ),
                 expandedHeight: toolBarHeight,
               ),
-              SliverPadding(
-                padding: const EdgeInsets.all(12),
-                sliver: SliverList(
-                  delegate: SliverChildListDelegate(
-                    [
-                      Hero(
-                        tag: '${controller.index}${controller.food.name}',
-                        child: Material(
-                          type: MaterialType.transparency,
-                          child: Text(
-                            controller.food.name,
-                            style: const TextStyle(
-                              fontSize: 34,
-                              fontWeight: FontWeight.bold,
+              SliverToBoxAdapter(
+                child: controller.food.hasOffer
+                    ? Banner(
+                        location: BannerLocation.topEnd,
+                        message: AppTranslationKeys.sale.tr,
+                        color: AppColors.badgeColor,
+                        textStyle: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Hero(
+                            tag: '${controller.index}${controller.food.name}',
+                            child: Material(
+                              type: MaterialType.transparency,
+                              child: Text(
+                                controller.food.name,
+                                style: const TextStyle(
+                                  fontSize: 34,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.only(
+                          left: 12,
+                          right: 12,
+                          top: 12,
+                        ),
+                        child: Hero(
+                          tag: '${controller.index}${controller.food.name}',
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: Text(
+                              controller.food.name,
+                              style: const TextStyle(
+                                fontSize: 34,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 32,
-                      ),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.only(
+                  left: 12,
+                  right: 12,
+                  bottom: 12,
+                  top: 32,
+                ),
+                sliver: SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      if (controller.food.hasOffer) ...[
+                        Row(
+                          children: [
+                            Hero(
+                              tag: '${controller.index}oldprice',
+                              child: Material(
+                                type: MaterialType.transparency,
+                                child: Text(
+                                  '${AppTranslationKeys.oldPrice.tr}:',
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                '${controller.food.oldPrice}\$',
+                                textAlign: TextAlign.end,
+                                style: const TextStyle(
+                                  decoration: TextDecoration.lineThrough,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Divider(
+                          height: 32,
+                          thickness: 1,
+                          indent: 20,
+                          endIndent: 40,
+                        ),
+                      ],
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -483,26 +555,91 @@ class _FoodDetailsScreenLandscape extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Hero(
-                        tag: '${controller.index}${controller.food.name}',
-                        child: Material(
-                          type: MaterialType.transparency,
-                          child: Text(
-                            controller.food.name,
-                            style: const TextStyle(
-                              fontSize: 34,
-                              fontWeight: FontWeight.bold,
+                    if (controller.food.hasOffer)
+                      Banner(
+                        location: BannerLocation.topEnd,
+                        message: AppTranslationKeys.sale.tr,
+                        color: AppColors.badgeColor,
+                        textStyle: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Hero(
+                              tag: '${controller.index}${controller.food.name}',
+                              child: Material(
+                                type: MaterialType.transparency,
+                                child: Text(
+                                  controller.food.name,
+                                  style: const TextStyle(
+                                    fontSize: 34,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    else
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Hero(
+                          tag: '${controller.index}${controller.food.name}',
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: Text(
+                              controller.food.name,
+                              style: const TextStyle(
+                                fontSize: 34,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
                     Expanded(
                       child: ListView(
                         padding: const EdgeInsets.all(20),
                         children: [
+                          if (controller.food.hasOffer) ...[
+                            Row(
+                              children: [
+                                Hero(
+                                  tag: '${controller.index}oldprice',
+                                  child: Material(
+                                    type: MaterialType.transparency,
+                                    child: Text(
+                                      '${AppTranslationKeys.oldPrice.tr}:',
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    '${controller.food.oldPrice}\$',
+                                    textAlign: TextAlign.end,
+                                    style: const TextStyle(
+                                      decoration: TextDecoration.lineThrough,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Divider(
+                              height: 32,
+                              thickness: 1,
+                              indent: 20,
+                              endIndent: 40,
+                            ),
+                          ],
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

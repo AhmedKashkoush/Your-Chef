@@ -28,19 +28,26 @@ class FoodViewController extends GetxController {
   List<FoodModel> get foods => _foods;
   List<FoodModel> get foodsFiltered => _foodsFiltered;
   List<String> get categories => _categories;
+
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
   @override
   void onInit() {
+    _isGrid = _mainController.isGrid;
+    _selectedCategory = _mainController.selectedCategory;
     _loadData();
     super.onInit();
   }
 
   void toggleGrid() {
     _isGrid = !_isGrid;
+    _mainController.toggleGrid();
     update();
   }
 
   void selectCategory(int index) {
     _selectedCategory = index;
+    _mainController.selectCategory(index);
     update();
   }
 
@@ -82,11 +89,29 @@ class FoodViewController extends GetxController {
   }
 
   Future<void> _loadData() async {
+    if (!_mainController.foodLoaded) {
+      _isLoading = true;
+      update();
+      await _mainController.loadFoods();
+      _isLoading = false;
+      update();
+    }
+    _categories = _testCategories;
+    _foods = _mainController.foods;
+  }
+
+  Future<void> _reloadData() async {
+    _isLoading = true;
+    update();
+    await _mainController.reloadFoods();
+    _isLoading = false;
+    update();
     _categories = _testCategories;
     _foods = _mainController.foods;
   }
 
   Future<void> refreshData() async {
     await Future.delayed(const Duration(seconds: 2));
+    _reloadData();
   }
 }

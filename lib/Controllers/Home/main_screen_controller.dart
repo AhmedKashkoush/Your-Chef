@@ -135,4 +135,32 @@ class MainScreenController extends GetxController {
     }
     return Future.value(true);
   }
+
+  //food view
+  bool _foodLoaded = false;
+  bool _isGrid = false;
+  bool get foodLoaded => _foodLoaded;
+  bool get isGrid => _isGrid;
+  int _selectedCategory = 0;
+  int get selectedCategory => _selectedCategory;
+
+  void toggleGrid() {
+    _isGrid = !_isGrid;
+  }
+
+  void selectCategory(int index) {
+    _selectedCategory = index;
+  }
+
+  Future<void> loadFoods() async {
+    if (_foodLoaded) return;
+
+    await Future.delayed(const Duration(seconds: 6));
+    _foodLoaded = true;
+  }
+
+  Future<void> reloadFoods() async {
+    _foodLoaded = false;
+    loadFoods();
+  }
 }

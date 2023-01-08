@@ -5,7 +5,7 @@ import 'package:your_chief/Controllers/Home/Cart/cart_controller.dart';
 import 'package:your_chief/Core/Constants/app_colors.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/View/Widgets/AppBars/transparent_app_bar.dart';
-import 'package:your_chief/View/Widgets/Loading/card_list_tile_loading.dart';
+import 'package:your_chief/View/Widgets/Loading/card_tile_loading.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -43,7 +43,7 @@ class CartScreen extends StatelessWidget {
               ? ListView.separated(
                   padding: const EdgeInsets.all(12),
                   itemBuilder: (context, index) {
-                    return CardListTileLoading(
+                    return CardTileLoading(
                       initialDelay: 200 * index,
                     );
                   },
