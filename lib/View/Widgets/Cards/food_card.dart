@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:your_chief/Core/Constants/api_headers.dart';
 import 'package:your_chief/Core/Constants/app_colors.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/Model/Models/food_model.dart';
@@ -56,7 +58,11 @@ class _FoodCardState extends State<FoodCard> {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             image: DecorationImage(
-                              image: AssetImage(widget.model.imageUrl),
+                              image: CachedNetworkImageProvider(
+                                widget.model.imageUrl,
+                                headers: ApiHeaders.authHeaders,
+                                cacheKey: widget.model.imageUrl,
+                              ),
                               isAntiAlias: true,
                             ),
                           ),
@@ -109,15 +115,14 @@ class _FoodCardState extends State<FoodCard> {
                                   child: Material(
                                     type: MaterialType.transparency,
                                     child: RoundedAvatar(
-                                      imageUrl: widget.model.restaurantImageUrl,
+                                      imageUrl: widget.model.restaurant.image,
                                       radius: 10,
                                       size: 30,
-                                      isAsset: true,
                                     ),
                                   ),
                                 ),
                                 title: Text(
-                                  '${AppTranslationKeys.from.tr}: ${widget.model.restaurant}',
+                                  '${AppTranslationKeys.from.tr}: ${widget.model.restaurant.name}',
                                   style: const TextStyle(
                                     color: AppColors.appBarIconColors,
                                     fontStyle: FontStyle.italic,
@@ -217,7 +222,11 @@ class _FoodCardState extends State<FoodCard> {
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 image: DecorationImage(
-                                  image: AssetImage(widget.model.imageUrl),
+                                  image: CachedNetworkImageProvider(
+                                    widget.model.imageUrl,
+                                    headers: ApiHeaders.authHeaders,
+                                    cacheKey: widget.model.imageUrl,
+                                  ),
                                   isAntiAlias: true,
                                 ),
                               ),
@@ -267,15 +276,14 @@ class _FoodCardState extends State<FoodCard> {
                                   child: Material(
                                     type: MaterialType.transparency,
                                     child: RoundedAvatar(
-                                      imageUrl: widget.model.restaurantImageUrl,
+                                      imageUrl: widget.model.restaurant.image,
                                       radius: 10,
                                       size: 30,
-                                      isAsset: true,
                                     ),
                                   ),
                                 ),
                                 title: Text(
-                                  '${AppTranslationKeys.from.tr}: ${widget.model.restaurant}',
+                                  '${AppTranslationKeys.from.tr}: ${widget.model.restaurant.name}',
                                   style: const TextStyle(
                                     color: AppColors.appBarIconColors,
                                     fontStyle: FontStyle.italic,

@@ -8,4 +8,7 @@ class ApiBodyKeys {
   static const String photo = 'photo';
   static const String locale = 'locale';
   static const String via = 'via';
+  static const String limit = 'limit';
+  static const String category = 'category';
+  static const String restaurant = 'restaurant';
 }

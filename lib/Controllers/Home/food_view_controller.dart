@@ -6,31 +6,34 @@ import 'package:your_chief/Core/Constants/app_colors.dart';
 import 'package:your_chief/Core/Constants/app_translation_keys.dart';
 import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/Core/Utils/utils.dart';
+import 'package:your_chief/Model/Models/category_model.dart';
 import 'package:your_chief/Model/Models/food_model.dart';
 
 class FoodViewController extends GetxController {
   final MainScreenController _mainController = Get.find();
   bool _isGrid = false;
   int _selectedCategory = 0;
-  late List<FoodModel> _foods;
+  List<FoodModel> _foods = [];
   List<FoodModel> _foodsFiltered = [];
-  late List<String> _categories;
-  final List<String> _testCategories = [
-    'All',
-    'Hamburger',
-    'Pizza',
-    'Pasta',
-    'Drinks',
-    'Snacks',
-  ];
+  List<CategoryModel> _categories = [];
+  // final List<String> _testCategories = [
+  //   'All',
+  //   'Hamburger',
+  //   'Pizza',
+  //   'Pasta',
+  //   'Drinks',
+  //   'Snacks',
+  // ];
   bool get isGrid => _isGrid;
   int get selectedCategory => _selectedCategory;
   List<FoodModel> get foods => _foods;
   List<FoodModel> get foodsFiltered => _foodsFiltered;
-  List<String> get categories => _categories;
+  List<CategoryModel> get categories => _categories;
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
+  bool _isLoadingCategories = false;
+  bool get isLoadingCategories => _isLoadingCategories;
   @override
   void onInit() {
     _isGrid = _mainController.isGrid;
@@ -45,9 +48,12 @@ class FoodViewController extends GetxController {
     update();
   }
 
-  void selectCategory(int index) {
+  void selectCategory(int index) async {
     _selectedCategory = index;
     _mainController.selectCategory(index);
+    update();
+    await _mainController.loadFoodsWithCategory(index);
+    _foodsFiltered = _mainController.filteredFoods;
     update();
   }
 
@@ -64,12 +70,12 @@ class FoodViewController extends GetxController {
   void setFavouriteAt(
       BuildContext context, FoodModel food, int index, bool isFavourite) {
     _mainController.foods[index] = FoodModel(
+      id: food.id,
       name: food.name,
       description: food.description,
       price: food.price,
       imageUrl: food.imageUrl,
       restaurant: food.restaurant,
-      restaurantImageUrl: food.restaurantImageUrl,
       rate: food.rate,
       stock: food.stock,
       hasOffer: food.hasOffer,
@@ -89,29 +95,35 @@ class FoodViewController extends GetxController {
   }
 
   Future<void> _loadData() async {
+    if (!_mainController.categoriesLoaded) {
+      _isLoadingCategories = true;
+    }
     if (!_mainController.foodLoaded) {
       _isLoading = true;
       update();
+      await _mainController.loadCategories();
       await _mainController.loadFoods();
       _isLoading = false;
-      update();
+      _isLoadingCategories = false;
     }
-    _categories = _testCategories;
+    _categories = _mainController.categories;
     _foods = _mainController.foods;
+    _foodsFiltered = _mainController.filteredFoods;
+    update();
   }
 
   Future<void> _reloadData() async {
     _isLoading = true;
     update();
     await _mainController.reloadFoods();
+    _categories = _mainController.categories;
+    _foods = _mainController.foods;
     _isLoading = false;
     update();
-    _categories = _testCategories;
-    _foods = _mainController.foods;
   }
 
   Future<void> refreshData() async {
     await Future.delayed(const Duration(seconds: 2));
-    _reloadData();
+    await _reloadData();
   }
 }

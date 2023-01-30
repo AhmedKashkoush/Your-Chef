@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:your_chief/Core/Constants/api_headers.dart';
 
 class RoundedAvatar extends StatelessWidget {
   final double radius;
@@ -33,7 +34,11 @@ class RoundedAvatar extends StatelessWidget {
         image: imageUrl != null
             ? (!isAsset
                 ? DecorationImage(
-                    image: CachedNetworkImageProvider(imageUrl!),
+                    image: CachedNetworkImageProvider(
+                      imageUrl!,
+                      headers: ApiHeaders.authHeaders,
+                      cacheKey: imageUrl,
+                    ),
                     isAntiAlias: true,
                     fit: BoxFit.fill,
                   )

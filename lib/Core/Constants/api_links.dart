@@ -19,4 +19,10 @@ class ApiLinks {
   static const String deleteUser = '$base/users/user/delete-user';
   static const String setOnline = '$base/users/user/update-user-status';
   static const String logout = '$base/users/user/logout';
+  //Food
+  static const String allFoods = '$base/foods';
+  static const String foodWithCategory = '$base/foods/category';
+  static const String foodRestaurant = '$base/foods/restaurant';
+  //Categories
+  static const String categories = '$base/categories';
 }

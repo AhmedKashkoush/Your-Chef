@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
@@ -48,7 +49,6 @@ class _FoodDetailsScreenPortrait extends StatelessWidget {
                     children: [
                       RoundedAvatar(
                         imageUrl: controller.food.imageUrl,
-                        isAsset: true,
                         size: 40,
                         color: Colors.white,
                       ),
@@ -75,7 +75,9 @@ class _FoodDetailsScreenPortrait extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         image: DecorationImage(
-                          image: AssetImage(controller.food.imageUrl),
+                          image: CachedNetworkImageProvider(
+                            controller.food.imageUrl,
+                          ),
                         ),
                       ),
                     ),
@@ -364,10 +366,9 @@ class _FoodDetailsScreenPortrait extends StatelessWidget {
                             child: Material(
                               type: MaterialType.transparency,
                               child: RoundedAvatar(
-                                imageUrl: controller.food.restaurantImageUrl,
+                                imageUrl: controller.food.restaurant.image,
                                 radius: 10,
                                 size: 80,
-                                isAsset: true,
                               ),
                             ),
                           ),
@@ -375,7 +376,7 @@ class _FoodDetailsScreenPortrait extends StatelessWidget {
                             height: 20,
                           ),
                           Text(
-                            controller.food.restaurant,
+                            controller.food.restaurant.name,
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
@@ -475,7 +476,9 @@ class _FoodDetailsScreenLandscape extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 image: DecorationImage(
-                                  image: AssetImage(controller.food.imageUrl),
+                                  image: CachedNetworkImageProvider(
+                                    controller.food.imageUrl,
+                                  ),
                                 ),
                               ),
                             ),
@@ -828,11 +831,9 @@ class _FoodDetailsScreenLandscape extends StatelessWidget {
                                 child: Material(
                                   type: MaterialType.transparency,
                                   child: RoundedAvatar(
-                                    imageUrl:
-                                        controller.food.restaurantImageUrl,
+                                    imageUrl: controller.food.restaurant.image,
                                     radius: 10,
                                     size: 80,
-                                    isAsset: true,
                                   ),
                                 ),
                               ),
@@ -840,7 +841,7 @@ class _FoodDetailsScreenLandscape extends StatelessWidget {
                                 height: 20,
                               ),
                               Text(
-                                controller.food.restaurant,
+                                controller.food.restaurant.name,
                                 style: const TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,

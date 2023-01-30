@@ -41,7 +41,7 @@ class FoodView extends StatelessWidget {
             ),
             SizedBox(
               height: 60,
-              child: controller.isLoading
+              child: controller.isLoading && controller.isLoadingCategories
                   ? ListView.separated(
                       scrollDirection: Axis.horizontal,
                       padding: const EdgeInsets.symmetric(
@@ -69,7 +69,7 @@ class FoodView extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return ChoiceChip(
                           label: Text(
-                            controller.categories[index],
+                            controller.categories[index].name,
                           ),
                           selected: controller.selectedCategory == index,
                           selectedColor: AppColors.secondary.withOpacity(0.5),
