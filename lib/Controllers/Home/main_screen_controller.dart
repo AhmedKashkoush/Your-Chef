@@ -167,6 +167,12 @@ class MainScreenController extends GetxController {
   int _selectedCategory = 0;
   int get selectedCategory => _selectedCategory;
 
+  bool _hasMore = true;
+  bool get hasMore => _hasMore;
+
+  bool _hasMoreFiltered = true;
+  bool get hasFiltered => _hasMoreFiltered;
+
   void toggleGrid() {
     _isGrid = !_isGrid;
   }
@@ -196,7 +202,20 @@ class MainScreenController extends GetxController {
     }
     if (_foodLoaded) return;
     _foods = await _foodsApi.getAllFoods(CurrentUser.token!, _foodPage, 10);
+    _foodPage++;
     _foodLoaded = true;
+  }
+
+  Future<void> paginateFoods() async {
+    if (!_hasMore) return;
+    final List<FoodModel> foods =
+        await _foodsApi.getAllFoods(CurrentUser.token!, _foodPage, 10);
+    _foods.addAll(foods);
+    if (foods.length < 10) {
+      _hasMore = false;
+      return;
+    }
+    _foodPage++;
   }
 
   Future<void> loadCategories() async {
@@ -212,6 +231,9 @@ class MainScreenController extends GetxController {
 
   Future<void> reloadFoods() async {
     _foodLoaded = false;
-    loadFoods();
+    _foods.clear();
+    _hasMore = true;
+    _foodPage = 1;
+    await loadFoods();
   }
 }

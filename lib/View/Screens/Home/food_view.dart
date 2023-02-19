@@ -23,13 +23,87 @@ class FoodView extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              title: Text(
-                AppTranslationKeys.foods.tr,
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              title: isLandscape
+                  ? Row(
+                      children: [
+                        Text(
+                          AppTranslationKeys.foods.tr,
+                          style: const TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: SizedBox(
+                            height: 60,
+                            child: controller.isLoading &&
+                                    controller.isLoadingCategories
+                                ? ListView.separated(
+                                    scrollDirection: Axis.horizontal,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 15,
+                                    ),
+                                    itemBuilder: (context, index) {
+                                      return ChipLoading(
+                                        initialDelay: 200 * index,
+                                      );
+                                    },
+                                    separatorBuilder: (context, index) =>
+                                        const SizedBox(
+                                      width: 10,
+                                    ),
+                                    itemCount: 8,
+                                  )
+                                : ListView.separated(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 15,
+                                    ),
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: controller.categories.length,
+                                    separatorBuilder: (context, index) =>
+                                        const SizedBox(
+                                      width: 10,
+                                    ),
+                                    itemBuilder: (context, index) {
+                                      return ChoiceChip(
+                                        label: Text(
+                                          controller.categories[index].name,
+                                        ),
+                                        selected: controller.selectedCategory ==
+                                            index,
+                                        selectedColor: AppColors.secondary
+                                            .withOpacity(0.5),
+                                        labelStyle: TextStyle(
+                                          color: controller.selectedCategory ==
+                                                  index
+                                              ? AppColors.primary
+                                              : Colors.grey,
+                                          fontWeight:
+                                              controller.selectedCategory ==
+                                                      index
+                                                  ? FontWeight.bold
+                                                  : FontWeight.normal,
+                                        ),
+                                        onSelected: (_) {
+                                          controller.selectCategory(index);
+                                        },
+                                      );
+                                    },
+                                  ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Text(
+                      AppTranslationKeys.foods.tr,
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
               trailing: IconButton(
                 onPressed: controller.toggleGrid,
                 icon: Icon(
@@ -39,55 +113,56 @@ class FoodView extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 60,
-              child: controller.isLoading && controller.isLoadingCategories
-                  ? ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 15,
+            if (!isLandscape)
+              SizedBox(
+                height: 60,
+                child: controller.isLoading && controller.isLoadingCategories
+                    ? ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 15,
+                        ),
+                        itemBuilder: (context, index) {
+                          return ChipLoading(
+                            initialDelay: 200 * index,
+                          );
+                        },
+                        separatorBuilder: (context, index) => const SizedBox(
+                          width: 10,
+                        ),
+                        itemCount: 8,
+                      )
+                    : ListView.separated(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 15,
+                        ),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.categories.length,
+                        separatorBuilder: (context, index) => const SizedBox(
+                          width: 10,
+                        ),
+                        itemBuilder: (context, index) {
+                          return ChoiceChip(
+                            label: Text(
+                              controller.categories[index].name,
+                            ),
+                            selected: controller.selectedCategory == index,
+                            selectedColor: AppColors.secondary.withOpacity(0.5),
+                            labelStyle: TextStyle(
+                              color: controller.selectedCategory == index
+                                  ? AppColors.primary
+                                  : Colors.grey,
+                              fontWeight: controller.selectedCategory == index
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
+                            ),
+                            onSelected: (_) {
+                              controller.selectCategory(index);
+                            },
+                          );
+                        },
                       ),
-                      itemBuilder: (context, index) {
-                        return ChipLoading(
-                          initialDelay: 200 * index,
-                        );
-                      },
-                      separatorBuilder: (context, index) => const SizedBox(
-                        width: 10,
-                      ),
-                      itemCount: 8,
-                    )
-                  : ListView.separated(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 15,
-                      ),
-                      scrollDirection: Axis.horizontal,
-                      itemCount: controller.categories.length,
-                      separatorBuilder: (context, index) => const SizedBox(
-                        width: 10,
-                      ),
-                      itemBuilder: (context, index) {
-                        return ChoiceChip(
-                          label: Text(
-                            controller.categories[index].name,
-                          ),
-                          selected: controller.selectedCategory == index,
-                          selectedColor: AppColors.secondary.withOpacity(0.5),
-                          labelStyle: TextStyle(
-                            color: controller.selectedCategory == index
-                                ? AppColors.primary
-                                : Colors.grey,
-                            fontWeight: controller.selectedCategory == index
-                                ? FontWeight.bold
-                                : FontWeight.normal,
-                          ),
-                          onSelected: (_) {
-                            controller.selectCategory(index);
-                          },
-                        );
-                      },
-                    ),
-            ),
+              ),
             Expanded(
               //flex: 4,
               child: controller.isLoading
@@ -152,6 +227,8 @@ class FoodView extends StatelessWidget {
                                     key: ValueKey<String>('grid'),
                                     child: GridView.builder(
                                       key: PageStorageKey('food-all-category'),
+                                      controller:
+                                          controller.mainScrollController,
                                       gridDelegate:
                                           SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: isLandscape ? 3 : 2,
@@ -164,11 +241,24 @@ class FoodView extends StatelessWidget {
                                         left: 12,
                                         bottom: 100,
                                       ),
-                                      itemCount:
-                                          controller.selectedCategory != 0
-                                              ? controller.foodsFiltered.length
-                                              : controller.foods.length,
+                                      itemCount: controller.selectedCategory !=
+                                              0
+                                          ? controller.foodsFiltered.length
+                                          : !controller.loadingMore
+                                              ? controller.foods.length
+                                              : isLandscape
+                                                  ? controller.foods.length + 3
+                                                  : controller.foods.length + 2,
                                       itemBuilder: (context, index) {
+                                        if (index >= controller.foods.length) {
+                                          if (!controller.loadingMore) {
+                                            return const SizedBox.shrink();
+                                          }
+                                          return CardTileLoading(
+                                            initialDelay: 200,
+                                            isGrid: true,
+                                          );
+                                        }
                                         final FoodModel model =
                                             controller.selectedCategory != 0
                                                 ? controller
@@ -217,6 +307,8 @@ class FoodView extends StatelessWidget {
                                     key: ValueKey<String>('list'),
                                     child: ListView.builder(
                                       key: PageStorageKey('food-all-category'),
+                                      controller:
+                                          controller.mainScrollController,
                                       padding: const EdgeInsets.only(
                                         right: 12,
                                         left: 12,
@@ -225,8 +317,16 @@ class FoodView extends StatelessWidget {
                                       itemCount:
                                           controller.selectedCategory != 0
                                               ? controller.foodsFiltered.length
-                                              : controller.foods.length,
+                                              : controller.foods.length + 1,
                                       itemBuilder: (context, index) {
+                                        if (index >= controller.foods.length) {
+                                          if (!controller.loadingMore) {
+                                            return const SizedBox.shrink();
+                                          }
+                                          return CardTileLoading(
+                                            initialDelay: 200,
+                                          );
+                                        }
                                         final FoodModel model =
                                             controller.selectedCategory != 0
                                                 ? controller

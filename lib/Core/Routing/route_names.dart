@@ -20,6 +20,9 @@ class AppRouteNames {
   //food routes
   static const String foodDetails = '/foodDetails';
 
+  //restaurant routes
+  static const String restaurant = '/restaurant';
+
   //account routes
   static const String account = '/account';
 

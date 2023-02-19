@@ -25,10 +25,12 @@ import 'package:your_chief/View/Screens/Home/Food%20Details/food_details_screen.
 import 'package:your_chief/View/Screens/Home/main_screen.dart';
 import 'package:your_chief/View/Screens/Home/search_screen.dart';
 import 'package:your_chief/View/Screens/OnBoarding/onboarding_screen.dart';
+import 'package:your_chief/View/Screens/Restaurant/restaurant_screen.dart';
 
 import '../../View/Screens/Auth/account_verified_screen.dart';
 import '../Bindings/Auth/verify_email_binding.dart';
 import '../Bindings/Home/main_screen_binding.dart';
+import '../Bindings/Restaurant/restaurant_screen_binding.dart';
 
 class AppRoutes {
   static const String initialRoute = AppRouteNames.onBoarding;
@@ -108,6 +110,13 @@ class AppRoutes {
       transitionDuration: const Duration(milliseconds: 700),
       opaque: false,
       curve: Curves.fastLinearToSlowEaseIn,
+    ),
+    GetPage(
+      name: AppRouteNames.restaurant,
+      page: () => const RestaurantScreen(),
+      binding: RestaurantScreenBinding(),
+      transition: Transition.fadeIn,
+      curve: Curves.slowMiddle,
     ),
     GetPage(
       name: AppRouteNames.account,

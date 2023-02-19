@@ -91,6 +91,11 @@ class AppTranslations extends Translations {
           AppTranslationKeys.description: 'Description',
           AppTranslationKeys.amount: 'Amount',
           AppTranslationKeys.addToCart: 'Add To cart',
+          //restaurant
+          AppTranslationKeys.aboutUs: 'About us',
+          AppTranslationKeys.contact: 'Contact',
+          AppTranslationKeys.location: 'Location',
+          AppTranslationKeys.moreFrom: 'More from',
           //account
           AppTranslationKeys.editProfile: 'Edit Profile',
           AppTranslationKeys.switchAccount: 'Switch Account',
@@ -231,6 +236,11 @@ class AppTranslations extends Translations {
           AppTranslationKeys.description: 'الوصف',
           AppTranslationKeys.amount: 'الكمية',
           AppTranslationKeys.addToCart: 'إضافة إلى العربة',
+          //restaurant
+          AppTranslationKeys.aboutUs: 'عنا',
+          AppTranslationKeys.contact: 'الإتصال',
+          AppTranslationKeys.location: 'الموقع',
+          AppTranslationKeys.moreFrom: 'المزيد من',
           //account
           AppTranslationKeys.editProfile: 'تعديل الملف الشخصي',
           AppTranslationKeys.switchAccount: 'تبديل الحساب',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:your_chief/Core/Routing/route_names.dart';
 import 'package:your_chief/Model/Models/food_model.dart';
 
 class FoodDetailsController extends GetxController {
@@ -45,6 +46,10 @@ class FoodDetailsController extends GetxController {
     } else {
       //like
     }
+  }
+
+  void toRestaurant() {
+    Get.toNamed(AppRouteNames.restaurant, arguments: food.restaurant);
   }
 
   void incrementAmount() {

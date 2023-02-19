@@ -365,10 +365,13 @@ class _FoodDetailsScreenPortrait extends StatelessWidget {
                             tag: '${controller.index}restaurant',
                             child: Material(
                               type: MaterialType.transparency,
-                              child: RoundedAvatar(
-                                imageUrl: controller.food.restaurant.image,
-                                radius: 10,
-                                size: 80,
+                              child: GestureDetector(
+                                onTap: controller.toRestaurant,
+                                child: RoundedAvatar(
+                                  imageUrl: controller.food.restaurant.image,
+                                  radius: 10,
+                                  size: 80,
+                                ),
                               ),
                             ),
                           ),
@@ -830,10 +833,14 @@ class _FoodDetailsScreenLandscape extends StatelessWidget {
                                 tag: '${controller.index}restaurant',
                                 child: Material(
                                   type: MaterialType.transparency,
-                                  child: RoundedAvatar(
-                                    imageUrl: controller.food.restaurant.image,
-                                    radius: 10,
-                                    size: 80,
+                                  child: GestureDetector(
+                                    onTap: controller.toRestaurant,
+                                    child: RoundedAvatar(
+                                      imageUrl:
+                                          controller.food.restaurant.image,
+                                      radius: 10,
+                                      size: 80,
+                                    ),
                                   ),
                                 ),
                               ),

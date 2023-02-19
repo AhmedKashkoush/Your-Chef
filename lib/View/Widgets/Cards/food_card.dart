@@ -43,6 +43,7 @@ class _FoodCardState extends State<FoodCard> {
       onTap: widget.onTap,
       child: Card(
         clipBehavior: Clip.antiAlias,
+        // color: AppColors.appBarIconColors.withOpacity(0.15),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: Container(
           height: 120,
@@ -176,7 +177,7 @@ class _FoodCardState extends State<FoodCard> {
                                         ),
                                       ),
                                     ),
-                                    if (widget.model.oldPrice != null)
+                                    if (widget.model.hasOffer)
                                       Positioned.directional(
                                         textDirection:
                                             Directionality.of(context),
@@ -344,7 +345,7 @@ class _FoodCardState extends State<FoodCard> {
                                       ),
                                     ),
                                   ),
-                                  if (widget.model.oldPrice != null)
+                                  if (widget.model.hasOffer)
                                     Positioned.directional(
                                       textDirection: Directionality.of(context),
                                       top: -15,

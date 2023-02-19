@@ -7,7 +7,7 @@ class AppColors {
   static MaterialColor primarySwatch = Colors.orange;
 
   static const Color bgColor = Colors.white;
-  static const Color bgColorDark = Color(0xFF313030);
+  static const Color bgColorDark = Color.fromARGB(255, 25, 24, 24);
   static const Color dotColorDark = Color(0xFF6B6A6A);
 
   static const Color photoSectionAvatar = Color(0xFFBCBABA);

@@ -1,5 +1,3 @@
-import 'package:get/get.dart';
-
 class RestaurantModel {
   final int id;
   final String name;
@@ -19,8 +17,8 @@ class RestaurantModel {
 
   static RestaurantModel fromJson(Map<String, dynamic> json) => RestaurantModel(
         id: json['id'],
-        name: json['name_${Get.locale!.languageCode}'],
-        description: json['description_${Get.locale!.languageCode}'],
+        name: json['name'],
+        description: json['description'],
         image: json['image'],
         phone: json['phone'],
         rate: double.parse(json['rate']),

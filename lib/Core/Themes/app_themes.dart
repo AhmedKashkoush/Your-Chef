@@ -4,6 +4,7 @@ import 'package:your_chief/Core/Constants/app_colors.dart';
 class AppThemes {
   static ThemeMode themeMode = ThemeMode.system;
   static final ThemeData lightTheme = ThemeData(
+    useMaterial3: true,
     primaryColor: AppColors.primary,
     primarySwatch: AppColors.primarySwatch,
     scaffoldBackgroundColor: AppColors.bgColor,
@@ -51,8 +52,11 @@ class AppThemes {
   );
 
   static final ThemeData darkTheme = ThemeData(
+    useMaterial3: true,
     primaryColor: AppColors.primary,
     primarySwatch: AppColors.primarySwatch,
+    canvasColor: AppColors.bgColorDark,
+    dialogBackgroundColor: AppColors.bgColorDark,
     scaffoldBackgroundColor: AppColors.bgColorDark,
     appBarTheme: AppBarTheme(backgroundColor: AppColors.primary),
     textTheme: TextTheme(

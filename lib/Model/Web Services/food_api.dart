@@ -18,6 +18,7 @@ class FoodApi implements IFoodRepository {
     };
     Map<String, dynamic> body = {
       ApiBodyKeys.limit: limit ?? 10,
+      ApiBodyKeys.locale: Get.locale!.languageCode,
     };
     try {
       dynamic data = await _helper.postData(
@@ -52,7 +53,8 @@ class FoodApi implements IFoodRepository {
     };
     Map<String, dynamic> body = {
       ApiBodyKeys.limit: limit ?? 10,
-      ApiBodyKeys.restaurant: restaurantId
+      ApiBodyKeys.restaurant: restaurantId,
+      ApiBodyKeys.locale: Get.locale!.languageCode,
     };
     try {
       dynamic data = await _helper.postData(
@@ -86,7 +88,8 @@ class FoodApi implements IFoodRepository {
     };
     Map<String, dynamic> body = {
       ApiBodyKeys.limit: limit ?? 10,
-      ApiBodyKeys.category: categoryId
+      ApiBodyKeys.category: categoryId,
+      ApiBodyKeys.locale: Get.locale!.languageCode,
     };
     try {
       dynamic data = await _helper.postData(

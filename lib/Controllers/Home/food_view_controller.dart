@@ -11,6 +11,8 @@ import 'package:your_chief/Model/Models/food_model.dart';
 
 class FoodViewController extends GetxController {
   final MainScreenController _mainController = Get.find();
+  final ScrollController mainScrollController = ScrollController();
+  final ScrollController filteredScrollController = ScrollController();
   bool _isGrid = false;
   int _selectedCategory = 0;
   List<FoodModel> _foods = [];
@@ -34,12 +36,28 @@ class FoodViewController extends GetxController {
   bool get isLoading => _isLoading;
   bool _isLoadingCategories = false;
   bool get isLoadingCategories => _isLoadingCategories;
+
+  bool _loadingMore = false;
+  bool get loadingMore => _loadingMore;
+  bool _loadingMoreFiltered = false;
+  bool get loadingMoreFiltered => _loadingMoreFiltered;
   @override
   void onInit() {
     _isGrid = _mainController.isGrid;
     _selectedCategory = _mainController.selectedCategory;
+    mainScrollController.addListener(mainScrollListener);
     _loadData();
     super.onInit();
+  }
+
+  void mainScrollListener() {
+    if (_loadingMore || !_mainController.hasMore) return;
+    double pixels = mainScrollController.position.pixels;
+    // double minExtent = mainScrollController.position.minScrollExtent;
+    double maxExtent = mainScrollController.position.maxScrollExtent;
+    if (pixels > maxExtent - 200) {
+      _paginateData();
+    }
   }
 
   void toggleGrid() {
@@ -112,6 +130,16 @@ class FoodViewController extends GetxController {
     update();
   }
 
+  Future<void> _paginateData() async {
+    if (!_mainController.hasMore) return;
+    _loadingMore = true;
+    update();
+    await _mainController.paginateFoods();
+    _foods = _mainController.foods;
+    _loadingMore = false;
+    update();
+  }
+
   Future<void> _reloadData() async {
     _isLoading = true;
     update();
@@ -124,6 +152,7 @@ class FoodViewController extends GetxController {
 
   Future<void> refreshData() async {
     await Future.delayed(const Duration(seconds: 2));
+    _foods.clear();
     await _reloadData();
   }
 }
